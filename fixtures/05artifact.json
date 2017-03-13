@@ -1,0 +1,18 @@
+[
+  {
+    "model": "Artifact",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/190/190279.svg",
+      "name": "Supernova",
+      "metal": 0,
+      "crystal": 0,
+      "oil": 0,
+      "planet": true,
+      "moon": false,
+      "station": false,
+      "store": true,
+      "description": "Description",
+      "class": "orange"
+    }
+  }
+]

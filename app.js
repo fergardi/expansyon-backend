@@ -19,6 +19,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 app.use('/api/faction', require('./routes/faction'))
+app.use('/api/ship', require('./routes/ship'))
+app.use('/api/building', require('./routes/building'))
+app.use('/api/tower', require('./routes/tower'))
+app.use('/api/artifact', require('./routes/artifact'))
+app.use('/api/mission', require('./routes/mission'))
+app.use('/api/referendum', require('./routes/referendum'))
 app.use('/api/planet', require('./routes/planet'))
 
 // catch 404 and forward to error handler

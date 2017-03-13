@@ -1,0 +1,74 @@
+[
+  {
+    "model": "Ship",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270118.svg",
+      "name": "Fighter",
+      "attack": 25,
+      "defense": 25,
+      "speed": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  },
+  {
+    "model": "Ship",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270105.svg",
+      "name": "Cruiser",
+      "attack": 25,
+      "defense": 25,
+      "speed": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  },
+  {
+    "model": "Ship",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270106.svg",
+      "name": "Bomber",
+      "attack": 25,
+      "defense": 25,
+      "speed": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  },
+  {
+    "model": "Ship",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "name": "Orbiter",
+      "attack": 25,
+      "defense": 25,
+      "speed": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  },
+  {
+    "model": "Ship",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270108.svg",
+      "name": "Carrier",
+      "attack": 25,
+      "defense": 25,
+      "speed": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  },
+  {
+    "model": "Ship",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270140.svg",
+      "name": "Recycler",
+      "attack": 25,
+      "defense": 25,
+      "speed": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  }
+]

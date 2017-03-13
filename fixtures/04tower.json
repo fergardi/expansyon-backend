@@ -1,0 +1,38 @@
+[
+  {
+    "model": "Tower",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270112.svg",
+      "name": "Turret",
+      "attack": 25,
+      "defense": 25,
+      "speed": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  },
+  {
+    "model": "Tower",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270114.svg",
+      "name": "Railgun",
+      "attack": 25,
+      "defense": 25,
+      "speed": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  },
+  {
+    "model": "Tower",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270126.svg",
+      "name": "Cannon",
+      "attack": 25,
+      "defense": 25,
+      "speed": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  }
+]

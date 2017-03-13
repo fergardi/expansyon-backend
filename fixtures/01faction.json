@@ -3,7 +3,25 @@
     "model": "Faction",
     "data": {
       "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
-      "name": "Faction",
+      "name": "Sedi",
+      "metal": 25,
+      "crystal": 25,
+      "oil": 25,
+      "size": 25,
+      "energy": 25,
+      "influence": 25,
+      "attack": 25,
+      "defense": 25,
+      "speed": 25,
+      "description": "Description",
+      "class": "green"
+    }
+  },
+  {
+    "model": "Faction",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "name": "Jith",
       "metal": 25,
       "crystal": 25,
       "oil": 25,
@@ -15,6 +33,78 @@
       "speed": 25,
       "description": "Description",
       "class": "red"
+    }
+  },
+  {
+    "model": "Faction",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "name": "Merchant",
+      "metal": 25,
+      "crystal": 25,
+      "oil": 25,
+      "size": 25,
+      "energy": 25,
+      "influence": 25,
+      "attack": 25,
+      "defense": 25,
+      "speed": 25,
+      "description": "Description",
+      "class": "yellow"
+    }
+  },
+  {
+    "model": "Faction",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "name": "Scholar",
+      "metal": 25,
+      "crystal": 25,
+      "oil": 25,
+      "size": 25,
+      "energy": 25,
+      "influence": 25,
+      "attack": 25,
+      "defense": 25,
+      "speed": 25,
+      "description": "Description",
+      "class": "cyan"
+    }
+  },
+  {
+    "model": "Faction",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "name": "Scavenger",
+      "metal": 25,
+      "crystal": 25,
+      "oil": 25,
+      "size": 25,
+      "energy": 25,
+      "influence": 25,
+      "attack": 25,
+      "defense": 25,
+      "speed": 25,
+      "description": "Description",
+      "class": "purple"
+    }
+  },
+  {
+    "model": "Faction",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "name": "Warrior",
+      "metal": 25,
+      "crystal": 25,
+      "oil": 25,
+      "size": 25,
+      "energy": 25,
+      "influence": 25,
+      "attack": 25,
+      "defense": 25,
+      "speed": 25,
+      "description": "Description",
+      "class": "orange"
     }
   }
 ]

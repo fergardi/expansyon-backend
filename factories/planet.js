@@ -1,5 +1,3 @@
-var constants = require('../config/constants')
-
 var images = [
   'https://image.flaticon.com/icons/svg/124/124558.svg',
   'https://image.flaticon.com/icons/svg/124/124582.svg',
@@ -85,7 +83,7 @@ const factory = {
     }
     factory.type(planet)
     if (sequelize) {
-      planet = { model: "Planet", data: planet };
+      planet = { model: 'Planet', data: planet }
     }
     return planet
   },

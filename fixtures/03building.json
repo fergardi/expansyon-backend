@@ -1,0 +1,74 @@
+[
+  {
+    "model": "Building",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/232/232481.svg",
+      "name": "Furnace",
+      "metal": 25,
+      "crystal": 25,
+      "oil": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  },
+  {
+    "model": "Building",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/232/232481.svg",
+      "name": "Factory",
+      "metal": 25,
+      "crystal": 25,
+      "oil": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  },
+  {
+    "model": "Building",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/232/232481.svg",
+      "name": "Refinery",
+      "metal": 25,
+      "crystal": 25,
+      "oil": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  },
+  {
+    "model": "Building",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/232/232481.svg",
+      "name": "Plant",
+      "metal": 25,
+      "crystal": 25,
+      "oil": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  },
+  {
+    "model": "Building",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/232/232481.svg",
+      "name": "Barrier",
+      "metal": 25,
+      "crystal": 25,
+      "oil": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  },
+  {
+    "model": "Building",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/232/232481.svg",
+      "name": "Warehouse",
+      "metal": 25,
+      "crystal": 25,
+      "oil": 25,
+      "description": "Description",
+      "class": "grey"
+    }
+  }
+]

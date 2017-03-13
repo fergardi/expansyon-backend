@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = (sequelize, DataTypes) => {
-  var Planet = sequelize.define('Planet', {
+  var Referendum = sequelize.define('Referendum', {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     class: DataTypes.STRING,
@@ -12,11 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     size: DataTypes.INTEGER,
     energy: DataTypes.INTEGER,
     influence: DataTypes.INTEGER,
-    moon: DataTypes.BOOLEAN,
-    station: DataTypes.BOOLEAN
+    attack: DataTypes.INTEGER,
+    defense: DataTypes.INTEGER,
+    speed: DataTypes.INTEGER
   }, {
     timestamps: false,
     freezeTableName: true
   })
-  return Planet
+  return Referendum
 }
