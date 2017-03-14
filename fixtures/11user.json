@@ -1,0 +1,10 @@
+[
+  {
+    "model": "User",
+    "data": {
+      "email": "test@test.com",
+      "password": "test",
+      "token": null
+    }
+  }
+]
