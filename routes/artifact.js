@@ -10,4 +10,14 @@ router.get('/', (req, res) => {
   })
 })
 
+// GET /api/artifact/store
+router.get('/store', (req, res) => {
+  models.Artifact.findAll({
+    where: { store: true }
+  })
+  .then((artifacts) => {
+    res.status(200).json(artifacts)
+  })
+})
+
 module.exports = router
