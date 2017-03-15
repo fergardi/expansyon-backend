@@ -10,4 +10,21 @@ router.get('/', (req, res) => {
   })
 })
 
+// GET /api/planet/id
+router.get('/:id', (req, res) => {
+  models.Player.findOne({
+    where: { id: req.params.id },
+    include: { model: models.Planet }
+  })
+  .then((player) => {
+    var ids = player.Planets.map((planet) => planet.id)
+    models.Planet.findAll({
+      where: { id: { $notIn: ids } }
+    })
+    .then((planets) => {
+      res.status(200).json(planets)
+    })
+  })
+})
+
 module.exports = router

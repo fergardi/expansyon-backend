@@ -2,6 +2,8 @@
   {
     "model": "Player",
     "data": {
+      "email": "test@test.com",
+      "password": "test",
       "name": "Fergardi",
       "image": "https://image.flaticon.com/icons/svg/124/124558.svg",
       "turns": 300,
@@ -9,9 +11,8 @@
       "crystal": 0,
       "oil": 0,
       "aether": 0,
-      "Planets": [1, 2],
-      "Artifacts": [1],
-      "Faction": 1
+      "Planets": [1, 2, 3],
+      "Artifacts": []
     }
   }
 ]

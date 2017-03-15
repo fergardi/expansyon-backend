@@ -2,6 +2,9 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Player = sequelize.define('Player', {
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    token: DataTypes.STRING,
     name: DataTypes.STRING,
     image: DataTypes.STRING,
     turns: DataTypes.INTEGER,
@@ -13,15 +16,11 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: (models) => {
         // m2o association
+        models.Player.belongsTo(models.Guild)
+        // m2o association
         models.Player.belongsTo(models.Faction)
-        // m2m association
-        var PlayerPlanet = sequelize.define('PlayerPlanet', {
-        }, {
-          timestamps: false,
-          freezeTableName: true
-        })
-        models.Planet.belongsToMany(models.Player, {through: PlayerPlanet})
-        models.Player.belongsToMany(models.Planet, {through: PlayerPlanet})
+        // o2m association
+        models.Player.hasMany(models.Planet)
         // custom m2m association with "quantity" to count ammount of resources of the same type
         var PlayerArtifact = sequelize.define('PlayerArtifact', {
           quantity: {

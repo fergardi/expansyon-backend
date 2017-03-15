@@ -26,7 +26,6 @@ app.use('/api/artifact', require('./routes/artifact'))
 app.use('/api/mission', require('./routes/mission'))
 app.use('/api/referendum', require('./routes/referendum'))
 app.use('/api/planet', require('./routes/planet'))
-app.use('/api/user', require('./routes/user'))
 app.use('/api/player', require('./routes/player'))
 
 // catch 404 and forward to error handler

@@ -32,34 +32,34 @@ const factory = {
     if (factory.total(planet) > 400) {
       planet.class = 'orange'
       planet.name = 'FORTUNE'
-      planet.description = 'Description'
+      planet.description = 'Extremely rare and rich planet.'
     } else if (factory.max(planet, planet.metal)) {
       planet.class = 'indigo'
       planet.name = 'PLATINUM'
-      planet.description = 'Description'
+      planet.description = 'Rich planet with plenty METAL.'
     } else if (factory.max(planet, planet.crystal)) {
       planet.class = 'purple'
       planet.name = 'LUMINA'
-      planet.description = 'Description'
+      planet.description = 'Rich planet with plenty CRYSTAL.'
     } else if (factory.max(planet, planet.oil)) {
       planet.class = 'red'
       planet.name = 'IGNEUS'
-      planet.description = 'Description'
+      planet.description = 'Rich planet with plenty OIL.'
     } else if (factory.max(planet, planet.energy)) {
       planet.class = 'cyan'
       planet.name = 'ZEUS'
-      planet.description = 'Description'
+      planet.description = 'Rich planet with plenty ENERGY.'
     } else if (factory.max(planet, planet.influence)) {
       planet.class = 'yellow'
       planet.name = 'POLITES'
-      planet.description = 'Description'
+      planet.description = 'Strategic planet with plenty INFLUENCE.'
     } else if (factory.max(planet, planet.size)) {
       planet.class = 'green'
-      planet.name = 'TERRAN'
-      planet.description = 'Description'
+      planet.name = 'TERRA'
+      planet.description = 'Huge planet with plenty SIZE.'
     } else {
       planet.class = 'grey'
-      planet.name = 'MORTUM'
+      planet.name = 'MORTUS'
       planet.description = 'Description'
     }
     planet.name += '-' + factory.total(planet)
