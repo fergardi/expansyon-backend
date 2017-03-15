@@ -8,7 +8,7 @@
       "defense": 25,
       "speed": 25,
       "description": "Description",
-      "class": "grey"
+      "class": "green"
     }
   },
   {
@@ -20,7 +20,7 @@
       "defense": 25,
       "speed": 25,
       "description": "Description",
-      "class": "grey"
+      "class": "cyan"
     }
   },
   {
@@ -32,7 +32,7 @@
       "defense": 25,
       "speed": 25,
       "description": "Description",
-      "class": "grey"
+      "class": "red"
     }
   },
   {
@@ -44,7 +44,7 @@
       "defense": 25,
       "speed": 25,
       "description": "Description",
-      "class": "grey"
+      "class": "yellow"
     }
   },
   {
@@ -56,7 +56,7 @@
       "defense": 25,
       "speed": 25,
       "description": "Description",
-      "class": "grey"
+      "class": "indigo"
     }
   },
   {

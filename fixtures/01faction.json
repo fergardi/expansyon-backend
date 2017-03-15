@@ -3,6 +3,24 @@
     "model": "Faction",
     "data": {
       "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "name": "Scavenger",
+      "metal": 20,
+      "crystal": 20,
+      "oil": 20,
+      "size": 0,
+      "energy": 10,
+      "influence": 0,
+      "attack": 10,
+      "defense": 10,
+      "speed": 10,
+      "description": "Description",
+      "class": "purple"
+    }
+  },
+  {
+    "model": "Faction",
+    "data": {
+      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
       "name": "Sedi",
       "metal": 0,
       "crystal": 0,
@@ -69,24 +87,6 @@
       "speed": 10,
       "description": "Description",
       "class": "cyan"
-    }
-  },
-  {
-    "model": "Faction",
-    "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
-      "name": "Scavenger",
-      "metal": 20,
-      "crystal": 20,
-      "oil": 20,
-      "size": 0,
-      "energy": 10,
-      "influence": 0,
-      "attack": 10,
-      "defense": 10,
-      "speed": 10,
-      "description": "Description",
-      "class": "purple"
     }
   },
   {

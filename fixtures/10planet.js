@@ -2,4 +2,4 @@
 
 var factory = require('../factories/planet')
 
-module.exports = factory.bulk(3, true)
+module.exports = factory.bulk(12, true)

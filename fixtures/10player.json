@@ -1,0 +1,17 @@
+[
+  {
+    "model": "Player",
+    "data": {
+      "name": "Fergardi",
+      "image": "https://image.flaticon.com/icons/svg/124/124558.svg",
+      "turns": 300,
+      "metal": 0,
+      "crystal": 0,
+      "oil": 0,
+      "aether": 0,
+      "Planets": [1, 2],
+      "Artifacts": [1],
+      "Faction": 1
+    }
+  }
+]

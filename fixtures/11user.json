@@ -4,7 +4,8 @@
     "data": {
       "email": "test@test.com",
       "password": "test",
-      "token": null
+      "token": null,
+      "Player": 1
     }
   }
 ]

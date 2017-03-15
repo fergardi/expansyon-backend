@@ -2,6 +2,18 @@ var models = require('../models')
 var express = require('express')
 var router = express.Router()
 
+// GET /api/user
+router.get('/:id', (req, res) => {
+  models.User.findOne({
+    where: { id: req.params.id },
+    include: [ { model: models.Player, include: [models.Planet, models.Artifact, models.Faction] } ],
+    attributes: { exclude: ['password', 'token'] }
+  })
+  .then((user) => {
+    res.status(200).json(user)
+  })
+})
+
 // POST /api/user/login
 router.post('/login', (req, res) => {
   models.User.findOne({
@@ -11,7 +23,7 @@ router.post('/login', (req, res) => {
     if (user) {
       user.token = Math.random().toString(36).substr(2)
       user.save()
-      res.status(200).json({ token: user.token })
+      res.status(200).json({ id: user.id, token: user.token })
     } else {
       res.status(401).end()
     }

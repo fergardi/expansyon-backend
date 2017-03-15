@@ -33,29 +33,33 @@ const factory = {
       planet.class = 'orange'
       planet.name = 'FORTUNE'
       planet.description = 'Description'
-    } else if (planet.metal > 50) {
-      planet.class = 'purple'
-      planet.name = 'HERMES'
-      planet.description = 'Description'
-    } else if (planet.crystal > 50) {
-      planet.class = 'cyan'
-      planet.name = 'ATHENA'
-      planet.description = 'Description'
-    } else if (planet.oil > 50) {
-      planet.class = 'yellow'
-      planet.name = 'HADES'
-      planet.description = 'Description'
-    } else if (planet.energy > 50) {
+    } else if (factory.max(planet, planet.metal)) {
       planet.class = 'indigo'
+      planet.name = 'PLATINUM'
+      planet.description = 'Description'
+    } else if (factory.max(planet, planet.crystal)) {
+      planet.class = 'purple'
+      planet.name = 'LUMINA'
+      planet.description = 'Description'
+    } else if (factory.max(planet, planet.oil)) {
+      planet.class = 'red'
+      planet.name = 'IGNEUS'
+      planet.description = 'Description'
+    } else if (factory.max(planet, planet.energy)) {
+      planet.class = 'cyan'
       planet.name = 'ZEUS'
       planet.description = 'Description'
-    } else if (planet.influence > 50) {
-      planet.class = 'red'
-      planet.name = 'ARES'
+    } else if (factory.max(planet, planet.influence)) {
+      planet.class = 'yellow'
+      planet.name = 'POLITES'
+      planet.description = 'Description'
+    } else if (factory.max(planet, planet.size)) {
+      planet.class = 'green'
+      planet.name = 'TERRAN'
       planet.description = 'Description'
     } else {
-      planet.class = 'green'
-      planet.name = 'GAIA'
+      planet.class = 'grey'
+      planet.name = 'MORTUM'
       planet.description = 'Description'
     }
     planet.name += '-' + factory.total(planet)
@@ -68,6 +72,9 @@ const factory = {
   },
   total (planet) {
     return planet.size + planet.metal + planet.crystal + planet.oil + planet.energy + planet.influence
+  },
+  max (planet, number) {
+    return number === Math.max(planet.size, planet.metal, planet.crystal, planet.oil, planet.energy, planet.influence)
   },
   build (sequelize) {
     var planet = {
