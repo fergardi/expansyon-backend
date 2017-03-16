@@ -2,73 +2,91 @@
   {
     "model": "Ship",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270118.svg",
       "name": "Fighter",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/270/270118.svg",
+      "class": "green",
       "attack": 25,
       "defense": 25,
       "speed": 25,
-      "description": "Description",
-      "class": "green"
+      "metal": 1000,
+      "crystal": 2000,
+      "oil": 3000
     }
   },
   {
     "model": "Ship",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270105.svg",
       "name": "Cruiser",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/270/270105.svg",
+      "class": "cyan",
       "attack": 25,
       "defense": 25,
       "speed": 25,
-      "description": "Description",
-      "class": "cyan"
+      "metal": 1000,
+      "crystal": 2000,
+      "oil": 3000
     }
   },
   {
     "model": "Ship",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270106.svg",
       "name": "Bomber",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/270/270106.svg",
+      "class": "red",
       "attack": 25,
       "defense": 25,
       "speed": 25,
-      "description": "Description",
-      "class": "red"
+      "metal": 1000,
+      "crystal": 2000,
+      "oil": 3000
     }
   },
   {
     "model": "Ship",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
       "name": "Orbiter",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "class": "yellow",
       "attack": 25,
       "defense": 25,
       "speed": 25,
-      "description": "Description",
-      "class": "yellow"
+      "metal": 1000,
+      "crystal": 2000,
+      "oil": 3000
     }
   },
   {
     "model": "Ship",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270108.svg",
       "name": "Carrier",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/270/270108.svg",
+      "class": "indigo",
       "attack": 25,
       "defense": 25,
       "speed": 25,
-      "description": "Description",
-      "class": "indigo"
+      "metal": 1000,
+      "crystal": 2000,
+      "oil": 3000
     }
   },
   {
     "model": "Ship",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270140.svg",
       "name": "Recycler",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/270/270140.svg",
+      "class": "grey",
       "attack": 25,
       "defense": 25,
       "speed": 25,
-      "description": "Description",
-      "class": "grey"
+      "metal": 1000,
+      "crystal": 2000,
+      "oil": 3000
     }
   }
 ]

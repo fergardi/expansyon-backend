@@ -2,13 +2,16 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Ship = sequelize.define('Ship', {
-    image: DataTypes.STRING,
     name: DataTypes.STRING,
+    description: DataTypes.STRING,
+    image: DataTypes.STRING,
+    class: DataTypes.STRING,
     attack: DataTypes.INTEGER,
     defense: DataTypes.INTEGER,
     speed: DataTypes.INTEGER,
-    description: DataTypes.STRING,
-    class: DataTypes.STRING
+    metal: DataTypes.INTEGER,
+    crystal: DataTypes.INTEGER,
+    oil: DataTypes.INTEGER
   }, {
     timestamps: false,
     freezeTableName: true
