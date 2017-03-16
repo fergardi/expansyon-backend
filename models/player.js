@@ -21,6 +21,12 @@ module.exports = (sequelize, DataTypes) => {
         models.Player.belongsTo(models.Faction)
         // o2m association
         models.Player.hasMany(models.Planet)
+        // m2o association
+        models.Player.hasMany(models.Message, { as: 'Sent', foreignKey: 'FromId' })
+        models.Message.belongsTo(models.Player, { as: 'From', foreignKey: 'FromId' })
+        // m2o association
+        models.Player.hasMany(models.Message, { as: 'Received', foreignKey: 'ToId' })
+        models.Message.belongsTo(models.Player, { as: 'To', foreignKey: 'ToId' })
         // custom m2m association with "quantity" to count ammount of resources of the same type
         var PlayerArtifact = sequelize.define('PlayerArtifact', {
           quantity: {

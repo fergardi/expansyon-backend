@@ -6,7 +6,13 @@ var router = express.Router()
 router.get('/:id', (req, res) => {
   models.Player.findOne({
     where: { id: req.params.id },
-    include: [ models.Planet, models.Artifact, models.Faction ],
+    include: [
+      models.Planet,
+      models.Artifact,
+      models.Faction,
+      { model: models.Message, as: 'Sent', include: { model: models.Player, as: 'To', attributes: ['name'], include: { model: models.Faction } } },
+      { model: models.Message, as: 'Received', include: { model: models.Player, as: 'From', attributes: ['name'], include: { model: models.Faction } } }
+    ],
     attributes: { exclude: ['password', 'token'] }
   })
   .then((player) => {
