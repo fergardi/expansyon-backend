@@ -2,8 +2,10 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Artifact = sequelize.define('Artifact', {
-    image: DataTypes.STRING,
     name: DataTypes.STRING,
+    description: DataTypes.STRING,
+    image: DataTypes.STRING,
+    class: DataTypes.STRING,
     metal: DataTypes.INTEGER,
     crystal: DataTypes.INTEGER,
     oil: DataTypes.INTEGER,
@@ -11,8 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     moon: DataTypes.BOOLEAN,
     station: DataTypes.BOOLEAN,
     store: DataTypes.BOOLEAN,
-    description: DataTypes.STRING,
-    class: DataTypes.STRING
+    aether: DataTypes.INTEGER
   }, {
     timestamps: false,
     freezeTableName: true

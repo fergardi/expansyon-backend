@@ -2,8 +2,10 @@
   {
     "model": "Artifact",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/190/190279.svg",
       "name": "Supernova",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/190/190279.svg",
+      "class": "orange",
       "metal": 0,
       "crystal": 0,
       "oil": 0,
@@ -11,8 +13,7 @@
       "moon": false,
       "station": false,
       "store": true,
-      "description": "Description",
-      "class": "orange"
+      "aether": 5
     }
   }
 ]
