@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     influence: DataTypes.INTEGER,
     attack: DataTypes.INTEGER,
     defense: DataTypes.INTEGER,
-    speed: DataTypes.INTEGER
+    speed: DataTypes.INTEGER,
+    aether: DataTypes.INTEGER
   }, {
     timestamps: false,
     freezeTableName: true

@@ -1,5 +1,5 @@
 const images = [
-  'https://image.flaticon.com/icons/svg/124/124558.svg'
+  'https://image.flaticon.com/icons/svg/189/189100.svg'
 ]
 
 const names = [
@@ -21,6 +21,9 @@ const factory = {
   number () {
     return 0 + Math.floor(Math.random() * 100) // [0, 100)
   },
+  price () {
+    return 1 + Math.floor(Math.random() * 25) // [1, 25)
+  },
   class () {
     return classes[Math.floor(Math.random() * classes.length)]
   },
@@ -38,7 +41,8 @@ const factory = {
       influence: factory.number(),
       attack: factory.number(),
       defense: factory.number(),
-      speed: factory.number()
+      speed: factory.number(),
+      aether: factory.price()
     }
     if (sequelize) {
       referendum = { model: 'Referendum', data: referendum }

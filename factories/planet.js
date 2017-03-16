@@ -18,7 +18,6 @@ var images = [
   'https://image.flaticon.com/icons/svg/310/310121.svg',
   'https://image.flaticon.com/icons/svg/234/234298.svg',
   'https://image.flaticon.com/icons/svg/139/139693.svg',
-  'https://image.flaticon.com/icons/svg/139/139705.svg',
   'https://image.flaticon.com/icons/svg/139/139707.svg',
   'https://image.flaticon.com/icons/svg/270/270146.svg',
   'https://image.flaticon.com/icons/svg/124/124559.svg'

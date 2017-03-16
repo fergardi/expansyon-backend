@@ -1,16 +1,13 @@
 const factory = {
-  text () {
-    return Math.random().toString(36).substring(2)
-  },
-  number () {
+  id () {
     return 1 + Math.floor(Math.random() * 9) // [1, 10)
   },
   build (sequelize) {
     var message = {
-      subject: factory.text(),
-      text: factory.text(),
-      From: factory.number(),
-      To: factory.number()
+      subject: 'Subject',
+      text: 'Text',
+      From: factory.id(),
+      To: factory.id()
     }
     if (sequelize) {
       message = { model: 'Message', data: message }

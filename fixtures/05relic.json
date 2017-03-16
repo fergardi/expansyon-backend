@@ -3,13 +3,110 @@
     "model": "Relic",
     "data": {
       "name": "Supernova",
-      "description": "Description",
-      "image": "https://image.flaticon.com/icons/svg/190/190279.svg",
+      "description": "Grants one new random Planet under your control",
+      "image": "https://image.flaticon.com/icons/svg/124/124567.svg",
       "class": "orange",
+      "turns": 0,
       "metal": 0,
       "crystal": 0,
       "oil": 0,
       "planet": true,
+      "ship": false,
+      "moon": false,
+      "station": false,
+      "store": true,
+      "aether": 5
+    }
+  },
+  {
+    "model": "Relic",
+    "data": {
+      "name": "Nanobots",
+      "description": "Grants a new Station on one of your planets",
+      "image": "https://image.flaticon.com/icons/svg/202/202483.svg",
+      "class": "orange",
+      "turns": 0,
+      "metal": 0,
+      "crystal": 0,
+      "oil": 0,
+      "planet": false,
+      "ship": false,
+      "moon": false,
+      "station": true,
+      "store": true,
+      "aether": 5
+    }
+  },
+  {
+    "model": "Relic",
+    "data": {
+      "name": "Gravitron",
+      "description": "Grants a new Moon on one of your planets",
+      "image": "https://image.flaticon.com/icons/svg/139/139705.svg",
+      "class": "orange",
+      "turns": 0,
+      "metal": 0,
+      "crystal": 0,
+      "oil": 0,
+      "planet": false,
+      "ship": false,
+      "moon": true,
+      "station": false,
+      "store": true,
+      "aether": 5
+    }
+  },
+  {
+    "model": "Relic",
+    "data": {
+      "name": "Timeturner",
+      "description": "Grants tons of Turns",
+      "image": "https://image.flaticon.com/icons/svg/143/143200.svg",
+      "class": "orange",
+      "turns": 50,
+      "metal": 0,
+      "crystal": 0,
+      "oil": 0,
+      "planet": false,
+      "ship": false,
+      "moon": false,
+      "station": false,
+      "store": true,
+      "aether": 5
+    }
+  },
+  {
+    "model": "Relic",
+    "data": {
+      "name": "Freighter",
+      "description": "Grants tons of Metal, Crystal and Oil",
+      "image": "https://image.flaticon.com/icons/svg/179/179527.svg",
+      "class": "orange",
+      "turns": 0,
+      "metal": 500000,
+      "crystal": 500000,
+      "oil": 500000,
+      "planet": false,
+      "ship": false,
+      "moon": false,
+      "station": false,
+      "store": true,
+      "aether": 5
+    }
+  },
+  {
+    "model": "Relic",
+    "data": {
+      "name": "Portal",
+      "description": "Grants tons of Ships",
+      "image": "https://image.flaticon.com/icons/svg/139/139720.svg",
+      "class": "orange",
+      "turns": 0,
+      "metal": 0,
+      "crystal": 0,
+      "oil": 0,
+      "planet": false,
+      "ship": false,
       "moon": false,
       "station": false,
       "store": true,

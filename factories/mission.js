@@ -1,5 +1,5 @@
 const images = [
-  'https://image.flaticon.com/icons/svg/124/124558.svg'
+  'https://image.flaticon.com/icons/svg/139/139692.svg'
 ]
 
 const names = [
