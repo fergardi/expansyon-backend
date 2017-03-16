@@ -2,21 +2,21 @@ var models = require('../models')
 var express = require('express')
 var router = express.Router()
 
-// GET /api/artifact
+// GET /api/relic
 router.get('/', (req, res) => {
-  models.Artifact.findAll()
-  .then((artifacts) => {
-    res.status(200).json(artifacts)
+  models.Relic.findAll()
+  .then((relics) => {
+    res.status(200).json(relics)
   })
 })
 
-// GET /api/artifact/store
+// GET /api/relic/store
 router.get('/store', (req, res) => {
-  models.Artifact.findAll({
+  models.Relic.findAll({
     where: { store: true }
   })
-  .then((artifacts) => {
-    res.status(200).json(artifacts)
+  .then((relics) => {
+    res.status(200).json(relics)
   })
 })
 

@@ -5,7 +5,7 @@ var router = express.Router()
 // GET /api/sale
 router.get('/', (req, res) => {
   models.Sale.findAll({
-    include: [ { model: models.Planet }, { model: models.Artifact }, { model: models.Ship } ]
+    include: [ { model: models.Planet }, { model: models.Relic }, { model: models.Ship } ]
   })
   .then((sale) => {
     res.status(200).json(sale)
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   models.Sale.findOne({
     where: { id: req.params.id },
-    include: [ { model: models.Planet }, { model: models.Artifact }, { model: models.Ship } ]
+    include: [ { model: models.Planet }, { model: models.Relic }, { model: models.Ship } ]
   })
   .then((sale) => {
     res.status(200).json(sale)

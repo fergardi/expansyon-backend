@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = (sequelize, DataTypes) => {
-  var Artifact = sequelize.define('Artifact', {
+  var Relic = sequelize.define('Relic', {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     image: DataTypes.STRING,
@@ -18,5 +18,5 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     freezeTableName: true
   })
-  return Artifact
+  return Relic
 }

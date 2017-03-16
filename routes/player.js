@@ -8,7 +8,7 @@ router.get('/:id', (req, res) => {
     where: { id: req.params.id },
     include: [
       models.Planet,
-      models.Artifact,
+      models.Relic,
       models.Faction,
       { model: models.Message, as: 'Sent', include: { model: models.Player, as: 'To', attributes: ['name'], include: { model: models.Faction } } },
       { model: models.Message, as: 'Received', include: { model: models.Player, as: 'From', attributes: ['name'], include: { model: models.Faction } } }

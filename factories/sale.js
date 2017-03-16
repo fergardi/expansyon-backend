@@ -10,7 +10,7 @@ const factory = {
     item >= 10
       ? sale.PlanetId = factory.id()
       : item >= 20
-        ? sale.ArtifactId = factory.id()
+        ? sale.RelicId = factory.id()
         : sale.ShipId = factory.id()
   },
   build (sequelize) {
@@ -20,7 +20,7 @@ const factory = {
       oil: factory.number(),
       aether: factory.number(),
       PlanetId: null,
-      ArtifactId: null,
+      RelicId: null,
       ShipId: null
     }
     factory.type(sale)

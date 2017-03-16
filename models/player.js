@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         models.Player.hasMany(models.Message, { as: 'Received', foreignKey: 'ToId' })
         models.Message.belongsTo(models.Player, { as: 'To', foreignKey: 'ToId' })
         // custom m2m association with "quantity" to count ammount of resources of the same type
-        var PlayerArtifact = sequelize.define('PlayerArtifact', {
+        var PlayerRelic = sequelize.define('PlayerRelic', {
           quantity: {
             type: DataTypes.INTEGER,
             defaultValue: 1
@@ -37,8 +37,8 @@ module.exports = (sequelize, DataTypes) => {
           timestamps: false,
           freezeTableName: true
         })
-        models.Artifact.belongsToMany(models.Player, {through: PlayerArtifact})
-        models.Player.belongsToMany(models.Artifact, {through: PlayerArtifact})
+        models.Relic.belongsToMany(models.Player, {through: PlayerRelic})
+        models.Player.belongsToMany(models.Relic, {through: PlayerRelic})
       }
     },
     timestamps: false,

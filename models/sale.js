@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         // m2o association
         models.Sale.belongsTo(models.Planet)
         // m2o association
-        models.Sale.belongsTo(models.Artifact)
+        models.Sale.belongsTo(models.Relic)
         // m2o association
         models.Sale.belongsTo(models.Ship)
       }
