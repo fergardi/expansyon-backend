@@ -2,8 +2,10 @@
   {
     "model": "Faction",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
       "name": "Scavenger",
+      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "description": "Description",
+      "class": "purple",
       "metal": 20,
       "crystal": 20,
       "oil": 20,
@@ -13,15 +15,16 @@
       "attack": 10,
       "defense": 10,
       "speed": 10,
-      "description": "Description",
-      "class": "purple"
+      "aether": 25
     }
   },
   {
     "model": "Faction",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
       "name": "Sedi",
+      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "description": "Description",
+      "class": "green",
       "metal": 0,
       "crystal": 0,
       "oil": 0,
@@ -31,15 +34,16 @@
       "attack": 25,
       "defense": 50,
       "speed": 10,
-      "description": "Description",
-      "class": "green"
+      "aether": 25
     }
   },
   {
     "model": "Faction",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
       "name": "Jith",
+      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "description": "Description",
+      "class": "red",
       "metal": 0,
       "crystal": 0,
       "oil": 0,
@@ -49,15 +53,16 @@
       "attack": 50,
       "defense": 0,
       "speed": 15,
-      "description": "Description",
-      "class": "red"
+      "aether": 25
     }
   },
   {
     "model": "Faction",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
       "name": "Merchant",
+      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "description": "Description",
+      "class": "yellow",
       "metal": 25,
       "crystal": 25,
       "oil": 25,
@@ -67,15 +72,16 @@
       "attack": 0,
       "defense": 0,
       "speed": 0,
-      "description": "Description",
-      "class": "yellow"
+      "aether": 25
     }
   },
   {
     "model": "Faction",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
       "name": "Scholar",
+      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "description": "Description",
+      "class": "cyan",
       "metal": 10,
       "crystal": 10,
       "oil": 10,
@@ -85,15 +91,16 @@
       "attack": 10,
       "defense": 10,
       "speed": 10,
-      "description": "Description",
-      "class": "cyan"
+      "aether": 25
     }
   },
   {
     "model": "Faction",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
       "name": "Warrior",
+      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "description": "Description",
+      "class": "indigo",
       "metal": 0,
       "crystal": 0,
       "oil": 0,
@@ -103,8 +110,7 @@
       "attack": 25,
       "defense": 25,
       "speed": 25,
-      "description": "Description",
-      "class": "indigo"
+      "aether": 25
     }
   }
 ]

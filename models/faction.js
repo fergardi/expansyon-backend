@@ -2,8 +2,10 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Faction = sequelize.define('Faction', {
-    image: DataTypes.STRING,
     name: DataTypes.STRING,
+    description: DataTypes.STRING,
+    class: DataTypes.STRING,
+    image: DataTypes.STRING,
     metal: DataTypes.INTEGER,
     crystal: DataTypes.INTEGER,
     oil: DataTypes.INTEGER,
@@ -13,8 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     attack: DataTypes.INTEGER,
     defense: DataTypes.INTEGER,
     speed: DataTypes.INTEGER,
-    description: DataTypes.STRING,
-    class: DataTypes.STRING
+    aether: DataTypes.INTEGER
   }, {
     timestamps: false,
     freezeTableName: true
