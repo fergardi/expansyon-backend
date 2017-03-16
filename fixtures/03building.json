@@ -2,73 +2,73 @@
   {
     "model": "Building",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/232/232481.svg",
       "name": "Furnace",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/129/129522.svg",
+      "class": "grey",
       "metal": 25,
       "crystal": 25,
-      "oil": 25,
-      "description": "Description",
-      "class": "grey"
+      "oil": 25
     }
   },
   {
     "model": "Building",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/232/232481.svg",
       "name": "Factory",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/224/224482.svg",
+      "class": "grey",
       "metal": 25,
       "crystal": 25,
-      "oil": 25,
-      "description": "Description",
-      "class": "grey"
+      "oil": 25
     }
   },
   {
     "model": "Building",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/232/232481.svg",
       "name": "Refinery",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/351/351722.svg",
+      "class": "grey",
       "metal": 25,
       "crystal": 25,
-      "oil": 25,
-      "description": "Description",
-      "class": "grey"
+      "oil": 25
     }
   },
   {
     "model": "Building",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/232/232481.svg",
       "name": "Plant",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/224/224474.svg",
+      "class": "grey",
       "metal": 25,
       "crystal": 25,
-      "oil": 25,
-      "description": "Description",
-      "class": "grey"
+      "oil": 25
     }
   },
   {
     "model": "Building",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/232/232481.svg",
       "name": "Barrier",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/222/222563.svg",
+      "class": "grey",
       "metal": 25,
       "crystal": 25,
-      "oil": 25,
-      "description": "Description",
-      "class": "grey"
+      "oil": 25
     }
   },
   {
     "model": "Building",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/232/232481.svg",
       "name": "Warehouse",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/351/351720.svg",
+      "class": "grey",
       "metal": 25,
       "crystal": 25,
-      "oil": 25,
-      "description": "Description",
-      "class": "grey"
+      "oil": 25
     }
   }
 ]

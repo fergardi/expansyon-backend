@@ -4,8 +4,8 @@
     "data": {
       "name": "Fighter",
       "description": "Description",
-      "image": "https://image.flaticon.com/icons/svg/270/270118.svg",
-      "class": "green",
+      "image": "https://image.flaticon.com/icons/svg/292/292364.svg",
+      "class": "grey",
       "attack": 25,
       "defense": 25,
       "speed": 25,
@@ -19,8 +19,8 @@
     "data": {
       "name": "Cruiser",
       "description": "Description",
-      "image": "https://image.flaticon.com/icons/svg/270/270105.svg",
-      "class": "cyan",
+      "image": "https://image.flaticon.com/icons/svg/293/293581.svg",
+      "class": "grey",
       "attack": 25,
       "defense": 25,
       "speed": 25,
@@ -34,8 +34,8 @@
     "data": {
       "name": "Bomber",
       "description": "Description",
-      "image": "https://image.flaticon.com/icons/svg/270/270106.svg",
-      "class": "red",
+      "image": "https://image.flaticon.com/icons/svg/124/124571.svg",
+      "class": "grey",
       "attack": 25,
       "defense": 25,
       "speed": 25,
@@ -49,8 +49,8 @@
     "data": {
       "name": "Orbiter",
       "description": "Description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
-      "class": "yellow",
+      "image": "https://image.flaticon.com/icons/svg/124/124541.svg",
+      "class": "grey",
       "attack": 25,
       "defense": 25,
       "speed": 25,
@@ -64,8 +64,8 @@
     "data": {
       "name": "Carrier",
       "description": "Description",
-      "image": "https://image.flaticon.com/icons/svg/270/270108.svg",
-      "class": "indigo",
+      "image": "https://image.flaticon.com/icons/svg/231/231136.svg",
+      "class": "grey",
       "attack": 25,
       "defense": 25,
       "speed": 25,
@@ -79,7 +79,7 @@
     "data": {
       "name": "Recycler",
       "description": "Description",
-      "image": "https://image.flaticon.com/icons/svg/270/270140.svg",
+      "image": "https://image.flaticon.com/icons/svg/124/124580.svg",
       "class": "grey",
       "attack": 25,
       "defense": 25,

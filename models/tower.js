@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING,
     attack: DataTypes.INTEGER,
     defense: DataTypes.INTEGER,
-    speed: DataTypes.INTEGER
+    speed: DataTypes.INTEGER,
+    metal: DataTypes.INTEGER,
+    crystal: DataTypes.INTEGER,
+    oil: DataTypes.INTEGER
   }, {
     timestamps: false,
     freezeTableName: true

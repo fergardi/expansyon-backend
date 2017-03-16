@@ -2,37 +2,46 @@
   {
     "model": "Tower",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270112.svg",
       "name": "Turret",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/124/124550.svg",
+      "class": "grey",
       "attack": 25,
       "defense": 25,
       "speed": 25,
-      "description": "Description",
-      "class": "grey"
+      "metal": 1000,
+      "crystal": 2000,
+      "oil": 3000
     }
   },
   {
     "model": "Tower",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270114.svg",
       "name": "Railgun",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/124/124549.svg",
+      "class": "grey",
       "attack": 25,
       "defense": 25,
       "speed": 25,
-      "description": "Description",
-      "class": "grey"
+      "metal": 1000,
+      "crystal": 2000,
+      "oil": 3000
     }
   },
   {
     "model": "Tower",
     "data": {
-      "image": "https://image.flaticon.com/icons/svg/270/270126.svg",
       "name": "Cannon",
+      "description": "Description",
+      "image": "https://image.flaticon.com/icons/svg/124/124552.svg",
+      "class": "grey",
       "attack": 25,
       "defense": 25,
       "speed": 25,
-      "description": "Description",
-      "class": "grey"
+      "metal": 1000,
+      "crystal": 2000,
+      "oil": 3000
     }
   }
 ]
