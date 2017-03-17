@@ -1,0 +1,23 @@
+[
+  {
+    "model": "Skill",
+    "data": {
+      "tree": "Attack",
+      "name": "Exploration",
+      "description": "Increase the number of Planets in Exploration by 1",
+      "image": "",
+      "exploration": 1
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "tree": "Attack",
+      "name": "Fighter",
+      "description": "Increase all the stats of your Fighters by 10%",
+      "image": "",
+      "fighter": 10,
+      "parent": { "name": "Exploration" }
+    }
+  }
+]
