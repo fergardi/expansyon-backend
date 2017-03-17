@@ -7,10 +7,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        // m2o association
+        // m2o bidirectional association
         models.Player.hasMany(models.Message, { as: 'Sent', foreignKey: 'FromId' })
         models.Message.belongsTo(models.Player, { as: 'From', foreignKey: 'FromId' })
-        // m2o association
+        // m2o bidirectional association
         models.Player.hasMany(models.Message, { as: 'Received', foreignKey: 'ToId' })
         models.Message.belongsTo(models.Player, { as: 'To', foreignKey: 'ToId' })
       }

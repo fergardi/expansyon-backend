@@ -5,6 +5,12 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     description: DataTypes.STRING
   }, {
+    classMethods: {
+      associate: (models) => {
+        // o2m association
+        models.Guild.hasMany(models.Player)
+      }
+    },
     timestamps: false,
     freezeTableName: true
   })
