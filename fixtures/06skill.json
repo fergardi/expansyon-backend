@@ -3,8 +3,9 @@
     "model": "Skill",
     "data": {
       "tree": "Attack",
+      "class": "red",
       "name": "Exploration",
-      "description": "Increase the number of Planets in Exploration by 1",
+      "description": "Increases the number of explorable Planets by 1",
       "image": "",
       "exploration": 1
     }
@@ -12,12 +13,31 @@
   {
     "model": "Skill",
     "data": {
-      "tree": "Attack",
       "name": "Fighter",
-      "description": "Increase all the stats of your Fighters by 10%",
+      "description": "Increases the number of your Fighters by 10%",
       "image": "",
       "fighter": 10,
       "parent": { "name": "Exploration" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "Speed",
+      "description": "Increases the Speed of your Ships by 10%",
+      "image": "",
+      "speed": 10,
+      "parent": { "name": "Fighter" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "aASD",
+      "description": "Increases the dsadsa of your Ships by 10%",
+      "image": "",
+      "speed": 10,
+      "parent": { "name": "Speed" }
     }
   }
 ]
