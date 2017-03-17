@@ -4,7 +4,7 @@
     "data": {
       "name": "Supernova",
       "description": "Grants one new random Planet under your control",
-      "image": "https://image.flaticon.com/icons/svg/124/124567.svg",
+      "image": "https://image.flaticon.com/icons/svg/167/167347.svg",
       "class": "orange",
       "turns": 0,
       "metal": 0,
@@ -21,9 +21,9 @@
   {
     "model": "Relic",
     "data": {
-      "name": "Nanobots",
+      "name": "Starship",
       "description": "Grants a new Station on one of your planets",
-      "image": "https://image.flaticon.com/icons/svg/202/202483.svg",
+      "image": "https://image.flaticon.com/icons/svg/179/179527.svg",
       "class": "orange",
       "turns": 0,
       "metal": 0,
@@ -78,9 +78,9 @@
   {
     "model": "Relic",
     "data": {
-      "name": "Freighter",
+      "name": "Booty",
       "description": "Grants tons of Metal, Crystal and Oil",
-      "image": "https://image.flaticon.com/icons/svg/179/179527.svg",
+      "image": "https://image.flaticon.com/icons/svg/199/199073.svg",
       "class": "orange",
       "turns": 0,
       "metal": 500000,

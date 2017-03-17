@@ -28,10 +28,14 @@ const factory = {
     return images[Math.floor(Math.random() * images.length)]
   },
   type (planet) {
-    if (factory.total(planet) > 400) {
+    if (factory.total(planet) >= 400) {
       planet.class = 'orange'
       planet.name = 'FORTUNE'
       planet.description = 'Extremely rare and rich planet.'
+    } else if (factory.total(planet) <= 200) {
+      planet.class = 'grey'
+      planet.name = 'MORTUS'
+      planet.description = 'Wasted planet good for nothing.'
     } else if (factory.max(planet, planet.metal)) {
       planet.class = 'indigo'
       planet.name = 'PLATINUM'
@@ -56,15 +60,11 @@ const factory = {
       planet.class = 'green'
       planet.name = 'TERRA'
       planet.description = 'Huge planet with plenty SIZE.'
-    } else {
-      planet.class = 'grey'
-      planet.name = 'MORTUS'
-      planet.description = 'Description'
     }
     planet.name += '-' + factory.total(planet)
   },
   number () {
-    return 10 + Math.floor(Math.random() * 70) // [10, 70)
+    return 0 + Math.floor(Math.random() * 90) // [0, 90)
   },
   boolean () {
     return Math.floor(Math.random() * 10) >= 5

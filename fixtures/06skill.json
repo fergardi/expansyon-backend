@@ -4,10 +4,18 @@
     "data": {
       "tree": "Attack",
       "class": "red",
+      "name": "Offensive",
+      "description": "Attack tree"
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
       "name": "Exploration",
       "description": "Increases the number of explorable Planets by 1",
-      "image": "",
-      "exploration": 1
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "exploration": 1,
+      "parent": { "name": "Offensive" }
     }
   },
   {
@@ -15,7 +23,7 @@
     "data": {
       "name": "Fighter",
       "description": "Increases the number of your Fighters by 10%",
-      "image": "",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
       "fighter": 10,
       "parent": { "name": "Exploration" }
     }
@@ -25,7 +33,7 @@
     "data": {
       "name": "Speed",
       "description": "Increases the Speed of your Ships by 10%",
-      "image": "",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
       "speed": 10,
       "parent": { "name": "Fighter" }
     }
@@ -35,9 +43,27 @@
     "data": {
       "name": "aASD",
       "description": "Increases the dsadsa of your Ships by 10%",
-      "image": "",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
       "speed": 10,
       "parent": { "name": "Speed" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "tree": "Utility",
+      "class": "yellow",
+      "name": "Utility",
+      "description": "Utility tree"
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "tree": "Defense",
+      "class": "green",
+      "name": "Defensive",
+      "description": "Defensive tree"
     }
   }
 ]

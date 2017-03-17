@@ -22,7 +22,11 @@ router.get('/tree', (req, res) => {
         nested: true,
         include: [{
           all: true,
-          nested: true
+          nested: true,
+          include: [{
+            all: true,
+            nested: true
+          }]
         }]
       }]
     }]
