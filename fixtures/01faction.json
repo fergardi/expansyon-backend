@@ -3,7 +3,7 @@
     "model": "Faction",
     "data": {
       "name": "Scavenger",
-      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
       "description": "Description",
       "class": "purple",
       "metal": 20,
@@ -22,7 +22,7 @@
     "model": "Faction",
     "data": {
       "name": "Sedi",
-      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "image": "https://image.flaticon.com/icons/svg/290/290865.svg",
       "description": "Description",
       "class": "green",
       "metal": 0,
@@ -41,7 +41,7 @@
     "model": "Faction",
     "data": {
       "name": "Jith",
-      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "image": "https://image.flaticon.com/icons/svg/290/290906.svg",
       "description": "Description",
       "class": "red",
       "metal": 0,
@@ -60,7 +60,7 @@
     "model": "Faction",
     "data": {
       "name": "Merchant",
-      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "image": "https://image.flaticon.com/icons/svg/290/290845.svg",
       "description": "Description",
       "class": "yellow",
       "metal": 25,
@@ -79,7 +79,7 @@
     "model": "Faction",
     "data": {
       "name": "Scholar",
-      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "image": "https://image.flaticon.com/icons/svg/290/290812.svg",
       "description": "Description",
       "class": "cyan",
       "metal": 10,
@@ -98,7 +98,7 @@
     "model": "Faction",
     "data": {
       "name": "Warrior",
-      "image": "https://image.flaticon.com/icons/svg/270/270136.svg",
+      "image": "https://image.flaticon.com/icons/svg/290/290869.svg",
       "description": "Description",
       "class": "indigo",
       "metal": 0,
