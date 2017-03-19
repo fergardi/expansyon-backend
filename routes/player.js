@@ -2,7 +2,20 @@ var models = require('../models')
 var express = require('express')
 var router = express.Router()
 
+var cron = require('../services/cron')
+// var socketio = require('../../services/socketio').io()
 var planetFactory = require('../factories/planet')
+
+// add resources every second
+cron.schedule('0 * * * * *', () => {
+  models.Player.findAll()
+  .then((players) => {
+    players.forEach((player) => {
+      player.turns++
+      player.save()
+    })
+  })
+})
 
 // GET /api/player
 router.get('/:id', (req, res) => {
@@ -130,7 +143,6 @@ router.get('/:playerId/relic/:relicId', (req, res) => {
           })
         }
         // create new station
-        // create new moon
         if (relic.station) {
           player.getPlanets({
             where: { station: false }

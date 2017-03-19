@@ -15,6 +15,7 @@ const factory = {
   },
   build (sequelize) {
     var sale = {
+      quantity: factory.number(),
       metal: factory.number(),
       crystal: factory.number(),
       oil: factory.number(),

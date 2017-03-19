@@ -2,6 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Sale = sequelize.define('Sale', {
+    quantity: DataTypes.INTEGER,
     metal: DataTypes.INTEGER,
     crystal: DataTypes.INTEGER,
     oil: DataTypes.INTEGER,
