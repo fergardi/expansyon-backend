@@ -37,10 +37,24 @@ router.post('/login', (req, res) => {
   })
 })
 
-// POST /api/player/login
+// POST /api/player/email
 router.post('/email', (req, res) => {
   models.Player.findOne({
     where: { email: req.body.email }
+  })
+  .then((player) => {
+    if (player) {
+      res.status(303).end()
+    } else {
+      res.status(200).end()
+    }
+  })
+})
+
+// POST /api/player/name
+router.post('/name', (req, res) => {
+  models.Player.findOne({
+    where: { name: req.body.name }
   })
   .then((player) => {
     if (player) {
