@@ -2,6 +2,8 @@ var models = require('../models')
 var express = require('express')
 var router = express.Router()
 
+var planetFactory = require('../factories/planet')
+
 // GET /api/player
 router.get('/:id', (req, res) => {
   models.Player.findOne({
@@ -72,6 +74,50 @@ router.get('/', (req, res) => {
   })
   .then((players) => {
     res.status(200).json(players)
+  })
+})
+
+// GET /api/player/playerId/relic/relicId
+router.get('/:playerId/relic/:relicId', (req, res) => {
+  models.Player.findOne({
+    where: { id: req.params.playerId }
+  })
+  .then((player) => {
+    player.getRelics({
+      where: { id: req.params.relicId }
+    })
+    .then((relics) => {
+      if (relics.length > 0) {
+        var relic = relics[0]
+        if (relic.PlayerRelic.quantity <= 1) {
+          player.removeRelic(relic)
+        } else {
+          relic.PlayerRelic.quantity--
+          relic.PlayerRelic.save()
+        }
+        // create new planet
+        if (relic.planet) {
+          models.Planet.create(planetFactory.build())
+          .then((planet) => {
+            player.addPlanet(planet)
+            .then((player) => {
+              // return updated player
+              res.status(200).json(player)
+            })
+          })
+        }
+        // create new moon
+        // TODO
+        // create new station
+        // TODO
+        // create new ships
+        // TODO
+        // generate resources
+        // TODO
+      } else {
+        res.status(405).end()
+      }
+    })
   })
 })
 
