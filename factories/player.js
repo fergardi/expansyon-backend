@@ -29,7 +29,6 @@ const factory = {
     var player = {
       email: factory.email(),
       password: factory.password(),
-      token: null,
       name: factory.name(),
       image: factory.image(),
       turns: factory.number(),

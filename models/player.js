@@ -4,7 +4,6 @@ module.exports = (sequelize, DataTypes) => {
   var Player = sequelize.define('Player', {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    token: DataTypes.STRING,
     name: DataTypes.STRING,
     image: DataTypes.STRING,
     turns: DataTypes.INTEGER,

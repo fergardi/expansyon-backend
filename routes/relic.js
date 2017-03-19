@@ -2,8 +2,10 @@ var models = require('../models')
 var express = require('express')
 var router = express.Router()
 
+var security = require('../services/security')
+
 // GET /api/relic
-router.get('/', (req, res) => {
+router.get('/', security.secured, (req, res) => {
   models.Relic.findAll()
   .then((relics) => {
     res.status(200).json(relics)
@@ -11,7 +13,7 @@ router.get('/', (req, res) => {
 })
 
 // GET /api/relic/store
-router.get('/store', (req, res) => {
+router.get('/store', security.secured, (req, res) => {
   models.Relic.findAll({
     where: { store: true }
   })

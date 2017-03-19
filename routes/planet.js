@@ -2,8 +2,10 @@ var models = require('../models')
 var express = require('express')
 var router = express.Router()
 
+var security = require('../services/security')
+
 // GET /api/planet
-router.get('/', (req, res) => {
+router.get('/', security.secured, (req, res) => {
   models.Planet.findAll()
   .then((planets) => {
     res.status(200).json(planets)
@@ -11,7 +13,7 @@ router.get('/', (req, res) => {
 })
 
 // GET /api/planet/id
-router.get('/:id', (req, res) => {
+router.get('/:id', security.secured, (req, res) => {
   models.Player.findOne({
     where: { id: req.params.id },
     include: { model: models.Planet }

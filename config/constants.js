@@ -1,5 +1,6 @@
 const constants = {
   dev: {
+    token: 'token',
     database: {
       username: 'root',
       password: 'root',
@@ -20,6 +21,7 @@ const constants = {
     fixtures: true
   },
   production: {
+    token: 'token',
     database: {
       username: '',
       password: '',

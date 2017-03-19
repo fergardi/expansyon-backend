@@ -2,6 +2,9 @@ var models = require('../models')
 var express = require('express')
 var router = express.Router()
 
+var security = require('../services/security')
+var jwt = require('../services/jwt')
+
 var cron = require('../services/cron')
 // var socketio = require('../../services/socketio').io()
 var planetFactory = require('../factories/planet')
@@ -18,7 +21,7 @@ cron.schedule('0 * * * * *', () => {
 })
 
 // GET /api/player
-router.get('/:id', (req, res) => {
+router.get('/:id', security.secured, (req, res) => {
   models.Player.findOne({
     where: { id: req.params.id },
     include: [
@@ -43,9 +46,8 @@ router.post('/login', (req, res) => {
   })
   .then((player) => {
     if (player) {
-      player.token = Math.random().toString(36).substr(2)
-      player.save()
-      res.status(200).json({ id: player.id, token: player.token })
+      var token = jwt.token(player)
+      res.status(200).json({ id: player.id, token: token })
     } else {
       res.status(401).end()
     }
@@ -81,9 +83,9 @@ router.post('/name', (req, res) => {
 })
 
 // GET /api/player
-router.get('/', (req, res) => {
+router.get('/', security.secured, (req, res) => {
   models.Player.findAll({
-    attributes: { exclude: ['email', 'password', 'token'] }
+    attributes: { exclude: ['email', 'password'] }
   })
   .then((players) => {
     res.status(200).json(players)
@@ -91,7 +93,7 @@ router.get('/', (req, res) => {
 })
 
 // GET /api/player/playerId/relic/relicId
-router.get('/:playerId/relic/:relicId', (req, res) => {
+router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
   models.Player.findOne({
     where: { id: req.params.playerId }
   })
