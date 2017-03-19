@@ -101,21 +101,73 @@ router.get('/:playerId/relic/:relicId', (req, res) => {
           .then((planet) => {
             player.addPlanet(planet)
             .then((player) => {
-              // return updated player
-              res.status(200).json(player)
+              req.url = '/' + player.id
+              return router.handle(req, res)
             })
           })
         }
         // create new moon
-        // TODO
+        if (relic.moon) {
+          player.getPlanets({
+            where: { moon: false }
+          })
+          .then((planets) => {
+            if (planets.length > 0) {
+              var planet = planets[Math.floor(Math.random() * planets.length)]
+              planet.moon = true
+              planet.metal = Math.min(planet.metal + 10, 100)
+              planet.crystal = Math.min(planet.crystal + 10, 100)
+              planet.oil = Math.min(planet.metal + 10, 100)
+              planet.size = Math.min(planet.size + 10, 100)
+              planet.energy = Math.min(planet.energy + 10, 100)
+              planet.influence = Math.min(planet.influence + 10, 100)
+              planet.save()
+              .then((planet) => {
+                req.url = '/' + player.id
+                return router.handle(req, res)
+              })
+            }
+          })
+        }
         // create new station
-        // TODO
+        // create new moon
+        if (relic.station) {
+          player.getPlanets({
+            where: { station: false }
+          })
+          .then((planets) => {
+            if (planets.length > 0) {
+              var planet = planets[Math.floor(Math.random() * planets.length)]
+              planet.station = true
+              planet.metal = Math.min(planet.metal + 10, 100)
+              planet.crystal = Math.min(planet.crystal + 10, 100)
+              planet.oil = Math.min(planet.metal + 10, 100)
+              planet.size = Math.min(planet.size + 10, 100)
+              planet.energy = Math.min(planet.energy + 10, 100)
+              planet.influence = Math.min(planet.influence + 10, 100)
+              planet.save()
+              .then((planet) => {
+                req.url = '/' + player.id
+                return router.handle(req, res)
+              })
+            }
+          })
+        }
+        // generate resources
+        if (relic.metal > 0 || relic.crystal > 0 || relic.oil > 0) {
+          player.metal += Math.floor(Math.random() * relic.metal)
+          player.crystal += Math.floor(Math.random() * relic.crystal)
+          player.oil += Math.floor(Math.random() * relic.oil)
+          player.save()
+          .then((player) => {
+            req.url = '/' + player.id
+            return router.handle(req, res)
+          })
+        }
         // create new ships
         // TODO
-        // generate resources
-        // TODO
       } else {
-        res.status(405).end()
+        res.status(400).end()
       }
     })
   })

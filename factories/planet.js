@@ -30,38 +30,37 @@ const factory = {
   type (planet) {
     if (factory.total(planet) >= 400) {
       planet.class = 'orange'
-      planet.name = 'FORTUNE'
+      planet.type = 'FORTUNE'
       planet.description = 'Extremely rare and rich planet.'
     } else if (factory.total(planet) <= 200) {
       planet.class = 'grey'
-      planet.name = 'MORTUS'
+      planet.type = 'MORTUS'
       planet.description = 'Wasted planet good for nothing.'
     } else if (factory.max(planet, planet.metal)) {
       planet.class = 'indigo'
-      planet.name = 'PLATINUM'
+      planet.type = 'PLATINUM'
       planet.description = 'Rich planet with plenty METAL.'
     } else if (factory.max(planet, planet.crystal)) {
       planet.class = 'purple'
-      planet.name = 'LUMINA'
+      planet.type = 'LUMINA'
       planet.description = 'Rich planet with plenty CRYSTAL.'
     } else if (factory.max(planet, planet.oil)) {
       planet.class = 'red'
-      planet.name = 'IGNEUS'
+      planet.type = 'IGNEUS'
       planet.description = 'Rich planet with plenty OIL.'
     } else if (factory.max(planet, planet.energy)) {
       planet.class = 'cyan'
-      planet.name = 'ZEUS'
+      planet.type = 'ZEUS'
       planet.description = 'Rich planet with plenty ENERGY.'
     } else if (factory.max(planet, planet.influence)) {
       planet.class = 'yellow'
-      planet.name = 'POLITES'
+      planet.type = 'POLITES'
       planet.description = 'Strategic planet with plenty INFLUENCE.'
     } else if (factory.max(planet, planet.size)) {
       planet.class = 'green'
-      planet.name = 'TERRA'
+      planet.type = 'TERRA'
       planet.description = 'Huge planet with plenty SIZE.'
     }
-    planet.name += '-' + factory.total(planet)
   },
   number () {
     return 0 + Math.floor(Math.random() * 90) // [0, 90)

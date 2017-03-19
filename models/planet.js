@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Planet = sequelize.define('Planet', {
-    name: DataTypes.STRING,
+    type: DataTypes.STRING,
     description: DataTypes.STRING,
     class: DataTypes.STRING,
     image: DataTypes.STRING,
@@ -15,6 +15,11 @@ module.exports = (sequelize, DataTypes) => {
     moon: DataTypes.BOOLEAN,
     station: DataTypes.BOOLEAN
   }, {
+    getterMethods: {
+      name () {
+        return this.type + ' ' + (this.metal + this.crystal + this.oil + this.size + this.energy + this.influence)
+      }
+    },
     timestamps: false,
     freezeTableName: true
   })
