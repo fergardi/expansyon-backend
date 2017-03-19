@@ -114,8 +114,7 @@ router.get('/:playerId/relic/:relicId', (req, res) => {
           .then((planet) => {
             player.addPlanet(planet)
             .then((player) => {
-              req.url = '/' + player.id
-              return router.handle(req, res)
+              res.status(200).json(planet)
             })
           })
         }
@@ -136,8 +135,7 @@ router.get('/:playerId/relic/:relicId', (req, res) => {
               planet.influence = Math.min(planet.influence + 10, 100)
               planet.save()
               .then((planet) => {
-                req.url = '/' + player.id
-                return router.handle(req, res)
+                res.status(200).json(planet)
               })
             }
           })
@@ -159,25 +157,25 @@ router.get('/:playerId/relic/:relicId', (req, res) => {
               planet.influence = Math.min(planet.influence + 10, 100)
               planet.save()
               .then((planet) => {
-                req.url = '/' + player.id
-                return router.handle(req, res)
+                res.status(200).json(planet)
               })
             }
           })
         }
         // generate resources
-        if (relic.metal > 0 || relic.crystal > 0 || relic.oil > 0) {
+        if (relic.turns > 0 || relic.metal > 0 || relic.crystal > 0 || relic.oil > 0) {
+          player.turns += Math.floor(Math.random() * relic.turns)
           player.metal += Math.floor(Math.random() * relic.metal)
           player.crystal += Math.floor(Math.random() * relic.crystal)
           player.oil += Math.floor(Math.random() * relic.oil)
           player.save()
           .then((player) => {
-            req.url = '/' + player.id
-            return router.handle(req, res)
+            res.status(200).json(player)
           })
         }
         // create new ships
         // TODO
+        // fallback
       } else {
         res.status(400).end()
       }
