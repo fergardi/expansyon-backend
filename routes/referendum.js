@@ -9,8 +9,8 @@ var cron = require('../services/cron')
 var _ = require('lodash')
 var factory = require('../factories/referendum')
 
-// add mission every minute
-cron.schedule('*/10 * * * * *', () => {
+// add referendum every minute
+cron.schedule('40 * * * * *', () => {
   models.Referendum.create(factory.build())
   .then((referendum) => {
     models.Referendum.findAll()

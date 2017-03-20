@@ -24,46 +24,88 @@ router.get('/:id', security.secured, (req, res) => {
   models.Player.findOne({
     where: { id: req.params.id },
     include: [
-      models.Planet,
-      models.Relic,
-      models.Guild,
-      models.Faction,
-      { model: models.Message, as: 'Sent', include: { model: models.Player, as: 'To', attributes: ['name'], include: { model: models.Faction } } },
-      { model: models.Message, as: 'Received', include: { model: models.Player, as: 'From', attributes: ['name'], include: { model: models.Faction } } }
+      { model: models.Guild },
+      { model: models.Faction },
+      { model: models.Planet, separate: true },
+      { model: models.Relic },
+      { model: models.Ship },
+      { model: models.Building },
+      { model: models.Tower },
+      { model: models.Message, separate: true, as: 'Sent', include: { model: models.Player, as: 'To', attributes: ['name'], include: { model: models.Faction } } },
+      { model: models.Message, separate: true, as: 'Received', include: { model: models.Player, as: 'From', attributes: ['name'], include: { model: models.Faction } } }
     ],
     attributes: { exclude: ['password', 'token'] }
   })
   .then((player) => {
+    // extend object
     var info = player.toJSON()
-    info.transmission = player.Received.length
-    player.getShips({ order: 'id ASC' })
-    .then((ships) => {
-      info.fighter = ships[0].PlayerShip.quantity
-      info.cruiser = ships[1].PlayerShip.quantity
-      info.bomber = ships[2].PlayerShip.quantity
-      info.orbiter = ships[3].PlayerShip.quantity
-      info.carrier = ships[4].PlayerShip.quantity
-      info.recycler = ships[5].PlayerShip.quantity
-      player.getPlanets()
-      .then((planets) => {
-        info.size = planets.reduce((total, planet) => total + planet.size, 0)
-        info.energy = planets.reduce((total, planet) => total + planet.energy, 0)
-        info.influence = planets.reduce((total, planet) => total + planet.influence, 0)
-        player.getRelics()
-        .then((relics) => {
-          info.relicarium = relics.reduce((total, relic) => total + relic.PlayerRelic.quantity, 0)
-          models.Relic.count({ where: { store: true } })
-          .then((count) => {
-            info.store = count
-            models.Sale.findAll()
-            .then((sales) => {
-              info.market = sales.length
-              info.explore = 2
-              res.status(200).json(info)
-            })
-          })
-        })
-      })
+    var planetIds = player.Planets.map((planet) => planet.id)
+    // var salesIds = player.Sales.map((sale) => sale.id)
+    // queries
+    var queries = []
+    // transmission
+    queries.push(player.getReceived({ order: 'datetime DESC' }))
+    // planetarium
+    queries.push(player.getPlanets({ order: 'id ASC' }))
+    // hangar
+    queries.push(player.getShips({ order: 'id ASC' }))
+    // infrastructure
+    queries.push(player.getBuildings({ order: 'id ASC' }))
+    // defense
+    queries.push(player.getTowers({ order: 'id ASC' }))
+    // relicarium
+    queries.push(player.getRelics({ order: 'id ASC' }))
+    // store
+    queries.push(models.Relic.count({ where: { store: true } }))
+    // market
+    queries.push(models.Sale.count()) // TODO ignore own sales
+    // senate
+    queries.push(models.Referendum.count({ where: { visible: true } }))
+    // cantina
+    queries.push(models.Mission.count({ where: { visible: true } }))
+    // exploration
+    queries.push(models.Planet.count({ where: { $and: [ { id: { $notIn: planetIds } }, { visible: true } ] } }))
+    Promise.all(queries)
+    .then((results) => {
+      // transmission
+      info.transmission = results[0].length
+      // planetarium
+      info.planetarium = results[1].length
+      info.size = results[1].reduce((total, planet) => total + planet.size, 0)
+      info.energy = results[1].reduce((total, planet) => total + planet.energy, 0)
+      info.influence = results[1].reduce((total, planet) => total + planet.influence, 0)
+      // hangar
+      info.fighter = results[2][0].PlayerShip.quantity
+      info.cruiser = results[2][1].PlayerShip.quantity
+      info.bomber = results[2][2].PlayerShip.quantity
+      info.orbiter = results[2][3].PlayerShip.quantity
+      info.carrier = results[2][4].PlayerShip.quantity
+      info.recycler = results[2][5].PlayerShip.quantity
+      // infrastructure
+      info.furnace = results[3][0].PlayerBuilding.quantity
+      info.factory = results[3][1].PlayerBuilding.quantity
+      info.refinery = results[3][2].PlayerBuilding.quantity
+      info.plant = results[3][3].PlayerBuilding.quantity
+      info.barrier = results[3][4].PlayerBuilding.quantity
+      info.warehouse = results[3][5].PlayerBuilding.quantity
+      // defense
+      info.turret = results[4][0].PlayerTower.quantity
+      info.railgun = results[4][1].PlayerTower.quantity
+      info.cannon = results[4][2].PlayerTower.quantity
+      // relicarium
+      info.relicarium = results[5].reduce((total, relic) => total + relic.PlayerRelic.quantity, 0)
+      // store
+      info.store = results[6]
+      // market
+      info.market = results[7]
+      // senate
+      info.senate = results[8]
+      // cantina
+      info.cantina = results[9]
+      // exploration
+      info.exploration = results[10]
+      // return all info
+      res.status(200).json(info)
     })
   })
 })
