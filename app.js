@@ -8,6 +8,7 @@ var app = express()
 var server = require('http').Server(app)
 var io = require('./services/socketio').init(server)
 
+// attach socketio to every response
 app.use((req, res, next) => {
   res.io = io
   next()
