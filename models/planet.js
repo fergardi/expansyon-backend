@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     energy: DataTypes.INTEGER,
     influence: DataTypes.INTEGER,
     moon: DataTypes.BOOLEAN,
-    station: DataTypes.BOOLEAN
+    station: DataTypes.BOOLEAN,
+    active: DataTypes.BOOLEAN
   }, {
     getterMethods: {
       name () {

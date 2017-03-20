@@ -7,10 +7,10 @@
       "name": "Fergardi",
       "image": "https://image.flaticon.com/icons/svg/124/124558.svg",
       "turns": 300,
-      "metal": 0,
-      "crystal": 0,
-      "oil": 0,
-      "aether": 0,
+      "metal": 10000,
+      "crystal": 10000,
+      "oil": 10000,
+      "aether": 5,
       "Planets": [1, 2, 3],
       "Relics": [1, 2, 3, 4, 5, 6]
     }

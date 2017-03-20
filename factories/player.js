@@ -17,10 +17,10 @@ const factory = {
     return Math.random().toString(36).substring(2)
   },
   email () {
-    return factory.text() + '@' + factory.text()
+    return factory.text() + '@' + factory.text() + '.com'
   },
   password () {
-    return factory.text()
+    return 'test'
   },
   number () {
     return 0 + Math.floor(Math.random() * 1000) // [0, 100)
