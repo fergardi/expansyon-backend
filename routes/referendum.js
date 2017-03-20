@@ -6,7 +6,7 @@ var security = require('../services/security')
 
 // GET /api/referendum
 router.get('/', security.secured, (req, res) => {
-  models.Referendum.findAll()
+  models.Referendum.findAll({ where: { active: true } })
   .then((referendums) => {
     res.status(200).json(referendums)
   })

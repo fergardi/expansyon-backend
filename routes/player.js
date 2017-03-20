@@ -2,11 +2,10 @@ var models = require('../models')
 var express = require('express')
 var router = express.Router()
 
+// var socketio = require('../services/socketio').io()
 var security = require('../services/security')
 var jwt = require('../services/jwt')
-
 var cron = require('../services/cron')
-// var socketio = require('../../services/socketio').io()
 var planetFactory = require('../factories/planet')
 
 // add resources every second
