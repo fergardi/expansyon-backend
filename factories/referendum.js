@@ -42,7 +42,9 @@ const factory = {
       attack: factory.number(),
       defense: factory.number(),
       speed: factory.number(),
-      aether: factory.price()
+      aether: factory.price(),
+      visible: false,
+      active: false
     }
     if (sequelize) {
       referendum = { model: 'Referendum', data: referendum }

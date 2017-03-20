@@ -1,6 +1,9 @@
 const constants = {
   dev: {
     token: 'token',
+    cantina: 3,
+    exploration: 12,
+    senate: 3,
     database: {
       username: 'root',
       password: 'root',
@@ -22,6 +25,9 @@ const constants = {
   },
   production: {
     token: 'token',
+    cantina: 3,
+    exploration: 12,
+    senate: 3,
     database: {
       username: '',
       password: '',

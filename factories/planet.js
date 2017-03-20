@@ -85,7 +85,7 @@ const factory = {
       influence: factory.number(),
       moon: factory.boolean(),
       station: factory.boolean(),
-      active: false
+      visible: false
     }
     factory.type(planet)
     if (sequelize) {

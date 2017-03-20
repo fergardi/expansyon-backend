@@ -6,7 +6,7 @@ var router = express.Router()
 var security = require('../services/security')
 var jwt = require('../services/jwt')
 var cron = require('../services/cron')
-var planetFactory = require('../factories/planet')
+var factory = require('../factories/planet')
 
 // add resources every second
 cron.schedule('0 * * * * *', () => {
@@ -141,7 +141,7 @@ router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
         }
         // create new planet
         if (relic.planet) {
-          models.Planet.create(planetFactory.build())
+          models.Planet.create(factory.build())
           .then((planet) => {
             player.addPlanet(planet)
             .then((player) => {

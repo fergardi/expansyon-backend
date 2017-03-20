@@ -33,7 +33,8 @@ const factory = {
       class: factory.class(),
       attack: factory.number(),
       defense: factory.number(),
-      speed: factory.number()
+      speed: factory.number(),
+      visible: false
     }
     if (sequelize) {
       mission = { model: 'Mission', data: mission }

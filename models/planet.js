@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     influence: DataTypes.INTEGER,
     moon: DataTypes.BOOLEAN,
     station: DataTypes.BOOLEAN,
-    active: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true }
+    visible: DataTypes.BOOLEAN
   }, {
     getterMethods: {
       name () {
