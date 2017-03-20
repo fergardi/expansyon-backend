@@ -36,7 +36,7 @@ app.use('/api/player', require('./routes/player'))
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   var err = new Error('Not Found')
-  err.status = 404
+  err.status = 500
   next(err)
 })
 
@@ -44,14 +44,14 @@ app.use((req, res, next) => {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use((err, req, res, next) => { // eslint-disable-line
-    res.status(404).end()
+    res.status(500).end()
   })
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use((err, req, res, next) => { // eslint-disable-line
-  res.status(404).end()
+  res.status(500).end()
 })
 
 module.exports = { app: app, server: server, socketio: io }
