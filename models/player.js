@@ -38,6 +38,18 @@ module.exports = (sequelize, DataTypes) => {
         })
         models.Relic.belongsToMany(models.Player, {through: PlayerRelic})
         models.Player.belongsToMany(models.Relic, {through: PlayerRelic})
+        // m2m association
+        var PlayerShip = sequelize.define('PlayerShip', {
+          quantity: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+          }
+        }, {
+          timestamps: false,
+          freezeTableName: true
+        })
+        models.Ship.belongsToMany(models.Player, {through: PlayerShip})
+        models.Player.belongsToMany(models.Ship, {through: PlayerShip})
       }
     },
     timestamps: false,

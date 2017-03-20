@@ -37,22 +37,31 @@ router.get('/:id', security.secured, (req, res) => {
   .then((player) => {
     var info = player.toJSON()
     info.transmission = player.Received.length
-    player.getPlanets()
-    .then((planets) => {
-      info.size = planets.reduce((total, planet) => total + planet.size, 0)
-      info.energy = planets.reduce((total, planet) => total + planet.energy, 0)
-      info.influence = planets.reduce((total, planet) => total + planet.influence, 0)
-      player.getRelics()
-      .then((relics) => {
-        info.relicarium = relics.reduce((total, relic) => total + relic.PlayerRelic.quantity, 0)
-        models.Relic.count({ where: { store: true } })
-        .then((count) => {
-          info.store = count
-          models.Sale.findAll()
-          .then((sales) => {
-            info.market = sales.length
-            info.explore = 2
-            res.status(200).json(info)
+    player.getShips({ order: 'id ASC' })
+    .then((ships) => {
+      info.fighter = ships[0].PlayerShip.quantity
+      info.cruiser = ships[1].PlayerShip.quantity
+      info.bomber = ships[2].PlayerShip.quantity
+      info.orbiter = ships[3].PlayerShip.quantity
+      info.carrier = ships[4].PlayerShip.quantity
+      info.recycler = ships[5].PlayerShip.quantity
+      player.getPlanets()
+      .then((planets) => {
+        info.size = planets.reduce((total, planet) => total + planet.size, 0)
+        info.energy = planets.reduce((total, planet) => total + planet.energy, 0)
+        info.influence = planets.reduce((total, planet) => total + planet.influence, 0)
+        player.getRelics()
+        .then((relics) => {
+          info.relicarium = relics.reduce((total, relic) => total + relic.PlayerRelic.quantity, 0)
+          models.Relic.count({ where: { store: true } })
+          .then((count) => {
+            info.store = count
+            models.Sale.findAll()
+            .then((sales) => {
+              info.market = sales.length
+              info.explore = 2
+              res.status(200).json(info)
+            })
           })
         })
       })
