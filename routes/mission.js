@@ -9,8 +9,8 @@ var cron = require('../services/cron')
 var _ = require('lodash')
 var factory = require('../factories/mission')
 
-// add mission every minute
-cron.schedule('20 * * * * *', () => {
+// add mission
+cron.schedule('45 * * * * *', () => {
   models.Mission.create(factory.build())
   .then((mission) => {
     models.Mission.findAll()

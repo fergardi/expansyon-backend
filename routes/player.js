@@ -2,13 +2,13 @@ var models = require('../models')
 var express = require('express')
 var router = express.Router()
 
-// var socketio = require('../services/socketio').io()
+var socketio = require('../services/socketio').io()
 var security = require('../services/security')
 var jwt = require('../services/jwt')
 var cron = require('../services/cron')
 var factory = require('../factories/planet')
 
-// add resources every second
+// add resources
 cron.schedule('0 * * * * *', () => {
   models.Player.findAll()
   .then((players) => {
@@ -16,6 +16,7 @@ cron.schedule('0 * * * * *', () => {
       player.turns++
       player.save()
     })
+    socketio.emit('player')
   })
 })
 
@@ -188,6 +189,7 @@ router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
             player.addPlanet(planet)
             .then((player) => {
               res.status(200).json(planet)
+              socketio.emit('player')
             })
           })
         }
@@ -208,6 +210,7 @@ router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
               planet.influence = Math.min(planet.influence + 10, 100)
               planet.save()
               .then((planet) => {
+                socketio.emit('player')
                 res.status(200).json(planet)
               })
             }
@@ -230,6 +233,7 @@ router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
               planet.influence = Math.min(planet.influence + 10, 100)
               planet.save()
               .then((planet) => {
+                socketio.emit('player')
                 res.status(200).json(planet)
               })
             }
@@ -243,6 +247,7 @@ router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
           player.oil += Math.floor(Math.random() * relic.oil)
           player.save()
           .then((player) => {
+            socketio.emit('player')
             res.status(200).json(player)
           })
         }

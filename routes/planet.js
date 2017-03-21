@@ -9,8 +9,8 @@ var cron = require('../services/cron')
 var _ = require('lodash')
 var factory = require('../factories/planet')
 
-// add planet every minute
-cron.schedule('0 * * * * *', () => {
+// add planet
+cron.schedule('15 * * * * *', () => {
   models.Planet.create(factory.build())
   .then((planet) => {
     models.Planet.findAll()
