@@ -2,7 +2,7 @@
   {
     "model": "Building",
     "data": {
-      "name": "Furnace",
+      "name": "building.furnace",
       "description": "Description",
       "image": "https://image.flaticon.com/icons/svg/129/129522.svg",
       "class": "grey",
@@ -17,7 +17,7 @@
   {
     "model": "Building",
     "data": {
-      "name": "Factory",
+      "name": "building.factory",
       "description": "Description",
       "image": "https://image.flaticon.com/icons/svg/224/224482.svg",
       "class": "grey",
@@ -32,7 +32,7 @@
   {
     "model": "Building",
     "data": {
-      "name": "Refinery",
+      "name": "building.refinery",
       "description": "Description",
       "image": "https://image.flaticon.com/icons/svg/351/351722.svg",
       "class": "grey",
@@ -47,7 +47,7 @@
   {
     "model": "Building",
     "data": {
-      "name": "Plant",
+      "name": "building.plant",
       "description": "Description",
       "image": "https://image.flaticon.com/icons/svg/224/224474.svg",
       "class": "grey",
@@ -62,7 +62,7 @@
   {
     "model": "Building",
     "data": {
-      "name": "Barrier",
+      "name": "building.barrier",
       "description": "Description",
       "image": "https://image.flaticon.com/icons/svg/222/222563.svg",
       "class": "grey",
@@ -77,7 +77,7 @@
   {
     "model": "Building",
     "data": {
-      "name": "Warehouse",
+      "name": "building.warehouse",
       "description": "Description",
       "image": "https://image.flaticon.com/icons/svg/351/351720.svg",
       "class": "grey",

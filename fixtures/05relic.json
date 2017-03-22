@@ -2,7 +2,7 @@
   {
     "model": "Relic",
     "data": {
-      "name": "Supernova",
+      "name": "relic.supernova",
       "description": "Grants one new random Planet under your control",
       "image": "https://image.flaticon.com/icons/svg/167/167347.svg",
       "class": "orange",
@@ -21,7 +21,7 @@
   {
     "model": "Relic",
     "data": {
-      "name": "Starship",
+      "name": "relic.destroyer",
       "description": "Grants a new Station on one of your planets",
       "image": "https://image.flaticon.com/icons/svg/179/179527.svg",
       "class": "orange",
@@ -40,7 +40,7 @@
   {
     "model": "Relic",
     "data": {
-      "name": "Gravitron",
+      "name": "relic.gravitron",
       "description": "Grants a new Moon on one of your planets",
       "image": "https://image.flaticon.com/icons/svg/139/139705.svg",
       "class": "orange",
@@ -59,7 +59,7 @@
   {
     "model": "Relic",
     "data": {
-      "name": "Timeturner",
+      "name": "relic.timeturner",
       "description": "Grants tons of Turns",
       "image": "https://image.flaticon.com/icons/svg/143/143200.svg",
       "class": "orange",
@@ -78,7 +78,7 @@
   {
     "model": "Relic",
     "data": {
-      "name": "Booty",
+      "name": "relic.shipwreck",
       "description": "Grants tons of Metal, Crystal and Oil",
       "image": "https://image.flaticon.com/icons/svg/199/199073.svg",
       "class": "orange",
@@ -97,7 +97,7 @@
   {
     "model": "Relic",
     "data": {
-      "name": "Portal",
+      "name": "relic.portal",
       "description": "Grants tons of Ships",
       "image": "https://image.flaticon.com/icons/svg/139/139720.svg",
       "class": "orange",

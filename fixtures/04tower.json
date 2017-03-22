@@ -2,7 +2,7 @@
   {
     "model": "Tower",
     "data": {
-      "name": "Turret",
+      "name": "tower.turret",
       "description": "Description",
       "image": "https://image.flaticon.com/icons/svg/124/124550.svg",
       "class": "grey",
@@ -17,7 +17,7 @@
   {
     "model": "Tower",
     "data": {
-      "name": "Railgun",
+      "name": "tower.railgun",
       "description": "Description",
       "image": "https://image.flaticon.com/icons/svg/124/124549.svg",
       "class": "grey",
@@ -32,7 +32,7 @@
   {
     "model": "Tower",
     "data": {
-      "name": "Cannon",
+      "name": "tower.cannon",
       "description": "Description",
       "image": "https://image.flaticon.com/icons/svg/124/124552.svg",
       "class": "grey",
