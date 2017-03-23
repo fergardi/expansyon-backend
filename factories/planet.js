@@ -30,36 +30,36 @@ const factory = {
   type (planet) {
     if (factory.total(planet) >= 400) {
       planet.class = 'orange'
-      planet.type = 'FORTUNE'
-      planet.description = 'Extremely rare and rich planet.'
+      planet.type = 'Fortune'
+      planet.description = 'Extremely rare and rich planet full of resources'
     } else if (factory.total(planet) <= 200) {
       planet.class = 'grey'
-      planet.type = 'MORTUS'
-      planet.description = 'Wasted planet good for nothing.'
+      planet.type = 'Mortus'
+      planet.description = 'Wasted planet good for nothing'
     } else if (factory.max(planet, planet.metal)) {
       planet.class = 'indigo'
-      planet.type = 'PLATINUM'
-      planet.description = 'Rich planet with plenty METAL.'
+      planet.type = 'Platine'
+      planet.description = 'Rich planet with plenty metal'
     } else if (factory.max(planet, planet.crystal)) {
       planet.class = 'purple'
-      planet.type = 'LUMINA'
-      planet.description = 'Rich planet with plenty CRYSTAL.'
+      planet.type = 'Lumina'
+      planet.description = 'Rich planet with plenty crystal'
     } else if (factory.max(planet, planet.oil)) {
       planet.class = 'red'
-      planet.type = 'IGNEUS'
-      planet.description = 'Rich planet with plenty OIL.'
+      planet.type = 'Igneus'
+      planet.description = 'Rich planet with plenty oil'
     } else if (factory.max(planet, planet.energy)) {
       planet.class = 'cyan'
-      planet.type = 'ZEUS'
-      planet.description = 'Rich planet with plenty ENERGY.'
+      planet.type = 'Zeus'
+      planet.description = 'Rich planet with plenty energy'
     } else if (factory.max(planet, planet.influence)) {
       planet.class = 'yellow'
-      planet.type = 'POLITES'
-      planet.description = 'Strategic planet with plenty INFLUENCE.'
+      planet.type = 'Polites'
+      planet.description = 'Strategic planet with plenty influence'
     } else if (factory.max(planet, planet.size)) {
       planet.class = 'green'
-      planet.type = 'TERRA'
-      planet.description = 'Huge planet with plenty SIZE.'
+      planet.type = 'Terra'
+      planet.description = 'Huge planet with plenty size'
     }
   },
   number () {
