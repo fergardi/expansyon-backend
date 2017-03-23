@@ -3,7 +3,7 @@ const images = [
 ]
 
 const names = [
-  'Rererendum'
+  'referendum.law'
 ]
 
 const classes = [
