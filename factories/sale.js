@@ -7,15 +7,19 @@ const factory = {
   },
   type (sale) {
     var item = Math.floor(Math.random() * 30)
-    item >= 10
-      ? sale.PlanetId = factory.id()
-      : item >= 20
-        ? sale.RelicId = factory.id()
-        : sale.ShipId = factory.id()
+    if (item >= 10) {
+      sale.PlanetId = factory.id()
+    } else if (item >= 20) {
+      sale.RelicId = factory.id()
+      sale.quantity = factory.number()
+    } else {
+      sale.ShipId = factory.id()
+      sale.quantity = factory.number()
+    }
   },
   build (sequelize) {
     var sale = {
-      quantity: factory.number(),
+      quantity: null,
       metal: factory.number(),
       crystal: factory.number(),
       oil: factory.number(),
