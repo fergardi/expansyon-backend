@@ -25,6 +25,9 @@ const factory = {
   number () {
     return 0 + Math.floor(Math.random() * 1000) // [0, 100)
   },
+  id () {
+    return 1 + Math.floor(Math.random() * 10) // [0, 10)
+  },
   build (sequelize) {
     var player = {
       email: factory.email(),
@@ -37,7 +40,8 @@ const factory = {
       oil: factory.number(),
       experience: factory.number(),
       skills: 1,
-      aether: factory.number()
+      aether: factory.number(),
+      GuildId: factory.id()
     }
     if (sequelize) {
       player = { model: 'Player', data: player }
