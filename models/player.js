@@ -10,6 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     metal: DataTypes.INTEGER,
     crystal: DataTypes.INTEGER,
     oil: DataTypes.INTEGER,
+    experience: DataTypes.INTEGER,
+    skills: DataTypes.INTEGER,
     aether: DataTypes.INTEGER
   }, {
     classMethods: {

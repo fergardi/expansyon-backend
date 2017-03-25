@@ -10,6 +10,8 @@
       "metal": 10000,
       "crystal": 10000,
       "oil": 10000,
+      "experience": 0,
+      "skills": 1,
       "aether": 5,
       "Planets": [1, 2],
       "Relics": [1, 2, 3, 4, 5, 6],

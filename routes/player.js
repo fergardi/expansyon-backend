@@ -157,10 +157,17 @@ router.post('/name', (req, res) => {
 // GET /api/player
 router.get('/', security.secured, (req, res) => {
   models.Player.findAll({
+    include: { model: models.Planet, separate: true },
     attributes: { exclude: ['email', 'password'] }
   })
   .then((players) => {
-    res.status(200).json(players)
+    var info = []
+    players.forEach((player) => {
+      player = player.toJSON()
+      player.influence = player.Planets.reduce((total, planet) => total + planet.influence, 0)
+      info.push(player)
+    })
+    res.status(200).json(info)
   })
 })
 
