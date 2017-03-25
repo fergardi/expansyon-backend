@@ -10,7 +10,7 @@
       "metal": 10000,
       "crystal": 10000,
       "oil": 10000,
-      "experience": 0,
+      "experience": 1000,
       "skills": 1,
       "aether": 5,
       "Planets": [1, 2],
