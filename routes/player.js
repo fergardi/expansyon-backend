@@ -41,7 +41,6 @@ router.get('/:id', security.secured, (req, res) => {
     // extend object
     var info = player.toJSON()
     var planetIds = player.Planets.map((planet) => planet.id)
-    // var salesIds = player.Sales.map((sale) => sale.id)
     // queries
     var queries = []
     // transmission
@@ -56,16 +55,23 @@ router.get('/:id', security.secured, (req, res) => {
     queries.push(player.getTowers({ order: 'id ASC' }))
     // relicarium
     queries.push(player.getRelics({ order: 'id ASC' }))
+    // temple
+    queries.push(models.Faction.count())
     // store
     queries.push(models.Relic.count({ where: { store: true } }))
     // market
-    queries.push(models.Sale.count()) // TODO ignore own sales
+    queries.push(models.Sale.count())
     // senate
     queries.push(models.Referendum.count({ where: { visible: true } }))
     // cantina
     queries.push(models.Mission.count({ where: { visible: true } }))
     // exploration
     queries.push(models.Planet.count({ where: { $and: [ { id: { $notIn: planetIds } }, { visible: true } ] } }))
+    // census
+    queries.push(models.Player.count())
+    // guild
+    queries.push(models.Guild.count())
+    // ALL
     Promise.all(queries)
     .then((results) => {
       // transmission
@@ -76,6 +82,7 @@ router.get('/:id', security.secured, (req, res) => {
       info.energy = results[1].reduce((total, planet) => total + planet.energy, 0)
       info.influence = results[1].reduce((total, planet) => total + planet.influence, 0)
       // hangar
+      info.hangar = results[2].reduce((total, ship) => total + ship.PlayerShip.quantity, 0)
       info.fighter = results[2][0].PlayerShip.quantity
       info.cruiser = results[2][1].PlayerShip.quantity
       info.bomber = results[2][2].PlayerShip.quantity
@@ -83,6 +90,7 @@ router.get('/:id', security.secured, (req, res) => {
       info.carrier = results[2][4].PlayerShip.quantity
       info.recycler = results[2][5].PlayerShip.quantity
       // infrastructure
+      info.infrastructure = results[3].reduce((total, building) => total + building.PlayerBuilding.quantity, 0)
       info.furnace = results[3][0].PlayerBuilding.quantity
       info.factory = results[3][1].PlayerBuilding.quantity
       info.refinery = results[3][2].PlayerBuilding.quantity
@@ -90,21 +98,28 @@ router.get('/:id', security.secured, (req, res) => {
       info.barrier = results[3][4].PlayerBuilding.quantity
       info.warehouse = results[3][5].PlayerBuilding.quantity
       // defense
+      info.infrastructure += results[4].reduce((total, tower) => total + tower.PlayerTower.quantity, 0)
       info.turret = results[4][0].PlayerTower.quantity
       info.railgun = results[4][1].PlayerTower.quantity
       info.cannon = results[4][2].PlayerTower.quantity
       // relicarium
       info.relicarium = results[5].reduce((total, relic) => total + relic.PlayerRelic.quantity, 0)
+      // temple
+      info.temple = results[6]
       // store
-      info.store = results[6]
+      info.store = results[7]
       // market
-      info.market = results[7]
+      info.market = results[8]
       // senate
-      info.senate = results[8]
+      info.senate = results[9]
       // cantina
-      info.cantina = results[9]
+      info.cantina = results[10]
       // exploration
-      info.exploration = results[10]
+      info.exploration = results[11]
+      // census
+      info.census = results[12]
+      // guilds
+      info.guilds = results[13]
       // return all info
       res.status(200).json(info)
     })
