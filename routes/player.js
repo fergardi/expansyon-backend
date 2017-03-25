@@ -172,7 +172,11 @@ router.post('/name', (req, res) => {
 // GET /api/player
 router.get('/', security.secured, (req, res) => {
   models.Player.findAll({
-    include: { model: models.Planet, separate: true },
+    include: [
+      { model: models.Planet, separate: true },
+      { model: models.Faction },
+      { model: models.Guild }
+    ],
     attributes: { exclude: ['email', 'password'] }
   })
   .then((players) => {

@@ -36,7 +36,8 @@
         { "name": "tower.railgun", "_through": { "quantity": 99 } },
         { "name": "tower.cannon", "_through": { "quantity": 99 } }
       ],
-      "GuildId": 1
+      "GuildId": 1,
+      "FactionId": 1
     }
   }
 ]
