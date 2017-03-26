@@ -16,7 +16,7 @@ cron.schedule('0 * * * * *', () => {
       player.turns++
       player.save()
     })
-    socketio.emit('player')
+    socketio.emit('player', null)
   })
 })
 
@@ -212,7 +212,7 @@ router.get('/:playerId/store/:relicId', (req, res) => {
               player.aether -= relic.aether
               player.save()
               .then((player) => {
-                socketio.emit('player')
+                socketio.emit('player', player.id)
                 res.status(200).end()
               })
             })
@@ -252,8 +252,8 @@ router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
             .then((planet) => {
               player.addPlanet(planet)
               .then((player) => {
+                socketio.emit('player', player.id)
                 res.status(200).json(planet)
-                socketio.emit('player')
               })
             })
           }
@@ -274,7 +274,7 @@ router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
                 planet.influence = Math.min(planet.influence + 10, 100)
                 planet.save()
                 .then((planet) => {
-                  socketio.emit('player')
+                  socketio.emit('player', player.id)
                   res.status(200).json(planet)
                 })
               }
@@ -297,7 +297,7 @@ router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
                 planet.influence = Math.min(planet.influence + 10, 100)
                 planet.save()
                 .then((planet) => {
-                  socketio.emit('player')
+                  socketio.emit('player', player.id)
                   res.status(200).json(planet)
                 })
               }
@@ -311,7 +311,7 @@ router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
             player.oil += Math.floor(Math.random() * relic.oil)
             player.save()
             .then((player) => {
-              socketio.emit('player')
+              socketio.emit('player', player.id)
               res.status(200).json(player)
             })
           }
