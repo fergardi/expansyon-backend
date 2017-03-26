@@ -360,4 +360,33 @@ router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
   })
 })
 
+// GET /api/player/playerId/faction/factionId
+router.get('/:playerId/faction/:factionId', (req, res) => {
+  models.Player.findById(req.params.playerId)
+  .then((player) => {
+    if (player) {
+      models.Faction.findById(req.params.factionId)
+      .then((faction) => {
+        if (faction) {
+          if (faction.aether <= player.aether) {
+            player.aether -= faction.aether
+            player.setFaction(faction)
+            player.save()
+            .then((player) => {
+              socketio.emit('player', player.id)
+              res.status(200).end()
+            })
+          } else {
+            res.status(400).end()
+          }
+        } else {
+          res.status(400).end()
+        }
+      })
+    } else {
+      res.status(400).end()
+    }
+  })
+})
+
 module.exports = router
