@@ -3,7 +3,7 @@ const images = [
 ]
 
 const names = [
-  'Mission'
+  'mission.example'
 ]
 
 const classes = [
