@@ -2,15 +2,6 @@ const images = [
   'https://image.flaticon.com/icons/svg/189/189100.svg'
 ]
 
-const names = [
-  'referendum.example'
-]
-
-const classes = [
-  'red',
-  'green'
-]
-
 const factory = {
   image () {
     return images[Math.floor(Math.random() * images.length)]
@@ -19,20 +10,22 @@ const factory = {
     return names[Math.floor(Math.random() * names.length)]
   },
   number () {
-    return 0 + Math.floor(Math.random() * 100) // [0, 100)
+    return -100 + Math.floor(Math.random() * 200) // [-100, 100)
   },
   price () {
     return 1 + Math.floor(Math.random() * 25) // [1, 25)
   },
-  class () {
-    return classes[Math.floor(Math.random() * classes.length)]
+  total (referendum) {
+    return referendum.metal + referendum.crystal + referendum.oil + referendum.size + referendum.energy + referendum.influence + referendum.attack + referendum.defense + referendum.speed
+  },
+  class (referendum) {
+    referendum.class = factory.total(referendum) >= 0 ? 'green' : 'red'
+    referendum.name = 'Referendum' + ' ' + factory.total(referendum)
   },
   build (sequelize) {
     var referendum = {
       image: factory.image(),
-      name: factory.name(),
       description: 'Description',
-      class: factory.class(),
       metal: factory.number(),
       crystal: factory.number(),
       oil: factory.number(),
@@ -47,6 +40,7 @@ const factory = {
       active: false,
       votes: 0
     }
+    factory.class(referendum)
     if (sequelize) {
       referendum = { model: 'Referendum', data: referendum }
     }
