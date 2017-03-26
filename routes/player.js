@@ -20,10 +20,74 @@ cron.schedule('0 * * * * *', () => {
   })
 })
 
-// GET /api/player
-router.get('/:id', security.secured, (req, res) => {
+// POST /api/player/login
+router.post('/login', (req, res) => {
   models.Player.findOne({
-    where: { id: req.params.id },
+    where: { email: req.body.email, password: req.body.password }
+  })
+  .then((player) => {
+    if (player) {
+      var token = jwt.token(player)
+      res.status(200).json({ id: player.id, token: token })
+    } else {
+      res.status(401).end()
+    }
+  })
+})
+
+// POST /api/player/email
+router.post('/email', (req, res) => {
+  models.Player.findOne({
+    where: { email: req.body.email }
+  })
+  .then((player) => {
+    if (player) {
+      res.status(303).end()
+    } else {
+      res.status(200).end()
+    }
+  })
+})
+
+// POST /api/player/name
+router.post('/name', (req, res) => {
+  models.Player.findOne({
+    where: { name: req.body.name }
+  })
+  .then((player) => {
+    if (player) {
+      res.status(303).end()
+    } else {
+      res.status(200).end()
+    }
+  })
+})
+
+// GET /api/player
+router.get('/', security.secured, (req, res) => {
+  models.Player.findAll({
+    include: [
+      { model: models.Planet, separate: true },
+      { model: models.Faction },
+      { model: models.Guild }
+    ],
+    attributes: { exclude: ['email', 'password'] }
+  })
+  .then((players) => {
+    var info = []
+    players.forEach((player) => {
+      player = player.toJSON()
+      player.influence = player.Planets.reduce((total, planet) => total + planet.influence, 0)
+      info.push(player)
+    })
+    res.status(200).json(info)
+  })
+})
+
+// GET /api/player/playerId
+router.get('/:playerId', security.secured, (req, res) => {
+  models.Player.findOne({
+    where: { id: req.params.playerId },
     include: [
       { model: models.Guild },
       { model: models.Faction },
@@ -126,164 +190,141 @@ router.get('/:id', security.secured, (req, res) => {
   })
 })
 
-// POST /api/player/login
-router.post('/login', (req, res) => {
-  models.Player.findOne({
-    where: { email: req.body.email, password: req.body.password }
-  })
+// GET /api/player/playerId/store/relicId
+router.get('/:playerId/store/:relicId', (req, res) => {
+  models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
-      var token = jwt.token(player)
-      res.status(200).json({ id: player.id, token: token })
+      models.Relic.findById(req.params.relicId)
+      .then((relic) => {
+        if (relic) {
+          if (relic.aether <= player.aether) {
+            player.getRelics({
+              where: { id: relic.id }
+            })
+            .then((relics) => {
+              if (relics.length > 0) {
+                relics[0].PlayerRelic.quantity++
+                relics[0].PlayerRelic.save()
+              } else {
+                player.addRelic(relic, { quantity: 1 })
+              }
+              player.aether -= relic.aether
+              player.save()
+              .then((player) => {
+                socketio.emit('player')
+                res.status(200).end()
+              })
+            })
+          } else {
+            res.status(400).end()
+          }
+        } else {
+          res.status(400).end()
+        }
+      })
     } else {
-      res.status(401).end()
+      res.status(400).end()
     }
-  })
-})
-
-// POST /api/player/email
-router.post('/email', (req, res) => {
-  models.Player.findOne({
-    where: { email: req.body.email }
-  })
-  .then((player) => {
-    if (player) {
-      res.status(303).end()
-    } else {
-      res.status(200).end()
-    }
-  })
-})
-
-// POST /api/player/name
-router.post('/name', (req, res) => {
-  models.Player.findOne({
-    where: { name: req.body.name }
-  })
-  .then((player) => {
-    if (player) {
-      res.status(303).end()
-    } else {
-      res.status(200).end()
-    }
-  })
-})
-
-// GET /api/player
-router.get('/', security.secured, (req, res) => {
-  models.Player.findAll({
-    include: [
-      { model: models.Planet, separate: true },
-      { model: models.Faction },
-      { model: models.Guild }
-    ],
-    attributes: { exclude: ['email', 'password'] }
-  })
-  .then((players) => {
-    var info = []
-    players.forEach((player) => {
-      player = player.toJSON()
-      player.influence = player.Planets.reduce((total, planet) => total + planet.influence, 0)
-      info.push(player)
-    })
-    res.status(200).json(info)
   })
 })
 
 // GET /api/player/playerId/relic/relicId
 router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
-  models.Player.findOne({
-    where: { id: req.params.playerId }
-  })
+  models.Player.findById(req.params.playerId)
   .then((player) => {
-    player.getRelics({
-      where: { id: req.params.relicId }
-    })
-    .then((relics) => {
-      if (relics.length > 0) {
-        var relic = relics[0]
-        if (relic.PlayerRelic.quantity <= 1) {
-          player.removeRelic(relic)
-        } else {
-          relic.PlayerRelic.quantity--
-          relic.PlayerRelic.save()
-        }
-        // create new planet
-        if (relic.planet) {
-          models.Planet.create(factory.build())
-          .then((planet) => {
-            player.addPlanet(planet)
-            .then((player) => {
-              res.status(200).json(planet)
-              socketio.emit('player')
+    if (player) {
+      player.getRelics({
+        where: { id: req.params.relicId }
+      })
+      .then((relics) => {
+        if (relics.length > 0) {
+          var relic = relics[0]
+          if (relic.PlayerRelic.quantity <= 1) {
+            player.removeRelic(relic)
+          } else {
+            relic.PlayerRelic.quantity--
+            relic.PlayerRelic.save()
+          }
+          // create new planet
+          if (relic.planet) {
+            models.Planet.create(factory.build())
+            .then((planet) => {
+              player.addPlanet(planet)
+              .then((player) => {
+                res.status(200).json(planet)
+                socketio.emit('player')
+              })
             })
-          })
+          }
+          // create new moon
+          if (relic.moon) {
+            player.getPlanets({
+              where: { moon: false }
+            })
+            .then((planets) => {
+              if (planets.length > 0) {
+                var planet = planets[Math.floor(Math.random() * planets.length)]
+                planet.moon = true
+                planet.metal = Math.min(planet.metal + 10, 100)
+                planet.crystal = Math.min(planet.crystal + 10, 100)
+                planet.oil = Math.min(planet.metal + 10, 100)
+                planet.size = Math.min(planet.size + 10, 100)
+                planet.energy = Math.min(planet.energy + 10, 100)
+                planet.influence = Math.min(planet.influence + 10, 100)
+                planet.save()
+                .then((planet) => {
+                  socketio.emit('player')
+                  res.status(200).json(planet)
+                })
+              }
+            })
+          }
+          // create new station
+          if (relic.station) {
+            player.getPlanets({
+              where: { station: false }
+            })
+            .then((planets) => {
+              if (planets.length > 0) {
+                var planet = planets[Math.floor(Math.random() * planets.length)]
+                planet.station = true
+                planet.metal = Math.min(planet.metal + 10, 100)
+                planet.crystal = Math.min(planet.crystal + 10, 100)
+                planet.oil = Math.min(planet.metal + 10, 100)
+                planet.size = Math.min(planet.size + 10, 100)
+                planet.energy = Math.min(planet.energy + 10, 100)
+                planet.influence = Math.min(planet.influence + 10, 100)
+                planet.save()
+                .then((planet) => {
+                  socketio.emit('player')
+                  res.status(200).json(planet)
+                })
+              }
+            })
+          }
+          // generate resources
+          if (relic.turns > 0 || relic.metal > 0 || relic.crystal > 0 || relic.oil > 0) {
+            player.turns += Math.floor(Math.random() * relic.turns)
+            player.metal += Math.floor(Math.random() * relic.metal)
+            player.crystal += Math.floor(Math.random() * relic.crystal)
+            player.oil += Math.floor(Math.random() * relic.oil)
+            player.save()
+            .then((player) => {
+              socketio.emit('player')
+              res.status(200).json(player)
+            })
+          }
+          // create new ships
+          // TODO
+          // fallback
+        } else {
+          res.status(400).end()
         }
-        // create new moon
-        if (relic.moon) {
-          player.getPlanets({
-            where: { moon: false }
-          })
-          .then((planets) => {
-            if (planets.length > 0) {
-              var planet = planets[Math.floor(Math.random() * planets.length)]
-              planet.moon = true
-              planet.metal = Math.min(planet.metal + 10, 100)
-              planet.crystal = Math.min(planet.crystal + 10, 100)
-              planet.oil = Math.min(planet.metal + 10, 100)
-              planet.size = Math.min(planet.size + 10, 100)
-              planet.energy = Math.min(planet.energy + 10, 100)
-              planet.influence = Math.min(planet.influence + 10, 100)
-              planet.save()
-              .then((planet) => {
-                socketio.emit('player')
-                res.status(200).json(planet)
-              })
-            }
-          })
-        }
-        // create new station
-        if (relic.station) {
-          player.getPlanets({
-            where: { station: false }
-          })
-          .then((planets) => {
-            if (planets.length > 0) {
-              var planet = planets[Math.floor(Math.random() * planets.length)]
-              planet.station = true
-              planet.metal = Math.min(planet.metal + 10, 100)
-              planet.crystal = Math.min(planet.crystal + 10, 100)
-              planet.oil = Math.min(planet.metal + 10, 100)
-              planet.size = Math.min(planet.size + 10, 100)
-              planet.energy = Math.min(planet.energy + 10, 100)
-              planet.influence = Math.min(planet.influence + 10, 100)
-              planet.save()
-              .then((planet) => {
-                socketio.emit('player')
-                res.status(200).json(planet)
-              })
-            }
-          })
-        }
-        // generate resources
-        if (relic.turns > 0 || relic.metal > 0 || relic.crystal > 0 || relic.oil > 0) {
-          player.turns += Math.floor(Math.random() * relic.turns)
-          player.metal += Math.floor(Math.random() * relic.metal)
-          player.crystal += Math.floor(Math.random() * relic.crystal)
-          player.oil += Math.floor(Math.random() * relic.oil)
-          player.save()
-          .then((player) => {
-            socketio.emit('player')
-            res.status(200).json(player)
-          })
-        }
-        // create new ships
-        // TODO
-        // fallback
-      } else {
-        res.status(400).end()
-      }
-    })
+      })
+    } else {
+      res.status(400).end()
+    }
   })
 })
 

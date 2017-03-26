@@ -14,7 +14,7 @@ router.get('/', security.secured, (req, res) => {
   })
 })
 
-// GET /api/planet/id
+// GET /api/sale/id
 router.get('/:id', security.secured, (req, res) => {
   models.Sale.findOne({
     where: { id: req.params.id },
