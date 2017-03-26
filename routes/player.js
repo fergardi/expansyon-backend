@@ -253,7 +253,7 @@ router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
               player.addPlanet(planet)
               .then((player) => {
                 socketio.emit('player', player.id)
-                res.status(200).json(planet)
+                res.status(200).end()
               })
             })
           }
@@ -275,8 +275,11 @@ router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
                 planet.save()
                 .then((planet) => {
                   socketio.emit('player', player.id)
-                  res.status(200).json(planet)
+                  res.status(200).end()
                 })
+              } else {
+                socketio.emit('player', player.id)
+                res.status(400).end()
               }
             })
           }
@@ -298,25 +301,54 @@ router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
                 planet.save()
                 .then((planet) => {
                   socketio.emit('player', player.id)
-                  res.status(200).json(planet)
+                  res.status(200).end()
                 })
+              } else {
+                socketio.emit('player', player.id)
+                res.status(400).end()
               }
             })
           }
           // generate resources
-          if (relic.turns > 0 || relic.metal > 0 || relic.crystal > 0 || relic.oil > 0) {
+          if (relic.turns > 0 || relic.metal > 0 || relic.crystal > 0 || relic.oil > 0 || relic.skills > 0) {
             player.turns += Math.floor(Math.random() * relic.turns)
             player.metal += Math.floor(Math.random() * relic.metal)
             player.crystal += Math.floor(Math.random() * relic.crystal)
             player.oil += Math.floor(Math.random() * relic.oil)
+            player.skills += Math.floor(Math.random() * relic.skills)
             player.save()
             .then((player) => {
               socketio.emit('player', player.id)
-              res.status(200).json(player)
+              res.status(200).end()
             })
           }
           // create new ships
-          // TODO
+          if (relic.ship) {
+            // TODO
+            player.save()
+            .then((player) => {
+              socketio.emit('player', player.id)
+              res.status(200).end()
+            })
+          }
+          // create new buildings
+          if (relic.building) {
+            // TODO
+            player.save()
+            .then((player) => {
+              socketio.emit('player', player.id)
+              res.status(200).end()
+            })
+          }
+          // create new towers
+          if (relic.tower) {
+            // TODO
+            player.save()
+            .then((player) => {
+              socketio.emit('player', player.id)
+              res.status(200).end()
+            })
+          }
           // fallback
         } else {
           res.status(400).end()
