@@ -44,7 +44,8 @@ const factory = {
       speed: factory.number(),
       aether: factory.price(),
       visible: false,
-      active: false
+      active: false,
+      votes: 0
     }
     if (sequelize) {
       referendum = { model: 'Referendum', data: referendum }

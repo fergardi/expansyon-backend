@@ -12,7 +12,7 @@
       "oil": 10000,
       "experience": 1000,
       "skills": 1,
-      "aether": 5,
+      "aether": 5000,
       "Planets": [1, 2],
       "Ships": [
         { "name": "ship.fighter", "_through": { "quantity": 99 } },

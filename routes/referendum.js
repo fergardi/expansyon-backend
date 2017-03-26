@@ -13,14 +13,27 @@ var factory = require('../factories/referendum')
 cron.schedule('30 * * * * *', () => {
   models.Referendum.create(factory.build())
   .then((referendum) => {
-    models.Referendum.findAll()
+    models.Referendum.update({ visible: false, active: false }, { where: {} })
     .then((referendums) => {
-      referendums = _.shuffle(referendums)
-      referendums.forEach((referendum, index) => {
-        referendum.visible = index < constants.senate
+      models.Referendum.findOne({ order: [['votes', 'DESC']] })
+      .then((referendum) => {
+        referendum.active = true
         referendum.save()
+        .then((referendum) => {
+          models.Referendum.update({ votes: 0 }, { where: {} })
+          .then((referendums) => {
+            models.Referendum.findAll({ where: { active: false } })
+            .then((referendums) => {
+              referendums = _.shuffle(referendums)
+              for (var i = 0; i < constants.senate; i++) {
+                referendums[i].visible = true
+                referendums[i].save()
+              }
+              socketio.emit('senate')
+            })
+          })
+        })
       })
-      socketio.emit('senate')
     })
   })
 })

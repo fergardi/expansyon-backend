@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     speed: DataTypes.INTEGER,
     aether: DataTypes.INTEGER,
     visible: DataTypes.BOOLEAN,
-    active: DataTypes.BOOLEAN
+    active: DataTypes.BOOLEAN,
+    votes: DataTypes.INTEGER
   }, {
     timestamps: false,
     freezeTableName: true

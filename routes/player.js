@@ -389,4 +389,41 @@ router.get('/:playerId/faction/:factionId', (req, res) => {
   })
 })
 
+// GET /api/player/playerId/referendum/referendumId
+router.get('/:playerId/referendum/:referendumId', (req, res) => {
+  models.Player.findById(req.params.playerId)
+  .then((player) => {
+    if (player) {
+      models.Referendum.findById(req.params.referendumId)
+      .then((referendum) => {
+        if (referendum) {
+          if (referendum.aether <= player.aether) {
+            player.aether -= referendum.aether
+            player.save()
+            .then((player) => {
+              player.getPlanets()
+              .then((planets) => {
+                var influence = planets.reduce((total, planet) => total + planet.influence, 0)
+                referendum.votes += influence
+                referendum.save()
+                .then((referendum) => {
+                  socketio.emit('senate')
+                  socketio.emit('player', player.id)
+                  res.status(200).end()
+                })
+              })
+            })
+          } else {
+            res.status(400).end()
+          }
+        } else {
+          res.status(400).end()
+        }
+      })
+    } else {
+      res.status(400).end()
+    }
+  })
+})
+
 module.exports = router
