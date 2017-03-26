@@ -6,9 +6,6 @@ const factory = {
   image () {
     return images[Math.floor(Math.random() * images.length)]
   },
-  name () {
-    return names[Math.floor(Math.random() * names.length)]
-  },
   number () {
     return -100 + Math.floor(Math.random() * 200) // [-100, 100)
   },
