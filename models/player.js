@@ -64,6 +64,16 @@ module.exports = (sequelize, DataTypes) => {
         })
         models.Tower.belongsToMany(models.Player, { through: PlayerTower })
         models.Player.belongsToMany(models.Tower, { through: PlayerTower })
+        // m2m association
+        var PlayerAchievement = sequelize.define('PlayerAchievement', {
+        }, {
+          timestamps: true,
+          updatedAt: false,
+          createdAt: 'datetime',
+          freezeTableName: true
+        })
+        models.Achievement.belongsToMany(models.Player, { through: PlayerAchievement })
+        models.Player.belongsToMany(models.Achievement, { through: PlayerAchievement })
       }
     },
     timestamps: false,

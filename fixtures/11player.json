@@ -37,7 +37,8 @@
         { "name": "tower.cannon", "_through": { "quantity": 99 } }
       ],
       "GuildId": 1,
-      "FactionId": 1
+      "FactionId": 1,
+      "Achievements": [1, 2, 3, 4, 5, 6]
     }
   }
 ]

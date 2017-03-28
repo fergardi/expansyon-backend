@@ -40,7 +40,8 @@ const factory = {
       oil: factory.number(),
       experience: factory.number(),
       level: 1,
-      aether: factory.number()
+      aether: factory.number(),
+      Achievements: [1]
     }
     if (sequelize) {
       player = { model: 'Player', data: player }

@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     metal: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     crystal: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     oil: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
-    planet: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
-    ship: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
-    building: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    planetarium: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    hangar: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    infrastructure: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     level: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     moon: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     station: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }

@@ -18,7 +18,9 @@ module.exports = (sequelize, DataTypes) => {
         models.Sale.belongsTo(models.Ship)
       }
     },
-    timestamps: false,
+    timestamps: true,
+    createdAt: 'datetime',
+    updatedAt: false,
     freezeTableName: true
   })
   return Sale
