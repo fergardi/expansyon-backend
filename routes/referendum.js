@@ -10,7 +10,7 @@ var _ = require('lodash')
 var factory = require('../factories/referendum')
 
 // add referendum
-cron.schedule('30 * * * * *', () => {
+cron.schedule('0 30 * * * *', () => {
   models.Referendum.create(factory.build())
   .then((referendum) => {
     models.Referendum.update({ visible: false, active: false }, { where: {} })

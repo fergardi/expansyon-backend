@@ -28,6 +28,9 @@ const factory = {
   id () {
     return 1 + Math.floor(Math.random() * 5) // [0, 5)
   },
+  array (length) {
+    return [...new Set([...new Array(1 + Math.floor(Math.random() * length))].map(() => 1 + Math.floor(Math.random() * length)))]
+  },
   build (sequelize) {
     var player = {
       email: factory.email(),
@@ -39,9 +42,14 @@ const factory = {
       crystal: factory.number(),
       oil: factory.number(),
       experience: factory.number(),
-      level: 1,
       aether: factory.number(),
-      Achievements: [1]
+      level: 1,
+      Relics: factory.array(6),
+      Planets: factory.array(50),
+      Buildings: factory.array(6),
+      Towers: factory.array(3),
+      Ships: factory.array(6),
+      Achievements: factory.array(6)
     }
     if (sequelize) {
       player = { model: 'Player', data: player }
