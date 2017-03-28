@@ -1,5 +1,6 @@
 'use strict'
 
-var factory = require('../factories/sale')
+const factory = require('../factories/sale')
+const fixtures = require('../config/fixtures')
 
-module.exports = factory.bulk(6, true)
+module.exports = factory.bulk(fixtures.sales, true)

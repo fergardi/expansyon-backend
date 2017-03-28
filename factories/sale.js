@@ -1,29 +1,31 @@
+const fixtures = require('../config/fixtures')
+
 const factory = {
-  number () {
-    return Math.floor(Math.random() * 50000) // [0, 50000)
+  number (max) {
+    return Math.floor(Math.random() * max)
   },
-  id () {
-    return 1 + Math.floor(Math.random() * 5) // [1, 5)
+  id (max) {
+    return 1 + Math.floor(Math.random() * max)
   },
   type (sale) {
     var item = Math.floor(Math.random() * 30)
     if (item >= 10) {
-      sale.PlanetId = factory.id()
+      sale.PlanetId = factory.id(fixtures.planets)
     } else if (item >= 20) {
-      sale.RelicId = factory.id()
-      sale.quantity = factory.number()
+      sale.RelicId = factory.id(6)
+      sale.quantity = factory.number(5)
     } else {
-      sale.ShipId = factory.id()
-      sale.quantity = factory.number()
+      sale.ShipId = factory.id(6)
+      sale.quantity = factory.number(100)
     }
   },
   build (sequelize) {
     var sale = {
       quantity: 0,
-      metal: factory.number(),
-      crystal: factory.number(),
-      oil: factory.number(),
-      aether: factory.number(),
+      metal: factory.number(10000),
+      crystal: factory.number(10000),
+      oil: factory.number(10000),
+      aether: factory.number(50),
       PlanetId: null,
       RelicId: null,
       ShipId: null

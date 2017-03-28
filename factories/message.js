@@ -1,13 +1,15 @@
+const fixtures = require('../config/fixtures')
+
 const factory = {
-  id () {
-    return 1 + Math.floor(Math.random() * 9) // [1, 10)
+  id (max) {
+    return 1 + Math.floor(Math.random() * max)
   },
   build (sequelize) {
     var message = {
       subject: 'Subject',
       text: 'Text',
-      From: factory.id(),
-      To: factory.id()
+      From: factory.id(fixtures.players),
+      To: factory.id(fixtures.players)
     }
     if (sequelize) {
       message = { model: 'Message', data: message }

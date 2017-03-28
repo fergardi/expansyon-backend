@@ -6,11 +6,11 @@ const factory = {
   image () {
     return images[Math.floor(Math.random() * images.length)]
   },
-  number () {
-    return -100 + Math.floor(Math.random() * 200) // [-100, 100)
+  number (max) {
+    return -max + Math.floor(Math.random() * max * 2)
   },
-  price () {
-    return 1 + Math.floor(Math.random() * 25) // [1, 25)
+  price (max) {
+    return 3 + Math.floor(Math.random() * max)
   },
   total (referendum) {
     return referendum.metal + referendum.crystal + referendum.oil + referendum.size + referendum.energy + referendum.influence + referendum.attack + referendum.defense + referendum.speed
@@ -23,16 +23,16 @@ const factory = {
     var referendum = {
       image: factory.image(),
       description: 'Description',
-      metal: factory.number(),
-      crystal: factory.number(),
-      oil: factory.number(),
-      size: factory.number(),
-      energy: factory.number(),
-      influence: factory.number(),
-      attack: factory.number(),
-      defense: factory.number(),
-      speed: factory.number(),
-      aether: factory.price(),
+      metal: factory.number(100),
+      crystal: factory.number(100),
+      oil: factory.number(100),
+      size: factory.number(100),
+      energy: factory.number(100),
+      influence: factory.number(100),
+      attack: factory.number(100),
+      defense: factory.number(100),
+      speed: factory.number(100),
+      aether: factory.price(25),
       visible: false,
       active: false,
       votes: 0

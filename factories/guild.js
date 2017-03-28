@@ -3,11 +3,11 @@ const names = [
 ]
 
 const factory = {
-  name () {
-    return names[Math.floor(Math.random() * names.length)] + factory.number()
+  number (max) {
+    return Math.floor(Math.random() * max)
   },
-  number () {
-    return 0 + Math.floor(Math.random() * 100) // [0, 100)
+  name () {
+    return names[Math.floor(Math.random() * names.length)] + factory.number(10000)
   },
   build (sequelize) {
     var guild = {

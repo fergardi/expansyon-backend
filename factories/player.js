@@ -1,9 +1,7 @@
+const fixtures = require('../config/fixtures')
+
 const images = [
   'https://image.flaticon.com/icons/svg/124/124558.svg'
-]
-
-const names = [
-  'Player'
 ]
 
 const factory = {
@@ -11,7 +9,7 @@ const factory = {
     return images[Math.floor(Math.random() * images.length)]
   },
   name () {
-    return names[Math.floor(Math.random() * names.length)] + factory.number()
+    return 'Player#' + factory.number(10000)
   },
   text () {
     return Math.random().toString(36).substring(2)
@@ -22,14 +20,17 @@ const factory = {
   password () {
     return 'test'
   },
-  number () {
-    return 0 + Math.floor(Math.random() * 1000) // [0, 100)
+  number (max) {
+    return 0 + Math.floor(Math.random() * max)
   },
-  id () {
-    return 1 + Math.floor(Math.random() * 5) // [0, 5)
+  id (max) {
+    return 1 + Math.floor(Math.random() * max)
   },
-  array (length) {
-    return [...new Set([...new Array(1 + Math.floor(Math.random() * length))].map(() => 1 + Math.floor(Math.random() * length)))]
+  array (max) {
+    return [...new Set([...new Array(1 + Math.floor(Math.random() * max))].map(() => 1 + Math.floor(Math.random() * max)))]
+  },
+  array2 (length, max) {
+    return [...new Set([...new Array(length)].map(() => 1 + Math.floor(Math.random() * max)))]
   },
   build (sequelize) {
     var player = {
@@ -37,19 +38,21 @@ const factory = {
       password: factory.password(),
       name: factory.name(),
       image: factory.image(),
-      turns: factory.number(),
-      metal: factory.number(),
-      crystal: factory.number(),
-      oil: factory.number(),
-      experience: factory.number(),
-      aether: factory.number(),
+      turns: factory.number(300),
+      metal: factory.number(10000),
+      crystal: factory.number(5000),
+      oil: factory.number(1000),
+      experience: factory.number(1000),
+      aether: factory.number(5),
       level: 1,
       Relics: factory.array(6),
-      Planets: factory.array(50),
+      Planets: factory.array2(2, fixtures.planets),
       Buildings: factory.array(6),
       Towers: factory.array(3),
       Ships: factory.array(6),
-      Achievements: factory.array(6)
+      Achievements: factory.array(6),
+      GuildId: factory.id(fixtures.guilds),
+      FactionId: factory.id(6)
     }
     if (sequelize) {
       player = { model: 'Player', data: player }

@@ -19,8 +19,8 @@ const factory = {
   name () {
     return names[Math.floor(Math.random() * names.length)]
   },
-  number () {
-    return 0 + Math.floor(Math.random() * 100) // [0, 100)
+  number (max) {
+    return Math.floor(Math.random() * max)
   },
   class () {
     return classes[Math.floor(Math.random() * classes.length)]
@@ -31,9 +31,9 @@ const factory = {
       name: factory.name(),
       description: 'Description',
       class: factory.class(),
-      attack: factory.number(),
-      defense: factory.number(),
-      speed: factory.number(),
+      attack: factory.number(10000),
+      defense: factory.number(10000),
+      speed: factory.number(10000),
       visible: false
     }
     if (sequelize) {

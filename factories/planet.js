@@ -62,8 +62,8 @@ const factory = {
       planet.description = 'Huge planet with plenty size'
     }
   },
-  number () {
-    return 0 + Math.floor(Math.random() * 90) // [0, 90)
+  number (max) {
+    return Math.floor(Math.random() * max)
   },
   boolean () {
     return Math.floor(Math.random() * 10) >= 5
@@ -77,12 +77,12 @@ const factory = {
   build (sequelize) {
     var planet = {
       image: factory.image(),
-      size: factory.number(),
-      metal: factory.number(),
-      crystal: factory.number(),
-      oil: factory.number(),
-      energy: factory.number(),
-      influence: factory.number(),
+      size: factory.number(80),
+      metal: factory.number(80),
+      crystal: factory.number(80),
+      oil: factory.number(80),
+      energy: factory.number(80),
+      influence: factory.number(80),
       moon: factory.boolean(),
       station: factory.boolean(),
       visible: false

@@ -1,5 +1,6 @@
 'use strict'
 
-var factory = require('../factories/planet')
+const factory = require('../factories/planet')
+const fixtures = require('../config/fixtures')
 
-module.exports = factory.bulk(50, true)
+module.exports = factory.bulk(fixtures.planets, true)

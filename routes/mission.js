@@ -10,7 +10,7 @@ var _ = require('lodash')
 var factory = require('../factories/mission')
 
 // add mission
-cron.schedule('0 45 * * * *', () => {
+cron.schedule('0 */3 * * * *', () => {
   models.Mission.create(factory.build())
   .then((mission) => {
     models.Mission.findAll()

@@ -1,12 +1,17 @@
+const fixtures = require('../config/fixtures')
+
 const factory = {
-  id () {
-    return 1 + Math.floor(Math.random() * 9) // [1, 10)
+  id (max) {
+    return 1 + Math.floor(Math.random() * max)
+  },
+  array (length) {
+    return [...new Set([...new Array(1 + Math.floor(Math.random() * length))].map(() => 1 + Math.floor(Math.random() * length)))]
   },
   build (sequelize) {
     var battle = {
-      From: factory.id(),
-      To: factory.id(),
-      Ships: []
+      From: factory.id(fixtures.players),
+      To: factory.id(fixtures.players),
+      Ships: factory.array(6)
     }
     if (sequelize) {
       battle = { model: 'Battle', data: battle }

@@ -9,7 +9,7 @@ var cron = require('../services/cron')
 var factory = require('../factories/planet')
 
 // add resources
-cron.schedule('0 * * * * *', () => {
+cron.schedule('0 */1 * * * *', () => {
   models.Player.findAll()
   .then((players) => {
     players.forEach((player) => {
