@@ -131,11 +131,13 @@ router.get('/:playerId', security.secured, (req, res) => {
     // cantina
     queries.push(models.Mission.count({ where: { visible: true } }))
     // exploration
-    queries.push(models.Planet.count({ where: { $and: [ { id: { $notIn: planetIds } }, { visible: true } ] } }))
+    queries.push(models.Planet.findAll({ where: { $and: [ { id: { $notIn: planetIds } }, { visible: true } ] } }))
     // census
     queries.push(models.Player.count())
     // guild
     queries.push(models.Guild.count())
+    // referendum
+    queries.push(models.Referendum.findOne({ where: { active: true } }))
     // ALL
     Promise.all(queries)
     .then((results) => {
@@ -180,11 +182,13 @@ router.get('/:playerId', security.secured, (req, res) => {
       // cantina
       info.cantina = results[10]
       // exploration
-      info.exploration = results[11]
+      info.Exploration = results[11]
       // census
       info.census = results[12]
       // guilds
       info.guilds = results[13]
+      // referendum
+      info.Referendum = results[14]
       // return all info
       res.status(200).json(info)
     })
