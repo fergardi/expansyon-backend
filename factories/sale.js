@@ -9,9 +9,9 @@ const factory = {
   },
   type (sale) {
     var item = Math.floor(Math.random() * 30)
-    if (item >= 10) {
+    if (item >= 20) {
       sale.PlanetId = factory.id(fixtures.planets)
-    } else if (item >= 20) {
+    } else if (item >= 10) {
       sale.RelicId = factory.id(6)
       sale.quantity = factory.number(5)
     } else {

@@ -1,10 +1,10 @@
 const fixtures = {
-  players: 500,
-  planets: 500,
-  messages: 1000,
+  players: 50,
+  planets: 100,
+  messages: 100,
   sales: 20,
-  battles: 200,
-  guilds: 50,
+  battles: 20,
+  guilds: 20,
   missions: 3,
   referendums: 3
 }

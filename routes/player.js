@@ -6,7 +6,8 @@ var socketio = require('../services/socketio').io()
 var security = require('../services/security')
 var jwt = require('../services/jwt')
 var cron = require('../services/cron')
-var factory = require('../factories/planet')
+const factory = require('../factories/planet')
+const constants = require('../config/constants')
 
 // add resources
 cron.schedule('0 */1 * * * *', () => {
@@ -105,7 +106,8 @@ router.get('/:playerId', security.secured, (req, res) => {
   .then((player) => {
     // extend object
     var info = player.toJSON()
-    var planetIds = player.Planets.map((planet) => planet.id)
+    var planetIds = [0]
+    planetIds.push(player.Planets.map((planet) => planet.id))
     // queries
     var queries = []
     // transmission
@@ -131,7 +133,7 @@ router.get('/:playerId', security.secured, (req, res) => {
     // cantina
     queries.push(models.Mission.count({ where: { visible: true } }))
     // exploration
-    queries.push(models.Planet.findAll({ where: { $and: [ { id: { $notIn: planetIds } }, { visible: true } ] } }))
+    queries.push(models.Planet.findAndCountAll({ where: { $and: [ { id: { $notIn: planetIds } }, { visible: true } ] }, limit: constants.exploration }))
     // census
     queries.push(models.Player.count())
     // guild
@@ -182,7 +184,7 @@ router.get('/:playerId', security.secured, (req, res) => {
       // cantina
       info.cantina = results[10]
       // exploration
-      info.Exploration = results[11]
+      info.Exploration = results[11].rows
       // census
       info.census = results[12]
       // guilds

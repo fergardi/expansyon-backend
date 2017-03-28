@@ -34,7 +34,7 @@ const factory = {
       attack: factory.number(10000),
       defense: factory.number(10000),
       speed: factory.number(10000),
-      visible: false
+      visible: true
     }
     if (sequelize) {
       mission = { model: 'Mission', data: mission }

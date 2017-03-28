@@ -33,7 +33,7 @@ const factory = {
       defense: factory.number(100),
       speed: factory.number(100),
       aether: factory.price(25),
-      visible: false,
+      visible: true,
       active: false,
       votes: 0
     }
