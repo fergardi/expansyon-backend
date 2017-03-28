@@ -2,19 +2,19 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Planet = sequelize.define('Planet', {
-    type: DataTypes.STRING,
-    description: DataTypes.STRING,
-    class: DataTypes.STRING,
-    image: DataTypes.STRING,
-    metal: DataTypes.INTEGER,
-    crystal: DataTypes.INTEGER,
-    oil: DataTypes.INTEGER,
-    size: DataTypes.INTEGER,
-    energy: DataTypes.INTEGER,
-    influence: DataTypes.INTEGER,
-    moon: DataTypes.BOOLEAN,
-    station: DataTypes.BOOLEAN,
-    visible: DataTypes.BOOLEAN
+    type: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    description: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    class: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    image: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    metal: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    crystal: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    oil: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    size: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    energy: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    influence: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    moon: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
+    station: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
+    visible: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false }
   }, {
     getterMethods: {
       name () {

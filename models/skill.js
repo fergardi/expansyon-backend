@@ -3,11 +3,11 @@
 module.exports = (sequelize, DataTypes) => {
   var Skill = sequelize.define('Skill', {
     // general info
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    image: DataTypes.STRING,
-    class: DataTypes.STRING,
-    tree: DataTypes.STRING,
+    name: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    description: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    image: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    class: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    tree: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
     min: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     max: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 10 },
     // bonuses

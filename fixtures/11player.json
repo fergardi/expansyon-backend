@@ -11,7 +11,7 @@
       "crystal": 10000,
       "oil": 10000,
       "experience": 1000,
-      "skills": 1,
+      "level": 1,
       "aether": 5000,
       "Planets": [1, 2],
       "Ships": [

@@ -39,7 +39,7 @@ const factory = {
       crystal: factory.number(),
       oil: factory.number(),
       experience: factory.number(),
-      skills: 1,
+      level: 1,
       aether: factory.number()
     }
     if (sequelize) {

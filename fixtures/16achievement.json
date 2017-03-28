@@ -1,0 +1,92 @@
+[
+  {
+    "model": "Achievement",
+    "data": {
+      "name": "achievement.scavenger",
+      "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
+      "description": "Description",
+      "class": "indigo",
+      "metal": 1000000
+    }
+  },
+  {
+    "model": "Achievement",
+    "data": {
+      "name": "achievement.jeweller",
+      "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
+      "description": "Description",
+      "class": "purple",
+      "crystal": 1000000
+    }
+  },
+  {
+    "model": "Achievement",
+    "data": {
+      "name": "achievement.prospector",
+      "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
+      "description": "Description",
+      "class": "red",
+      "oil": 1000000
+    }
+  },
+  {
+    "model": "Achievement",
+    "data": {
+      "name": "achievement.commander",
+      "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
+      "description": "Description",
+      "class": "indigo",
+      "hangar": 1000000
+    }
+  },
+  {
+    "model": "Achievement",
+    "data": {
+      "name": "achievement.architect",
+      "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
+      "description": "Description",
+      "class": "yellow",
+      "infrastructure": 1000000
+    }
+  },
+  {
+    "model": "Achievement",
+    "data": {
+      "name": "achievement.conqueror",
+      "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
+      "description": "Description",
+      "class": "orange",
+      "planetarium": 50
+    }
+  },
+  {
+    "model": "Achievement",
+    "data": {
+      "name": "achievement.engineer",
+      "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
+      "description": "Description",
+      "class": "cyan",
+      "station": 20
+    }
+  },
+  {
+    "model": "Achievement",
+    "data": {
+      "name": "achievement.terraformer",
+      "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
+      "description": "Description",
+      "class": "green",
+      "moon": 20
+    }
+  },
+  {
+    "model": "Achievement",
+    "data": {
+      "name": "achievement.scientist",
+      "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
+      "description": "Description",
+      "class": "pink",
+      "level": 50
+    }
+  }
+]

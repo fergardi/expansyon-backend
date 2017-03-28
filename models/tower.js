@@ -2,16 +2,16 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Tower = sequelize.define('Tower', {
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    class: DataTypes.STRING,
-    image: DataTypes.STRING,
-    attack: DataTypes.INTEGER,
-    defense: DataTypes.INTEGER,
-    speed: DataTypes.INTEGER,
-    metal: DataTypes.INTEGER,
-    crystal: DataTypes.INTEGER,
-    oil: DataTypes.INTEGER
+    name: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    description: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    class: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    image: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    attack: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    defense: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    speed: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    metal: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    crystal: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    oil: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
   }, {
     timestamps: false,
     freezeTableName: true

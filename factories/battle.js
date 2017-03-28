@@ -5,7 +5,8 @@ const factory = {
   build (sequelize) {
     var battle = {
       From: factory.id(),
-      To: factory.id()
+      To: factory.id(),
+      Ships: []
     }
     if (sequelize) {
       battle = { model: 'Battle', data: battle }

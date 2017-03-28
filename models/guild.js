@@ -2,8 +2,8 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Guild = sequelize.define('Guild', {
-    name: DataTypes.STRING,
-    description: DataTypes.STRING
+    name: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    description: { type: DataTypes.STRING, allowNull: false, defaultValue: '' }
   }, {
     classMethods: {
       associate: (models) => {

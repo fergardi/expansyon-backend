@@ -2,17 +2,17 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Player = sequelize.define('Player', {
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    name: DataTypes.STRING,
-    image: DataTypes.STRING,
-    turns: DataTypes.INTEGER,
-    metal: DataTypes.INTEGER,
-    crystal: DataTypes.INTEGER,
-    oil: DataTypes.INTEGER,
-    experience: DataTypes.INTEGER,
-    skills: DataTypes.INTEGER,
-    aether: DataTypes.INTEGER
+    email: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    password: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    name: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    image: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    turns: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    metal: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    crystal: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    oil: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    experience: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    level: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    aether: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
   }, {
     classMethods: {
       associate: (models) => {
@@ -30,10 +30,7 @@ module.exports = (sequelize, DataTypes) => {
         models.Message.belongsTo(models.Player, { as: 'To', foreignKey: 'ToId' })
         // m2m association
         var PlayerRelic = sequelize.define('PlayerRelic', {
-          quantity: {
-            type: DataTypes.INTEGER,
-            defaultValue: 1
-          }
+          quantity: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 1 }
         }, {
           timestamps: false,
           freezeTableName: true
@@ -42,10 +39,7 @@ module.exports = (sequelize, DataTypes) => {
         models.Player.belongsToMany(models.Relic, { through: PlayerRelic })
         // m2m association
         var PlayerShip = sequelize.define('PlayerShip', {
-          quantity: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0
-          }
+          quantity: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
         }, {
           timestamps: false,
           freezeTableName: true
@@ -54,10 +48,7 @@ module.exports = (sequelize, DataTypes) => {
         models.Player.belongsToMany(models.Ship, { through: PlayerShip })
         // m2m association
         var PlayerBuilding = sequelize.define('PlayerBuilding', {
-          quantity: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0
-          }
+          quantity: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
         }, {
           timestamps: false,
           freezeTableName: true
@@ -66,10 +57,7 @@ module.exports = (sequelize, DataTypes) => {
         models.Player.belongsToMany(models.Building, { through: PlayerBuilding })
         // m2m association
         var PlayerTower = sequelize.define('PlayerTower', {
-          quantity: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0
-          }
+          quantity: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
         }, {
           timestamps: false,
           freezeTableName: true

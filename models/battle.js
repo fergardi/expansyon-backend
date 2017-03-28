@@ -11,10 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         models.Battle.belongsTo(models.Player, { as: 'To', foreignKey: 'ToId' })
         // m2m association
         var BattleShip = sequelize.define('BattleShip', {
-          quantity: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0
-          }
+          quantity: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
         }, {
           timestamps: false,
           freezeTableName: true

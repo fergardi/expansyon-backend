@@ -2,8 +2,8 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Message = sequelize.define('Message', {
-    subject: DataTypes.STRING,
-    text: DataTypes.STRING
+    subject: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    text: { type: DataTypes.STRING, allowNull: false, defaultValue: '' }
   }, {
     classMethods: {
       associate: (models) => {

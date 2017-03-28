@@ -310,12 +310,12 @@ router.get('/:playerId/relic/:relicId', security.secured, (req, res) => {
             })
           }
           // generate resources
-          if (relic.turns > 0 || relic.metal > 0 || relic.crystal > 0 || relic.oil > 0 || relic.skills > 0) {
+          if (relic.turns > 0 || relic.metal > 0 || relic.crystal > 0 || relic.oil > 0 || relic.level > 0) {
             player.turns += Math.floor(Math.random() * relic.turns)
             player.metal += Math.floor(Math.random() * relic.metal)
             player.crystal += Math.floor(Math.random() * relic.crystal)
             player.oil += Math.floor(Math.random() * relic.oil)
-            player.skills += Math.floor(Math.random() * relic.skills)
+            player.level += Math.floor(Math.random() * relic.level)
             player.save()
             .then((player) => {
               socketio.emit('player', player.id)
