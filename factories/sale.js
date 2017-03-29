@@ -13,10 +13,10 @@ const factory = {
       sale.PlanetId = factory.id(fixtures.planets)
     } else if (item >= 10) {
       sale.RelicId = factory.id(6)
-      sale.quantity = factory.number(5)
+      sale.quantity = factory.number(2)
     } else {
       sale.ShipId = factory.id(6)
-      sale.quantity = factory.number(100)
+      sale.quantity = factory.number(10000)
     }
   },
   build (sequelize) {
