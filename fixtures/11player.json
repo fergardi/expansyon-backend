@@ -14,31 +14,13 @@
       "level": 1,
       "aether": 5000,
       "Planets": [1, 2],
-      "Ships": [
-        { "name": "ship.fighter", "_through": { "quantity": 99 } },
-        { "name": "ship.cruiser", "_through": { "quantity": 99 } },
-        { "name": "ship.bomber", "_through": { "quantity": 99 } },
-        { "name": "ship.orbiter", "_through": { "quantity": 99 } },
-        { "name": "ship.carrier", "_through": { "quantity": 99 } },
-        { "name": "ship.recycler", "_through": { "quantity": 99 } }
-      ],
+      "Ships": [1, 2, 3, 4, 5, 6],
       "Relics": [1, 2, 3, 4, 5, 6],
-      "Buildings": [
-        { "name": "building.furnace", "_through": { "quantity": 99 } },
-        { "name": "building.factory", "_through": { "quantity": 99 } },
-        { "name": "building.refinery", "_through": { "quantity": 99 } },
-        { "name": "building.plant", "_through": { "quantity": 99 } },
-        { "name": "building.barrier", "_through": { "quantity": 99 } },
-        { "name": "building.warehouse", "_through": { "quantity": 99 } }
-      ],
-      "Towers": [
-        { "name": "tower.turret", "_through": { "quantity": 99 } },
-        { "name": "tower.railgun", "_through": { "quantity": 99 } },
-        { "name": "tower.cannon", "_through": { "quantity": 99 } }
-      ],
+      "Buildings": [1, 2, 3, 4, 5, 6],
+      "Towers": [1, 2, 3],
+      "Achievements": [1, 2, 3, 4, 5, 6, 7, 8, 9],
       "GuildId": 1,
-      "FactionId": 1,
-      "Achievements": [1, 2, 3, 4, 5, 6]
+      "FactionId": 1
     }
   }
 ]

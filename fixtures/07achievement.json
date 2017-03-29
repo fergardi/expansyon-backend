@@ -2,9 +2,9 @@
   {
     "model": "Achievement",
     "data": {
-      "name": "achievement.scavenger",
+      "name": "achievement.scavenger.name",
+      "description": "achievement.scavenger.description",
       "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
-      "description": "Description",
       "class": "indigo",
       "metal": 1000000
     }
@@ -12,9 +12,9 @@
   {
     "model": "Achievement",
     "data": {
-      "name": "achievement.jeweller",
+      "name": "achievement.jeweller.name",
+      "description": "achievement.jeweller.description",
       "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
-      "description": "Description",
       "class": "purple",
       "crystal": 1000000
     }
@@ -22,9 +22,9 @@
   {
     "model": "Achievement",
     "data": {
-      "name": "achievement.prospector",
+      "name": "achievement.prospector.name",
+      "description": "achievement.prospector.description",
       "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
-      "description": "Description",
       "class": "red",
       "oil": 1000000
     }
@@ -32,9 +32,9 @@
   {
     "model": "Achievement",
     "data": {
-      "name": "achievement.commander",
+      "name": "achievement.commander.name",
+      "description": "achievement.commander.description",
       "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
-      "description": "Description",
       "class": "indigo",
       "hangar": 1000000
     }
@@ -42,9 +42,9 @@
   {
     "model": "Achievement",
     "data": {
-      "name": "achievement.architect",
+      "name": "achievement.architect.name",
+      "description": "achievement.architect.description",
       "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
-      "description": "Description",
       "class": "yellow",
       "infrastructure": 1000000
     }
@@ -52,9 +52,9 @@
   {
     "model": "Achievement",
     "data": {
-      "name": "achievement.conqueror",
+      "name": "achievement.conqueror.name",
+      "description": "achievement.conqueror.description",
       "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
-      "description": "Description",
       "class": "orange",
       "planetarium": 50
     }
@@ -62,9 +62,9 @@
   {
     "model": "Achievement",
     "data": {
-      "name": "achievement.engineer",
+      "name": "achievement.engineer.name",
+      "description": "achievement.engineer.description",
       "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
-      "description": "Description",
       "class": "cyan",
       "station": 20
     }
@@ -72,9 +72,9 @@
   {
     "model": "Achievement",
     "data": {
-      "name": "achievement.terraformer",
+      "name": "achievement.terraformer.name",
+      "description": "achievement.terraformer.description",
       "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
-      "description": "Description",
       "class": "green",
       "moon": 20
     }
@@ -82,9 +82,9 @@
   {
     "model": "Achievement",
     "data": {
-      "name": "achievement.scientist",
+      "name": "achievement.scientist.name",
+      "description": "achievement.scientist.description",
       "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
-      "description": "Description",
       "class": "pink",
       "level": 50
     }

@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Planet = sequelize.define('Planet', {
-    type: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    surname: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
     description: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
     class: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
     image: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     getterMethods: {
       name () {
-        return this.type + ' ' + (this.metal + this.crystal + this.oil + this.size + this.energy + this.influence)
+        return this.surname + ' ' + (this.metal + this.crystal + this.oil + this.size + this.energy + this.influence)
       }
     },
     timestamps: false,

@@ -2,8 +2,8 @@
   {
     "model": "Ship",
     "data": {
-      "name": "ship.fighter",
-      "description": "Description",
+      "name": "ship.fighter.name",
+      "description": "ship.fighter.description",
       "image": "https://image.flaticon.com/icons/svg/292/292364.svg",
       "class": "grey",
       "attack": 25,
@@ -17,8 +17,8 @@
   {
     "model": "Ship",
     "data": {
-      "name": "ship.cruiser",
-      "description": "Description",
+      "name": "ship.cruiser.name",
+      "description": "ship.cruiser.description",
       "image": "https://image.flaticon.com/icons/svg/293/293581.svg",
       "class": "grey",
       "attack": 25,
@@ -32,8 +32,8 @@
   {
     "model": "Ship",
     "data": {
-      "name": "ship.bomber",
-      "description": "Description",
+      "name": "ship.bomber.name",
+      "description": "ship.bomber.description",
       "image": "https://image.flaticon.com/icons/svg/124/124571.svg",
       "class": "grey",
       "attack": 25,
@@ -47,8 +47,8 @@
   {
     "model": "Ship",
     "data": {
-      "name": "ship.orbiter",
-      "description": "Description",
+      "name": "ship.orbiter.name",
+      "description": "ship.orbiter.description",
       "image": "https://image.flaticon.com/icons/svg/124/124541.svg",
       "class": "grey",
       "attack": 25,
@@ -62,8 +62,8 @@
   {
     "model": "Ship",
     "data": {
-      "name": "ship.carrier",
-      "description": "Description",
+      "name": "ship.carrier.name",
+      "description": "ship.carrier.description",
       "image": "https://image.flaticon.com/icons/svg/231/231136.svg",
       "class": "grey",
       "attack": 25,
@@ -77,8 +77,8 @@
   {
     "model": "Ship",
     "data": {
-      "name": "ship.recycler",
-      "description": "Description",
+      "name": "ship.recycler.name",
+      "description": "ship.recycler.description",
       "image": "https://image.flaticon.com/icons/svg/124/124580.svg",
       "class": "grey",
       "attack": 25,

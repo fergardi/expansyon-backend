@@ -2,8 +2,8 @@
   {
     "model": "Relic",
     "data": {
-      "name": "relic.supernova",
-      "description": "Grants one new random Planet under your control",
+      "name": "relic.supernova.name",
+      "description": "relic.supernova.description",
       "image": "https://image.flaticon.com/icons/svg/167/167347.svg",
       "class": "orange",
       "turns": 0,
@@ -24,8 +24,8 @@
   {
     "model": "Relic",
     "data": {
-      "name": "relic.destroyer",
-      "description": "Grants a new Station on one of your planets",
+      "name": "relic.destroyer.name",
+      "description": "relic.destroyer.description",
       "image": "https://image.flaticon.com/icons/svg/179/179527.svg",
       "class": "orange",
       "turns": 0,
@@ -46,8 +46,8 @@
   {
     "model": "Relic",
     "data": {
-      "name": "relic.gravitron",
-      "description": "Grants a new Moon on one of your planets",
+      "name": "relic.gravitron.name",
+      "description": "relic.gravitron.description",
       "image": "https://image.flaticon.com/icons/svg/139/139705.svg",
       "class": "orange",
       "turns": 0,
@@ -68,8 +68,8 @@
   {
     "model": "Relic",
     "data": {
-      "name": "relic.timeturner",
-      "description": "Grants tons of Turns",
+      "name": "relic.timeturner.name",
+      "description": "relic.timeturner.description",
       "image": "https://image.flaticon.com/icons/svg/143/143200.svg",
       "class": "orange",
       "turns": 50,
@@ -90,8 +90,8 @@
   {
     "model": "Relic",
     "data": {
-      "name": "relic.shipwreck",
-      "description": "Grants tons of Metal, Crystal and Oil",
+      "name": "relic.shipwreck.name",
+      "description": "relic.shipwreck.description",
       "image": "https://image.flaticon.com/icons/svg/199/199073.svg",
       "class": "orange",
       "turns": 0,
@@ -112,8 +112,8 @@
   {
     "model": "Relic",
     "data": {
-      "name": "relic.portal",
-      "description": "Grants tons of Ships",
+      "name": "relic.portal.name",
+      "description": "relic.portal.description",
       "image": "https://image.flaticon.com/icons/svg/139/139720.svg",
       "class": "orange",
       "turns": 0,

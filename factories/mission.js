@@ -3,7 +3,11 @@ const images = [
 ]
 
 const names = [
-  'mission.example'
+  'mission.example.name'
+]
+
+const descriptions = [
+  'mission.example.description'
 ]
 
 const classes = [
@@ -19,6 +23,9 @@ const factory = {
   name () {
     return names[Math.floor(Math.random() * names.length)]
   },
+  description () {
+    return descriptions[Math.floor(Math.random() * descriptions.length)]
+  },
   number (max) {
     return Math.floor(Math.random() * max)
   },
@@ -29,7 +36,7 @@ const factory = {
     var mission = {
       image: factory.image(),
       name: factory.name(),
-      description: 'Description',
+      description: factory.description(),
       class: factory.class(),
       attack: factory.number(10000),
       defense: factory.number(10000),

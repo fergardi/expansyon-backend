@@ -194,6 +194,10 @@ router.get('/:playerId', security.secured, (req, res) => {
       // return all info
       res.status(200).json(info)
     })
+    .catch((error) => {
+      console.log(error)
+      res.status(500).end()
+    })
   })
 })
 

@@ -2,8 +2,8 @@
   {
     "model": "Building",
     "data": {
-      "name": "building.furnace",
-      "description": "Description",
+      "name": "building.furnace.name",
+      "description": "building.furnace.description",
       "image": "https://image.flaticon.com/icons/svg/129/129522.svg",
       "class": "grey",
       "metal": 25,
@@ -17,8 +17,8 @@
   {
     "model": "Building",
     "data": {
-      "name": "building.factory",
-      "description": "Description",
+      "name": "building.factory.name",
+      "description": "building.furnace.description",
       "image": "https://image.flaticon.com/icons/svg/224/224482.svg",
       "class": "grey",
       "metal": 25,
@@ -32,8 +32,8 @@
   {
     "model": "Building",
     "data": {
-      "name": "building.refinery",
-      "description": "Description",
+      "name": "building.refinery.name",
+      "description": "building.furnace.description",
       "image": "https://image.flaticon.com/icons/svg/351/351722.svg",
       "class": "grey",
       "metal": 25,
@@ -47,8 +47,8 @@
   {
     "model": "Building",
     "data": {
-      "name": "building.plant",
-      "description": "Description",
+      "name": "building.plant.name",
+      "description": "building.furnace.description",
       "image": "https://image.flaticon.com/icons/svg/224/224474.svg",
       "class": "grey",
       "metal": 25,
@@ -62,8 +62,8 @@
   {
     "model": "Building",
     "data": {
-      "name": "building.barrier",
-      "description": "Description",
+      "name": "building.barrier.name",
+      "description": "building.furnace.description",
       "image": "https://image.flaticon.com/icons/svg/222/222563.svg",
       "class": "grey",
       "metal": 25,
@@ -77,8 +77,8 @@
   {
     "model": "Building",
     "data": {
-      "name": "building.warehouse",
-      "description": "Description",
+      "name": "building.warehouse.name",
+      "description": "building.furnace.description",
       "image": "https://image.flaticon.com/icons/svg/351/351720.svg",
       "class": "grey",
       "metal": 25,

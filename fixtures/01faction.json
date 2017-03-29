@@ -2,9 +2,9 @@
   {
     "model": "Faction",
     "data": {
-      "name": "faction.scavenger",
+      "name": "faction.scavenger.name",
+      "description": "faction.scavenger.description",
       "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
-      "description": "Description",
       "class": "purple",
       "metal": 20,
       "crystal": 20,
@@ -21,9 +21,9 @@
   {
     "model": "Faction",
     "data": {
-      "name": "faction.sedi",
+      "name": "faction.sedi.name",
+      "description": "faction.sedi.description",
       "image": "https://image.flaticon.com/icons/svg/290/290865.svg",
-      "description": "Description",
       "class": "green",
       "metal": 0,
       "crystal": 0,
@@ -40,9 +40,9 @@
   {
     "model": "Faction",
     "data": {
-      "name": "faction.jith",
+      "name": "faction.jith.name",
+      "description": "faction.jith.description",
       "image": "https://image.flaticon.com/icons/svg/290/290906.svg",
-      "description": "Description",
       "class": "red",
       "metal": 0,
       "crystal": 0,
@@ -59,9 +59,9 @@
   {
     "model": "Faction",
     "data": {
-      "name": "faction.merchant",
+      "name": "faction.merchant.name",
+      "description": "faction.merchant.description",
       "image": "https://image.flaticon.com/icons/svg/290/290845.svg",
-      "description": "Description",
       "class": "yellow",
       "metal": 25,
       "crystal": 25,
@@ -78,9 +78,9 @@
   {
     "model": "Faction",
     "data": {
-      "name": "faction.scholar",
+      "name": "faction.scholar.name",
+      "description": "faction.scholar.description",
       "image": "https://image.flaticon.com/icons/svg/290/290812.svg",
-      "description": "Description",
       "class": "cyan",
       "metal": 10,
       "crystal": 10,
@@ -97,9 +97,9 @@
   {
     "model": "Faction",
     "data": {
-      "name": "faction.warrior",
+      "name": "faction.warrior.name",
+      "description": "faction.warrior.description",
       "image": "https://image.flaticon.com/icons/svg/290/290869.svg",
-      "description": "Description",
       "class": "indigo",
       "metal": 0,
       "crystal": 0,

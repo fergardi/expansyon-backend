@@ -25,11 +25,11 @@ var images = [
 
 const factory = {
   vocale () {
-    var v = ['a', 'e', 'i', 'o', 'u']
+    var v = ['a', 'e', 'i', 'o', 'u', 'y']
     return v[Math.floor(Math.random() * v.length)]
   },
   consonant () {
-    var c = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
+    var c = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z']
     return c[Math.floor(Math.random() * c.length)]
   },
   syllabe (max) {
@@ -45,36 +45,28 @@ const factory = {
   type (planet) {
     if (factory.total(planet) >= 400) {
       planet.class = 'orange'
-      planet.type = 'Fortune'
-      planet.description = 'Extremely rare and rich planet full of resources'
+      planet.description = 'planet.rich.description'
     } else if (factory.total(planet) <= 200) {
       planet.class = 'grey'
-      planet.type = 'Mortus'
-      planet.description = 'Wasted planet good for nothing'
+      planet.description = 'planet.wasted.description'
     } else if (factory.max(planet, planet.metal)) {
       planet.class = 'indigo'
-      planet.type = 'Platine'
-      planet.description = 'Rich planet with plenty metal'
+      planet.description = 'planet.metal.description'
     } else if (factory.max(planet, planet.crystal)) {
       planet.class = 'purple'
-      planet.type = 'Lumina'
-      planet.description = 'Rich planet with plenty crystal'
+      planet.description = 'planet.crystal.description'
     } else if (factory.max(planet, planet.oil)) {
       planet.class = 'red'
-      planet.type = 'Igneus'
-      planet.description = 'Rich planet with plenty oil'
+      planet.description = 'planet.oil.description'
     } else if (factory.max(planet, planet.energy)) {
       planet.class = 'cyan'
-      planet.type = 'Zeus'
-      planet.description = 'Rich planet with plenty energy'
+      planet.description = 'planet.energy.description'
     } else if (factory.max(planet, planet.influence)) {
       planet.class = 'yellow'
-      planet.type = 'Polites'
-      planet.description = 'Strategic planet with plenty influence'
+      planet.description = 'planet.influence.description'
     } else if (factory.max(planet, planet.size)) {
       planet.class = 'green'
-      planet.type = 'Terra'
-      planet.description = 'Huge planet with plenty size'
+      planet.description = 'planet.size.description'
     }
   },
   number (max) {
@@ -91,6 +83,7 @@ const factory = {
   },
   build (sequelize) {
     var planet = {
+      surname: factory.word(),
       image: factory.image(),
       size: factory.number(80),
       metal: factory.number(80),
@@ -103,7 +96,6 @@ const factory = {
       visible: false
     }
     factory.type(planet)
-    planet.type = factory.word()
     if (sequelize) {
       planet = { model: 'Planet', data: planet }
     }
