@@ -83,7 +83,7 @@ const factory = {
   },
   build (sequelize) {
     var planet = {
-      surname: factory.word(),
+      name: factory.word(),
       image: factory.image(),
       size: factory.number(80),
       metal: factory.number(80),

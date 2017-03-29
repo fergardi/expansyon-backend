@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
     active: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
     votes: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
   }, {
+    getterMethods: {
+      total () {
+        return this.metal + this.crystal + this.oil + this.size + this.energy + this.influence + this.attack + this.defense + this.speed
+      }
+    },
     timestamps: false,
     freezeTableName: true
   })

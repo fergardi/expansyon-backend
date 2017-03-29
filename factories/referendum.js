@@ -17,10 +17,10 @@ const factory = {
   },
   class (referendum) {
     referendum.class = factory.total(referendum) >= 0 ? 'green' : 'red'
-    referendum.name = 'Referendum' + ' ' + factory.total(referendum)
   },
   build (sequelize) {
     var referendum = {
+      name: 'Referendum',
       image: factory.image(),
       description: 'Description',
       metal: factory.number(100),

@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
         // o2m bidirectional association
         models.Player.hasMany(models.Message, { as: 'Received', foreignKey: 'ToId' })
         models.Message.belongsTo(models.Player, { as: 'To', foreignKey: 'ToId' })
+        // o2m bidirectional association
+        models.Player.hasMany(models.Sale)
+        models.Sale.belongsTo(models.Player)
         // m2m association
         var PlayerRelic = sequelize.define('PlayerRelic', {
           quantity: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 1 }

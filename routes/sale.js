@@ -7,7 +7,12 @@ var security = require('../services/security')
 // GET /api/sale
 router.get('/', security.secured, (req, res) => {
   models.Sale.findAll({
-    include: [ { model: models.Planet }, { model: models.Relic }, { model: models.Ship } ]
+    include: [
+      { model: models.Player, attributes: ['name'], include: { model: models.Faction, attributes: ['class'] } },
+      { model: models.Planet },
+      { model: models.Relic },
+      { model: models.Ship }
+    ]
   })
   .then((sale) => {
     res.status(200).json(sale)
