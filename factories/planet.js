@@ -40,7 +40,7 @@ const factory = {
     return [...new Array(min + Math.floor(Math.random() * max))].map(() => factory.consonant() + (Math.random() * 100 <= 25 ? factory.nasal() : '') + factory.vocale())
   },
   word () {
-    var w = factory.syllabe(2, 4).join('')
+    var w = factory.syllabe(2, 3).join('')
     return w.charAt(0).toUpperCase() + w.slice(1)
   },
   image () {

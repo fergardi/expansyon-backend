@@ -20,7 +20,7 @@ cron.schedule('0 * * * * *', () => {
         planet.visible = index < constants.exploration
         planet.save()
       })
-      socketio.emit('player')
+      socketio.emit('player', null)
       socketio.emit('exploration')
     })
   })
