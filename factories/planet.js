@@ -24,6 +24,21 @@ var images = [
 ]
 
 const factory = {
+  vocale () {
+    var v = ['a', 'e', 'i', 'o', 'u']
+    return v[Math.floor(Math.random() * v.length)]
+  },
+  consonant () {
+    var c = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
+    return c[Math.floor(Math.random() * c.length)]
+  },
+  syllabe (max) {
+    return [...new Array(max)].map(() => factory.consonant() + factory.vocale())
+  },
+  word () {
+    var w = factory.syllabe(3).join('')
+    return w.charAt(0).toUpperCase() + w.slice(1)
+  },
   image () {
     return images[Math.floor(Math.random() * images.length)]
   },
@@ -85,9 +100,10 @@ const factory = {
       influence: factory.number(80),
       moon: factory.boolean(),
       station: factory.boolean(),
-      visible: true
+      visible: false
     }
     factory.type(planet)
+    planet.type = factory.word()
     if (sequelize) {
       planet = { model: 'Planet', data: planet }
     }

@@ -10,7 +10,7 @@ var _ = require('lodash')
 var factory = require('../factories/planet')
 
 // add planet
-cron.schedule('0 */2 * * * *', () => {
+cron.schedule('0 * * * * *', () => {
   models.Planet.create(factory.build())
   .then((planet) => {
     models.Planet.findAll()
@@ -20,6 +20,7 @@ cron.schedule('0 */2 * * * *', () => {
         planet.visible = index < constants.exploration
         planet.save()
       })
+      socketio.emit('player')
       socketio.emit('exploration')
     })
   })
