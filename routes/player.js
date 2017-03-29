@@ -437,4 +437,112 @@ router.get('/:playerId/referendum/:referendumId', (req, res) => {
   })
 })
 
+// GET /api/player/playerId/ship/shipId/quantity/quantity
+router.get('/:playerId/ship/:shipId/quantity/:quantity', (req, res) => {
+  models.Player.findById(req.params.playerId)
+  .then((player) => {
+    if (player) {
+      player.getShips({
+        where: { id: req.params.shipId }
+      })
+      .then((ships) => {
+        var quantity = req.params.quantity
+        if (ships.length > 0) {
+          var ship = ships[0]
+          if (ship.metal * quantity <= player.metal && ship.crystal * quantity <= player.crystal && ship.oil * quantity <= player.oil) {
+            player.metal -= ship.metal * quantity
+            player.crystal -= ship.crystal * quantity
+            player.oil -= ship.oil * quantity
+            ship.PlayerShip.quantity += quantity
+            ship.PlayerShip.save()
+            player.save()
+            .then((player) => {
+              socketio.emit('player', player.id)
+              res.status(200).end()
+            })
+          } else {
+            res.status(400).end()
+          }
+        } else {
+          res.status(400).end()
+        }
+      })
+    } else {
+      res.status(400).end()
+    }
+  })
+})
+
+// GET /api/player/playerId/building/buildingId/quantity/quantity
+router.get('/:playerId/building/:buildingId/quantity/:quantity', (req, res) => {
+  models.Player.findById(req.params.playerId)
+  .then((player) => {
+    if (player) {
+      player.getBuildings({
+        where: { id: req.params.buildingId }
+      })
+      .then((buildings) => {
+        var quantity = req.params.quantity
+        if (buildings.length > 0) {
+          var building = buildings[0]
+          if (building.metal * quantity <= player.metal && building.crystal * quantity <= player.crystal && building.oil * quantity <= player.oil) {
+            player.metal -= building.metal * quantity
+            player.crystal -= building.crystal * quantity
+            player.oil -= building.oil * quantity
+            building.PlayerBuilding.quantity += quantity
+            building.PlayerBuilding.save()
+            player.save()
+            .then((player) => {
+              socketio.emit('player', player.id)
+              res.status(200).end()
+            })
+          } else {
+            res.status(400).end()
+          }
+        } else {
+          res.status(400).end()
+        }
+      })
+    } else {
+      res.status(400).end()
+    }
+  })
+})
+
+// GET /api/player/playerId/tower/towerId/quantity/quantity
+router.get('/:playerId/tower/:towerId/quantity/:quantity', (req, res) => {
+  models.Player.findById(req.params.playerId)
+  .then((player) => {
+    if (player) {
+      player.getTowers({
+        where: { id: req.params.towerId }
+      })
+      .then((towers) => {
+        var quantity = req.params.quantity
+        if (towers.length > 0) {
+          var tower = towers[0]
+          if (tower.metal * quantity <= player.metal && tower.crystal * quantity <= player.crystal && tower.oil * quantity <= player.oil) {
+            player.metal -= tower.metal * quantity
+            player.crystal -= tower.crystal * quantity
+            player.oil -= tower.oil * quantity
+            tower.PlayerTower.quantity += quantity
+            tower.PlayerTower.save()
+            player.save()
+            .then((player) => {
+              socketio.emit('player', player.id)
+              res.status(200).end()
+            })
+          } else {
+            res.status(400).end()
+          }
+        } else {
+          res.status(400).end()
+        }
+      })
+    } else {
+      res.status(400).end()
+    }
+  })
+})
+
 module.exports = router
