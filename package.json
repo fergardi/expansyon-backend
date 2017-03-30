@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon ./bin/server.js",
+    "dev": "nodemon --debug ./bin/server.js",
     "prod": "cross-env NODE_ENV=production node ./bin/server.js",
     "deploy": "cross-env NODE_ENV=production pm2 start -f ./bin/server.js"
   },
