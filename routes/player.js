@@ -716,4 +716,30 @@ router.get('/:playerId/tower/:towerId/quantity/:quantity', (req, res) => {
   })
 })
 
+// POST /api/player/playerId/message
+router.post('/:playerId/message', (req, res) => {
+  models.Player.findById(req.params.playerId)
+  .then((sender) => {
+    if (sender) {
+      models.Player.findById(req.body.to)
+      .then((receiver) => {
+        var message = {
+          FromId: sender.id,
+          ToId: receiver.id,
+          subject: req.body.subject,
+          text: req.body.text
+        }
+        models.Message.create(message)
+        .then((message) => {
+          socketio.emit('player', sender.id)
+          socketio.emit('player', receiver.id)
+          res.status(200).end()
+        })
+      })
+    } else {
+      res.status(400).end()
+    }
+  })
+})
+
 module.exports = router

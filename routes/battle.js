@@ -8,8 +8,9 @@ var security = require('../services/security')
 router.get('/', security.secured, (req, res) => {
   models.Battle.findAll({
     include: [
-      { model: models.Player, as: 'From', include: { model: models.Faction } },
-      { model: models.Player, as: 'To', include: { model: models.Faction } },
+      { model: models.Player, include: { model: models.Faction } },
+      { model: models.Planet },
+      { model: models.Mission },
       { model: models.Ship }
     ]
   })

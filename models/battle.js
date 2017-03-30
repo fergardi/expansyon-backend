@@ -6,9 +6,11 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: (models) => {
         // m2o association
-        models.Battle.belongsTo(models.Player, { as: 'From', foreignKey: 'FromId' })
+        models.Battle.belongsTo(models.Mission)
         // m2o association
-        models.Battle.belongsTo(models.Player, { as: 'To', foreignKey: 'ToId' })
+        models.Battle.belongsTo(models.Planet)
+        // m2o association
+        models.Battle.belongsTo(models.Player)
         // m2m association
         var BattleShip = sequelize.define('BattleShip', {
           quantity: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }

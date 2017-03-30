@@ -9,8 +9,9 @@ const factory = {
   },
   build (sequelize) {
     var battle = {
-      From: factory.id(fixtures.players),
-      To: factory.id(fixtures.players),
+      Player: factory.id(fixtures.players),
+      Planet: factory.id(fixtures.planets),
+      Mission: null,
       Ships: factory.array(6)
     }
     if (sequelize) {
