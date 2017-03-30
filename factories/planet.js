@@ -60,13 +60,13 @@ const factory = {
       planet.class = 'purple'
       planet.description = 'planet.crystal.description'
     } else if (factory.max(planet, planet.oil)) {
-      planet.class = 'red'
+      planet.class = 'yellow'
       planet.description = 'planet.oil.description'
     } else if (factory.max(planet, planet.energy)) {
       planet.class = 'cyan'
       planet.description = 'planet.energy.description'
     } else if (factory.max(planet, planet.influence)) {
-      planet.class = 'yellow'
+      planet.class = 'red'
       planet.description = 'planet.influence.description'
     } else if (factory.max(planet, planet.size)) {
       planet.class = 'green'
