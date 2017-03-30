@@ -8,7 +8,7 @@ var security = require('../services/security')
 router.get('/', security.secured, (req, res) => {
   models.Sale.findAll({
     include: [
-      { model: models.Player, attributes: ['name'], include: { model: models.Faction, attributes: ['class'] } },
+      { model: models.Player, attributes: ['id', 'name'], include: { model: models.Faction, attributes: ['class'] } },
       { model: models.Planet },
       { model: models.Relic },
       { model: models.Ship }

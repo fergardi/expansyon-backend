@@ -267,7 +267,9 @@ router.get('/:playerId/market/:saleId', (req, res) => {
             player.aether -= sale.aether
             sale.Player.aether += sale.aether
             if (sale.Ship) {
-              player.getShips({ where: { id: sale.Ship.id } })
+              player.getShips({
+                where: { id: sale.Ship.id }
+              })
               .then((ships) => {
                 if (ships.length > 0) {
                   var ship = ships[0]
@@ -280,7 +282,9 @@ router.get('/:playerId/market/:saleId', (req, res) => {
                 }
               })
             } else if (sale.Relic) {
-              player.getRelics({ where: { id: sale.Relic.id } })
+              player.getRelics({
+                where: { id: sale.Relic.id }
+              })
               .then((relics) => {
                 if (relics.length > 0) {
                   var relic = relics[0]
@@ -293,7 +297,6 @@ router.get('/:playerId/market/:saleId', (req, res) => {
                 queries.push(sale.Player.save())
               })
             } else if (sale.Planet) {
-              sale.Player.removePlanet(sale.Planet)
               player.addPlanet(sale.Planet)
               queries.push(player.save())
               queries.push(sale.Player.save())
@@ -302,14 +305,20 @@ router.get('/:playerId/market/:saleId', (req, res) => {
             .then((results) => {
               sale.destroy()
               .then((result) => {
-                socketio.emit('player', player.id)
-                socketio.emit('player', sale.Player.id)
-                socketio.emit('market')
-                res.status(200).end()
-              })
-              .catch((error) => {
-                console.error(error)
-                res.status(500).end()
+                var message = {
+                  subject: 'transmission.market.subject',
+                  text: 'transmission.market.text',
+                  From: player.id,
+                  To: sale.Player.id
+                }
+                models.Message.create(message)
+                .then((message) => {
+                  socketio.emit('player', player.id)
+                  socketio.emit('player', sale.Player.id)
+                  socketio.emit('transmission', sale.Player.id)
+                  socketio.emit('market')
+                  res.status(200).end()
+                })
               })
             })
             .catch((error) => {
@@ -319,6 +328,79 @@ router.get('/:playerId/market/:saleId', (req, res) => {
           } else {
             res.status(400).end()
           }
+        } else {
+          res.status(400).end()
+        }
+      })
+    } else {
+      res.status(400).end()
+    }
+  })
+})
+
+// GET /api/player/playerId/regret/saleId
+router.get('/:playerId/regret/:saleId', (req, res) => {
+  models.Player.findById(req.params.playerId)
+  .then((player) => {
+    if (player) {
+      player.getSales({
+        where: { id: req.params.saleId },
+        include: [
+          { model: models.Player },
+          { model: models.Ship },
+          { model: models.Relic },
+          { model: models.Planet }
+        ]
+      })
+      .then((sales) => {
+        if (sales.length > 0) {
+          var sale = sales[0]
+          var queries = []
+          if (sale.Ship) {
+            player.getShips({
+              where: { id: sale.Ship.id }
+            })
+            .then((ships) => {
+              if (ships.length > 0) {
+                var ship = ships[0]
+                ship.PlayerShip.quantity += sale.quantity
+                ship.PlayerShip.save()
+                queries.push(player.save())
+              } else {
+                res.status(400).end()
+              }
+            })
+          } else if (sale.Relic) {
+            player.getRelics({
+              where: { id: sale.Relic.id }
+            })
+            .then((relics) => {
+              if (relics.length > 0) {
+                var relic = relics[0]
+                relic.PlayerRelic.quantity += sale.quantity
+                relic.PlayerRelic.save()
+              } else {
+                player.addRelic(sale.Relic, { quantity: 1 })
+              }
+              queries.push(player.save())
+            })
+          } else if (sale.Planet) {
+            player.addPlanet(sale.Planet)
+            queries.push(player.save())
+          }
+          Promise.all(queries)
+          .then((results) => {
+            sale.destroy()
+            .then((result) => {
+              socketio.emit('player', player.id)
+              socketio.emit('market')
+              res.status(200).end()
+            })
+          })
+          .catch((error) => {
+            console.error(error)
+            res.status(500).end()
+          })
         } else {
           res.status(400).end()
         }

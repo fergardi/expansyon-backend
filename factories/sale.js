@@ -26,7 +26,7 @@ const factory = {
       crystal: factory.number(10000),
       oil: factory.number(10000),
       aether: factory.number(50),
-      PlayerId: factory.id(fixtures.players),
+      PlayerId: 1, // factory.id(fixtures.players),
       PlanetId: null,
       RelicId: null,
       ShipId: null
