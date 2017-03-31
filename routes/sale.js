@@ -12,18 +12,8 @@ router.get('/', security.secured, (req, res) => {
       { model: models.Planet },
       { model: models.Relic },
       { model: models.Ship }
-    ]
-  })
-  .then((sale) => {
-    res.status(200).json(sale)
-  })
-})
-
-// GET /api/sale/id
-router.get('/:id', security.secured, (req, res) => {
-  models.Sale.findOne({
-    where: { id: req.params.id },
-    include: [ { model: models.Planet }, { model: models.Relic }, { model: models.Ship } ]
+    ],
+    order: [ [ 'datetime', 'DESC' ] ]
   })
   .then((sale) => {
     res.status(200).json(sale)

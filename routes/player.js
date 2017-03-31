@@ -742,13 +742,13 @@ router.post('/:playerId/message', (req, res) => {
   })
 })
 
-// POST /api/player/playerId/sale
-router.post('/:playerId/sell/ship', (req, res) => {
+// POST /api/player/playerId/sale/ship
+router.post('/:playerId/sale/ship', (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
       player.getShips({
-        where: { id: req.body.ship }
+        where: { id: req.body.shipId }
       })
       .then((ships) => {
         if (ships.length > 0) {
@@ -769,7 +769,87 @@ router.post('/:playerId/sell/ship', (req, res) => {
             .then((sale) => {
               socketio.emit('player', player.id)
               socketio.emit('market')
-              res.status(200).end()  
+              res.status(200).end()
+            })
+          } else {
+            res.status(400).end()
+          }
+        }
+      })
+    } else {
+      res.status(400).end()
+    }
+  })
+})
+
+// POST /api/player/playerId/sale/relic
+router.post('/:playerId/sale/relic', (req, res) => {
+  models.Player.findById(req.params.playerId)
+  .then((player) => {
+    if (player) {
+      player.getRelics({
+        where: { id: req.body.relicId }
+      })
+      .then((relics) => {
+        if (relics.length > 0) {
+          var relic = relics[0]
+          if ((req.body.quantity <= relic.PlayerRelic.quantity) && (req.body.metal > 0 || req.body.crystal > 0 || req.body.oil > 0 || req.body.aether > 0)) {
+            relic.PlayerRelic.quantity -= req.body.quantity
+            relic.PlayerRelic.save()
+            if (relic.PlayerRelic.quantity <= 0) {
+              player.removeRelic(relic)
+              player.save()
+            }
+            models.Sale.create({
+              quantity: req.body.quantity,
+              metal: req.body.metal,
+              crystal: req.body.crystal,
+              oil: req.body.oil,
+              aether: req.body.aether,
+              RelicId: relic.id,
+              PlayerId: player.id
+            })
+            .then((sale) => {
+              socketio.emit('player', player.id)
+              socketio.emit('market')
+              res.status(200).end()
+            })
+          } else {
+            res.status(400).end()
+          }
+        }
+      })
+    } else {
+      res.status(400).end()
+    }
+  })
+})
+
+// POST /api/player/playerId/sale/planet
+router.post('/:playerId/sale/planet', (req, res) => {
+  models.Player.findById(req.params.playerId)
+  .then((player) => {
+    if (player) {
+      player.getPlanets({
+        where: { id: req.body.planetId }
+      })
+      .then((planets) => {
+        if (planets.length > 0) {
+          var planet = planets[0]
+          if (req.body.metal > 0 || req.body.crystal > 0 || req.body.oil > 0 || req.body.aether > 0) {
+            models.Sale.create({
+              quantity: 0,
+              metal: req.body.metal,
+              crystal: req.body.crystal,
+              oil: req.body.oil,
+              aether: req.body.aether,
+              PlanetId: planet.id,
+              PlayerId: player.id
+            })
+            .then((sale) => {
+              socketio.emit('player', player.id)
+              socketio.emit('market')
+              res.status(200).end()
             })
           } else {
             res.status(400).end()
