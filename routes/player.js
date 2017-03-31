@@ -742,4 +742,44 @@ router.post('/:playerId/message', (req, res) => {
   })
 })
 
+// POST /api/player/playerId/sale
+router.post('/:playerId/sell/ship', (req, res) => {
+  models.Player.findById(req.params.playerId)
+  .then((player) => {
+    if (player) {
+      player.getShips({
+        where: { id: req.body.ship }
+      })
+      .then((ships) => {
+        if (ships.length > 0) {
+          var ship = ships[0]
+          if ((req.body.quantity <= ship.PlayerShip.quantity) && (req.body.metal > 0 || req.body.crystal > 0 || req.body.oil > 0 || req.body.aether > 0)) {
+            ship.PlayerShip.quantity -= req.body.quantity
+            ship.PlayerShip.save()
+            player.save()
+            models.Sale.create({
+              quantity: req.body.quantity,
+              metal: req.body.metal,
+              crystal: req.body.crystal,
+              oil: req.body.oil,
+              aether: req.body.aether,
+              ShipId: ship.id,
+              PlayerId: player.id
+            })
+            .then((sale) => {
+              socketio.emit('player', player.id)
+              socketio.emit('market')
+              res.status(200).end()  
+            })
+          } else {
+            res.status(400).end()
+          }
+        }
+      })
+    } else {
+      res.status(400).end()
+    }
+  })
+})
+
 module.exports = router
