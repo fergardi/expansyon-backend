@@ -742,6 +742,27 @@ router.post('/:playerId/message', (req, res) => {
   })
 })
 
+// DELETE /api/player/playerId/message
+router.delete('/:playerId/message/:messageId', (req, res) => {
+  models.Player.findById(req.params.playerId)
+  .then((player) => {
+    if (player) {
+      models.Player.getMessages({
+        where: { id: req.params.messageId }
+      })
+      .then((message) => {
+        player.removeMessage(message)
+        .then((player) => {
+          socketio.emit('player', player.id)
+          res.status(200).end()
+        })
+      })
+    } else {
+      res.status(400).end()
+    }
+  })
+})
+
 // POST /api/player/playerId/sale/ship
 router.post('/:playerId/sale/ship', (req, res) => {
   models.Player.findById(req.params.playerId)
