@@ -1,6 +1,6 @@
 var Paypal = require('paypal-express-checkout')
-var constants = require('../config/constants')
+var config = require('../config/config')
 
-var paypal = Paypal.init(constants.paypal.username, constants.paypal.password, constants.paypal.signature, constants.paypal.return, constants.paypal.cancel, constants.paypal.debug)
+var paypal = Paypal.init(config.paypal.username, config.paypal.password, config.paypal.signature, config.paypal.return, config.paypal.cancel, config.paypal.debug)
 
 module.exports = paypal

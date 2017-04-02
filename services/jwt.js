@@ -1,6 +1,6 @@
 var jwt = require('jwt-simple')
 var moment = require('moment')
-const constants = require('../config/constants')
+const config = require('../config/config')
 
 exports.token = (player) => {
   var payload = {
@@ -8,5 +8,5 @@ exports.token = (player) => {
     iat: moment().unix(),
     exp: moment().add(14, 'days').unix()
   }
-  return jwt.encode(payload, constants.token)
+  return jwt.encode(payload, config.token)
 }

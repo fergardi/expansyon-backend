@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 var models = require('../models')
 
-var constants = require('../config/constants')
+var config = require('../config/config')
 
-models.sequelize.sync({force: constants.sync})
+models.sequelize.sync({force: config.sync})
 .then(() => {
-  if (constants.fixtures) {
+  if (config.fixtures) {
     const fixtures = require('sequelize-fixtures')
     console.log('Loading fixtures...')
     fixtures.loadFile('./fixtures/*.*', models)

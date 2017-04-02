@@ -1,11 +1,8 @@
 const logger = require('../services/logger')
 
-const constants = {
+const config = {
   dev: {
     token: 'token',
-    cantina: 3,
-    exploration: 12,
-    senate: 3,
     database: {
       username: 'root',
       password: 'root',
@@ -29,9 +26,6 @@ const constants = {
   },
   production: {
     token: 'token',
-    cantina: 3,
-    exploration: 12,
-    senate: 3,
     database: {
       username: '',
       password: '',
@@ -57,4 +51,4 @@ const constants = {
 
 var env = process.env.NODE_ENV || 'dev'
 
-module.exports = constants[env]
+module.exports = config[env]

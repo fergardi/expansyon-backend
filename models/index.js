@@ -3,8 +3,8 @@
 var fs = require('fs')
 var path = require('path')
 var Sequelize = require('sequelize')
-var constants = require('../config/constants')
-var sequelize = new Sequelize(constants.database.dbname, constants.database.username, constants.database.password, constants.database)
+var config = require('../config/config')
+var sequelize = new Sequelize(config.database.dbname, config.database.username, config.database.password, config.database)
 var db = {}
 
 fs

@@ -2,12 +2,13 @@ var models = require('../models')
 var express = require('express')
 var router = express.Router()
 
-var constants = require('../config/constants')
 var security = require('../services/security')
 var socketio = require('../services/socketio').io()
 var cron = require('../services/cron')
 var _ = require('lodash')
 var factory = require('../factories/referendum')
+
+const REFERENDUMS = 3
 
 // add referendum
 cron.schedule('0 30 * * * *', () => {
@@ -25,7 +26,7 @@ cron.schedule('0 30 * * * *', () => {
             models.Referendum.findAll({ where: { active: false } })
             .then((referendums) => {
               referendums = _.shuffle(referendums)
-              for (var i = 0; i < constants.senate; i++) {
+              for (var i = 0; i < REFERENDUMS; i++) {
                 referendums[i].visible = true
                 referendums[i].save()
               }

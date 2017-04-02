@@ -2,12 +2,13 @@ var models = require('../models')
 var express = require('express')
 var router = express.Router()
 
-var constants = require('../config/constants')
 var security = require('../services/security')
 var socketio = require('../services/socketio').io()
 var cron = require('../services/cron')
 var _ = require('lodash')
 var factory = require('../factories/mission')
+
+const MISSIONS = 3
 
 // add mission
 cron.schedule('0 30 * * * *', () => {
@@ -17,7 +18,7 @@ cron.schedule('0 30 * * * *', () => {
     .then((missions) => {
       missions = _.shuffle(missions)
       missions.forEach((mission, index) => {
-        mission.visible = index < constants.cantina
+        mission.visible = index < MISSIONS
         mission.save()
       })
       socketio.emit('cantina')

@@ -9,16 +9,7 @@ var app = express()
 var server = require('http').Server(app)
 var io = require('./services/socketio').init(server)
 
-// attach socketio to every response
-app.use((req, res, next) => {
-  res.io = io
-  next()
-})
-
-app.use(cors({
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}))
+// logger
 app.use(morgan('common', {
   stream: {
     write: (message) => {
@@ -26,11 +17,23 @@ app.use(morgan('common', {
     }
   }
 }))
+// attach socketio to every response
+app.use((req, res, next) => {
+  res.io = io
+  next()
+})
+// cors
+app.use(cors({
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}))
+// api
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(methodOverride())
 app.use(cookieParser())
-
+// routes
+app.get('/api/', (req, res) => res.status(418).end())
 app.use('/api/faction', require('./routes/faction'))
 app.use('/api/ship', require('./routes/ship'))
 app.use('/api/building', require('./routes/building'))
@@ -44,22 +47,19 @@ app.use('/api/guild', require('./routes/guild'))
 app.use('/api/battle', require('./routes/battle'))
 app.use('/api/skill', require('./routes/skill'))
 app.use('/api/player', require('./routes/player'))
-
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   var err = new Error('Not Found')
   err.status = 500
   next(err)
 })
-
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
+if (process.env.NODE_ENV === 'development') {
   app.use((err, req, res, next) => { // eslint-disable-line
     res.status(500).end()
   })
 }
-
 // production error handler
 // no stacktraces leaked to user
 app.use((err, req, res, next) => { // eslint-disable-line

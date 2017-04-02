@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon --debug ./bin/server.js",
+    "dev": "nodemon ./bin/server.js --debug --ignore './test/*.js'",
+    "test": "mocha --timeout 10000 || exit 0",
     "prod": "cross-env NODE_ENV=production node ./bin/server.js",
-    "deploy": "cross-env NODE_ENV=production pm2 start -f ./bin/server.js"
+    "pm2": "cross-env NODE_ENV=production pm2 start -f ./bin/server.js"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
@@ -33,5 +34,11 @@
     "socket.io": "^1.5.1",
     "winston": "^2.3.1",
     "winston-daily-rotate-file": "^1.4.6"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.2.0",
+    "supertest": "^3.0.0"
   }
 }

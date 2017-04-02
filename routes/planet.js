@@ -2,12 +2,13 @@ var models = require('../models')
 var express = require('express')
 var router = express.Router()
 
-var constants = require('../config/constants')
 var socketio = require('../services/socketio').io()
 var security = require('../services/security')
 var cron = require('../services/cron')
 var _ = require('lodash')
 var factory = require('../factories/planet')
+
+const EXPLORATION = 12
 
 // add planet
 cron.schedule('0 * * * * *', () => {
@@ -17,7 +18,7 @@ cron.schedule('0 * * * * *', () => {
     .then((planets) => {
       planets = _.shuffle(planets)
       planets.forEach((planet, index) => {
-        planet.visible = index < constants.exploration
+        planet.visible = index < EXPLORATION
         planet.save()
       })
       socketio.emit('player', null)

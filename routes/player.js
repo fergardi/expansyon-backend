@@ -35,6 +35,26 @@ router.post('/login', (req, res) => {
   })
 })
 
+// POST /api/player/register
+router.post('/register', (req, res) => {
+  models.Player.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password
+  })
+  .then((player) => {
+    if (player) {
+      var token = jwt.token(player)
+      res.status(201).json({ id: player.id, token: token })
+    } else {
+      res.status(409).end()
+    }
+  })
+  .catch(() => {
+    res.status(409).end()
+  })
+})
+
 // POST /api/player/email
 router.post('/email', (req, res) => {
   models.Player.findOne({
@@ -42,7 +62,7 @@ router.post('/email', (req, res) => {
   })
   .then((player) => {
     if (player) {
-      res.status(303).end()
+      res.status(302).end()
     } else {
       res.status(200).end()
     }
@@ -56,7 +76,7 @@ router.post('/name', (req, res) => {
   })
   .then((player) => {
     if (player) {
-      res.status(303).end()
+      res.status(302).end()
     } else {
       res.status(200).end()
     }
@@ -543,7 +563,7 @@ router.post('/:playerId/relic/:relicId', security.secured, (req, res) => {
 })
 
 // GET /api/player/playerId/faction/factionId
-router.patch('/:playerId/faction/:factionId', (req, res) => {
+router.put('/:playerId/faction/:factionId', (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -572,7 +592,7 @@ router.patch('/:playerId/faction/:factionId', (req, res) => {
 })
 
 // GET /api/player/playerId/referendum/referendumId
-router.patch('/:playerId/referendum/:referendumId', (req, res) => {
+router.put('/:playerId/referendum/:referendumId', (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -609,7 +629,7 @@ router.patch('/:playerId/referendum/:referendumId', (req, res) => {
 })
 
 // GET /api/player/playerId/ship/shipId/quantity/quantity
-router.patch('/:playerId/ship/:shipId/quantity/:quantity', (req, res) => {
+router.put('/:playerId/ship/:shipId/quantity/:quantity', (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -645,7 +665,7 @@ router.patch('/:playerId/ship/:shipId/quantity/:quantity', (req, res) => {
 })
 
 // GET /api/player/playerId/building/buildingId/quantity/quantity
-router.patch('/:playerId/building/:buildingId/quantity/:quantity', (req, res) => {
+router.put('/:playerId/building/:buildingId/quantity/:quantity', (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -681,7 +701,7 @@ router.patch('/:playerId/building/:buildingId/quantity/:quantity', (req, res) =>
 })
 
 // GET /api/player/playerId/tower/towerId/quantity/quantity
-router.patch('/:playerId/tower/:towerId/quantity/:quantity', (req, res) => {
+router.put('/:playerId/tower/:towerId/quantity/:quantity', (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
