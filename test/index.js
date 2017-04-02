@@ -1,4 +1,3 @@
-let chai = require('chai')
 let server = require('../app').server
 let request = require('supertest')
 

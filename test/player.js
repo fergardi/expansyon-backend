@@ -1,4 +1,3 @@
-let models = require('../models/index')
 let server = require('../app').server
 let request = require('supertest')
 
@@ -17,7 +16,7 @@ describe('Players', () => {
         password: 'mocha'
       })
       .expect(201)
-      .end((err, res) => {
+      .end((res) => {
         res.body.should.be.json
         res.body.should.be.a('array')
         res.body.length.should.be.eql(2)
@@ -61,7 +60,7 @@ describe('Players', () => {
         password: 'mocha'
       })
       .expect(200)
-      .end((err, res) => {
+      .end((res) => {
         res.body.should.be.json
         res.body.should.be.a('array')
         res.body.length.should.be.eql(2)
@@ -95,7 +94,7 @@ describe('Players', () => {
       .get('/api/player')
       .set('Authorization', 'Bearer ' + global.token)
       .expect(200)
-      .end((err, res) => {
+      .end((res) => {
         res.body.should.be.json
         res.body.should.be.a('array')
         res.body.length.should.be.gt(0)
