@@ -217,7 +217,7 @@ router.get('/:playerId', security.secured, (req, res) => {
       info.warehouse = results[3][5].PlayerBuilding.quantity
       // defense
       info.defense = results[4].reduce((total, tower) => total + tower.PlayerTower.quantity, 0)
-      info.turret = results[4][0].PlayerTower.quantity
+      info.blaster = results[4][0].PlayerTower.quantity
       info.railgun = results[4][1].PlayerTower.quantity
       info.cannon = results[4][2].PlayerTower.quantity
       // relicarium

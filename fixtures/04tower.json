@@ -2,8 +2,8 @@
   {
     "model": "Tower",
     "data": {
-      "name": "tower.turret.name",
-      "description": "tower.turret.description",
+      "name": "tower.blaster.name",
+      "description": "tower.blaster.description",
       "image": "https://image.flaticon.com/icons/svg/124/124550.svg",
       "class": "grey",
       "attack": 25,

@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     attack: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     defense: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     speed: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    aim: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    evasion: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    cargo: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     metal: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     crystal: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     oil: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }

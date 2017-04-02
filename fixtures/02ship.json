@@ -9,6 +9,9 @@
       "attack": 25,
       "defense": 25,
       "speed": 25,
+      "aim": 0,
+      "evasion": 0,
+      "cargo": 0,
       "metal": 1000,
       "crystal": 2000,
       "oil": 3000
@@ -24,6 +27,9 @@
       "attack": 25,
       "defense": 25,
       "speed": 25,
+      "aim": 0,
+      "evasion": 0,
+      "cargo": 0,
       "metal": 1000,
       "crystal": 2000,
       "oil": 3000
@@ -39,6 +45,9 @@
       "attack": 25,
       "defense": 25,
       "speed": 25,
+      "aim": 0,
+      "evasion": 0,
+      "cargo": 0,
       "metal": 1000,
       "crystal": 2000,
       "oil": 3000
@@ -54,6 +63,9 @@
       "attack": 25,
       "defense": 25,
       "speed": 25,
+      "aim": 0,
+      "evasion": 0,
+      "cargo": 0,
       "metal": 1000,
       "crystal": 2000,
       "oil": 3000
@@ -69,6 +81,9 @@
       "attack": 25,
       "defense": 25,
       "speed": 25,
+      "aim": 0,
+      "evasion": 0,
+      "cargo": 0,
       "metal": 1000,
       "crystal": 2000,
       "oil": 3000
@@ -84,6 +99,9 @@
       "attack": 25,
       "defense": 25,
       "speed": 25,
+      "aim": 0,
+      "evasion": 0,
+      "cargo": 0,
       "metal": 1000,
       "crystal": 2000,
       "oil": 3000
