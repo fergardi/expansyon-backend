@@ -40,10 +40,39 @@ router.post('/register', (req, res) => {
   models.Player.create({
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    image: 'image',
+    metal: 0,
+    crystal: 0,
+    oil: 0,
+    aether: 0,
+    experience: 0,
+    level: 0
   })
   .then((player) => {
     if (player) {
+      models.Ship.findAll()
+      .then((ships) => {
+        ships.forEach((ship) => {
+          player.addShip(ship, { quantity: 0 })
+        })
+      })
+      models.Building.findAll()
+      .then((buildings) => {
+        buildings.forEach((building) => {
+          player.addBuilding(building, { quantity: 0 })
+        })
+      })
+      models.Tower.findAll()
+      .then((towers) => {
+        towers.forEach((tower) => {
+          player.addTower(tower, { quantity: 0 })
+        })
+      })
+      models.Planet.create(factory.build())
+      .then((planet) => {
+        player.addPlanet(planet)
+      })
       var token = jwt.token(player)
       res.status(201).json({ id: player.id, token: token })
     } else {
