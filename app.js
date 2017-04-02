@@ -1,6 +1,7 @@
 var express = require('express')
 var cors = require('cors')
-var logger = require('morgan')
+var morgan = require('morgan')
+var logger = require('./services/logger')
 var cookieParser = require('cookie-parser')
 var methodOverride = require('method-override')
 var bodyParser = require('body-parser')
@@ -14,8 +15,17 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use(cors())
-app.use(logger('dev'))
+app.use(cors({
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}))
+app.use(morgan('common', {
+  stream: {
+    write: (message) => {
+      logger.info(message)
+    }
+  }
+}))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(methodOverride())

@@ -1,3 +1,5 @@
+const logger = require('../services/logger')
+
 const constants = {
   dev: {
     token: 'token',
@@ -10,7 +12,9 @@ const constants = {
       dbname: 'expansyon',
       host: 'localhost',
       dialect: 'mariadb',
-      logging: false
+      logging: (sql) => {
+        logger.info(`[${new Date()}] ${sql}`)
+      }
     },
     paypal: {
       username: 'username',
@@ -34,7 +38,9 @@ const constants = {
       dbname: '',
       host: '',
       dialect: '',
-      logging: false
+      logging: (sql) => {
+        logger.info(`[${new Date()}] ${sql}`)
+      }
     },
     paypal: {
       username: '',
