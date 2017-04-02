@@ -18,7 +18,7 @@
     "model": "Building",
     "data": {
       "name": "building.factory.name",
-      "description": "building.furnace.description",
+      "description": "building.factory.description",
       "image": "https://image.flaticon.com/icons/svg/224/224482.svg",
       "class": "grey",
       "metal": 25,
@@ -33,7 +33,7 @@
     "model": "Building",
     "data": {
       "name": "building.refinery.name",
-      "description": "building.furnace.description",
+      "description": "building.refinery.description",
       "image": "https://image.flaticon.com/icons/svg/351/351722.svg",
       "class": "grey",
       "metal": 25,
@@ -48,7 +48,7 @@
     "model": "Building",
     "data": {
       "name": "building.plant.name",
-      "description": "building.furnace.description",
+      "description": "building.plant.description",
       "image": "https://image.flaticon.com/icons/svg/224/224474.svg",
       "class": "grey",
       "metal": 25,
@@ -63,7 +63,7 @@
     "model": "Building",
     "data": {
       "name": "building.barrier.name",
-      "description": "building.furnace.description",
+      "description": "building.barrier.description",
       "image": "https://image.flaticon.com/icons/svg/222/222563.svg",
       "class": "grey",
       "metal": 25,
@@ -78,7 +78,7 @@
     "model": "Building",
     "data": {
       "name": "building.warehouse.name",
-      "description": "building.furnace.description",
+      "description": "building.warehouse.description",
       "image": "https://image.flaticon.com/icons/svg/351/351720.svg",
       "class": "grey",
       "metal": 25,

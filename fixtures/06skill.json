@@ -13,7 +13,7 @@
     "data": {
       "name": "skill.exploration.name",
       "description": "skill.exploration.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/124/124558.svg",
       "exploration": 1,
       "parent": { "name": "skill.offensive.name" }
     }
@@ -23,7 +23,7 @@
     "data": {
       "name": "skill.fighter.name",
       "description": "skill.fighter.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/292/292364.svg",
       "fighter": 10,
       "parent": { "name": "skill.exploration.name" }
     }
@@ -33,7 +33,7 @@
     "data": {
       "name": "skill.aim.name",
       "description": "skill.aim.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/248/248973.svg",
       "aim": 10,
       "parent": { "name": "skill.fighter.name" }
     }
@@ -43,7 +43,7 @@
     "data": {
       "name": "skill.speed.name",
       "description": "skill.speed.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/263/263381.svg",
       "speed": 10,
       "parent": { "name": "skill.aim.name" }
     }
@@ -53,7 +53,7 @@
     "data": {
       "name": "skill.cruiser.name",
       "description": "skill.cruiser.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/293/293581.svg",
       "cruiser": 10,
       "parent": { "name": "skill.offensive.name" }
     }
@@ -73,7 +73,7 @@
     "data": {
       "name": "skill.defense.name",
       "description": "skill.defense.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/268/268929.svg",
       "defense": 10,
       "parent": { "name": "skill.evasion.name" }
     }
@@ -83,7 +83,7 @@
     "data": {
       "name": "skill.bomber.name",
       "description": "skill.bomber.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/124/124571.svg",
       "bomber": 10,
       "parent": { "name": "skill.offensive.name" }
     }
@@ -93,7 +93,7 @@
     "data": {
       "name": "skill.cargo.name",
       "description": "skill.cargo.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/189/189207.svg",
       "cargo": 10,
       "parent": { "name": "skill.bomber.name" }
     }
@@ -103,7 +103,7 @@
     "data": {
       "name": "skill.attack.name",
       "description": "skill.attack.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/238/238602.svg",
       "attack": 10,
       "parent": { "name": "skill.cargo.name" }
     }
@@ -122,7 +122,7 @@
     "data": {
       "name": "skill.experience.name",
       "description": "skill.experience.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/167/167747.svg",
       "experience": 10,
       "parent": { "name": "skill.utility.name" }
     }
@@ -132,7 +132,7 @@
     "data": {
       "name": "skill.orbiter.name",
       "description": "skill.orbiter.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/124/124541.svg",
       "orbiter": 10,
       "parent": { "name": "skill.experience.name" }
     }
@@ -142,7 +142,7 @@
     "data": {
       "name": "skill.furnace.name",
       "description": "skill.furnace.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/129/129522.svg",
       "furnace": 10,
       "parent": { "name": "skill.orbiter.name" }
     }
@@ -152,7 +152,7 @@
     "data": {
       "name": "skill.metal.name",
       "description": "skill.metal.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/364/364524.svg",
       "metal": 10,
       "parent": { "name": "skill.furnace.name" }
     }
@@ -162,7 +162,7 @@
     "data": {
       "name": "skill.carrier.name",
       "description": "skill.carrier.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/231/231136.svg",
       "carrier": 10,
       "parent": { "name": "skill.utility.name" }
     }
@@ -172,7 +172,7 @@
     "data": {
       "name": "skill.factory.name",
       "description": "skill.factory.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/224/224482.svg",
       "factory": 10,
       "parent": { "name": "skill.carrier.name" }
     }
@@ -182,7 +182,7 @@
     "data": {
       "name": "skill.crystal.name",
       "description": "skill.crystal.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/361/361883.svg",
       "crystal": 10,
       "parent": { "name": "skill.factory.name" }
     }
@@ -192,7 +192,7 @@
     "data": {
       "name": "skill.recycler.name",
       "description": "skill.recycler.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/124/124580.svg",
       "recycler": 10,
       "parent": { "name": "skill.utility.name" }
     }
@@ -202,7 +202,7 @@
     "data": {
       "name": "skill.refinery.name",
       "description": "skill.refinery.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/351/351722.svg",
       "refinery": 10,
       "parent": { "name": "skill.recycler.name" }
     }
@@ -212,7 +212,7 @@
     "data": {
       "name": "skill.oil.name",
       "description": "skill.oil.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/282/282948.svg",
       "oil": 10,
       "parent": { "name": "skill.refinery.name" }
     }
@@ -231,7 +231,7 @@
     "data": {
       "name": "skill.nano.name",
       "description": "skill.nano.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/202/202483.svg",
       "nano": 10,
       "parent": { "name": "skill.defensive.name" }
     }
@@ -241,7 +241,7 @@
     "data": {
       "name": "skill.blaster.name",
       "description": "skill.blaster.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/124/124550.svg",
       "blaster": 10,
       "parent": { "name": "skill.nano.name" }
     }
@@ -251,7 +251,7 @@
     "data": {
       "name": "skill.plant.name",
       "description": "skill.plant.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/224/224474.svg",
       "plant": 10,
       "parent": { "name": "skill.blaster.name" }
     }
@@ -261,7 +261,7 @@
     "data": {
       "name": "skill.energy.name",
       "description": "skill.energy.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/195/195741.svg",
       "energy": 10,
       "parent": { "name": "skill.plant.name" }
     }
@@ -271,7 +271,7 @@
     "data": {
       "name": "skill.railgun.name",
       "description": "skill.railgun.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/124/124549.svg",
       "railgun": 10,
       "parent": { "name": "skill.nano.name" }
     }
@@ -281,7 +281,7 @@
     "data": {
       "name": "skill.barrier.name",
       "description": "skill.barrier.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/222/222563.svg",
       "barrier": 10,
       "parent": { "name": "skill.railgun.name" }
     }
@@ -291,7 +291,7 @@
     "data": {
       "name": "skill.counter.name",
       "description": "skill.counter.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/360/360085.svg",
       "counter": 10,
       "parent": { "name": "skill.barrier.name" }
     }
@@ -301,7 +301,7 @@
     "data": {
       "name": "skill.cannon.name",
       "description": "skill.cannon.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/124/124552.svg",
       "cannon": 10,
       "parent": { "name": "skill.defensive.name" }
     }
@@ -311,7 +311,7 @@
     "data": {
       "name": "skill.warehouse.name",
       "description": "skill.warehouse.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/351/351720.svg",
       "warehouse": 10,
       "parent": { "name": "skill.cannon.name" }
     }
@@ -321,7 +321,7 @@
     "data": {
       "name": "skill.size.name",
       "description": "skill.size.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/184/184647.svg",
       "size": 10,
       "parent": { "name": "skill.warehouse.name" }
     }

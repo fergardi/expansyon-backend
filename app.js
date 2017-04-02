@@ -35,7 +35,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(methodOverride())
 app.use(cookieParser())
 app.use(helmet())
-app.use(compression())
+app.use(compression({
+  level: 9
+}))
 // routes
 app.get('/api/', (req, res) => res.status(418).end())
 app.use('/api/faction', require('./routes/faction'))
