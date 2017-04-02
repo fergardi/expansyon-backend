@@ -16,12 +16,16 @@ module.exports = (sequelize, DataTypes) => {
     oil: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     size: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     energy: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
-    influence: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    nano: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     attack: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     defense: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     speed: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    aim: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    evasion: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    experience: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    counter: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     exploration: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
-    shield: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    cargo: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     storage: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     fighter: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     cruiser: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
@@ -37,10 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     warehouse: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     blaster: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     railgun: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
-    cannon: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
-    turns: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
-    experience: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
-    aether: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
+    cannon: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
   }, {
     classMethods: {
       associate: (models) => {

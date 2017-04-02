@@ -4,48 +4,108 @@
     "data": {
       "tree": "Attack",
       "class": "red",
-      "name": "Offensive",
-      "description": "Attack tree"
+      "name": "skill.offensive.name",
+      "description": "skill.offensive.description"
     }
   },
   {
     "model": "Skill",
     "data": {
-      "name": "Exploration",
-      "description": "Increases the number of explorable Planets by 1",
+      "name": "skill.exploration.name",
+      "description": "skill.exploration.description",
       "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
       "exploration": 1,
-      "parent": { "name": "Offensive" }
+      "parent": { "name": "skill.offensive.name" }
     }
   },
   {
     "model": "Skill",
     "data": {
-      "name": "Fighter",
-      "description": "Increases the number of your Fighters by 10%",
+      "name": "skill.fighter.name",
+      "description": "skill.fighter.description",
       "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
       "fighter": 10,
-      "parent": { "name": "Exploration" }
+      "parent": { "name": "skill.exploration.name" }
     }
   },
   {
     "model": "Skill",
     "data": {
-      "name": "Speed",
-      "description": "Increases the Speed of your Ships by 10%",
+      "name": "skill.aim.name",
+      "description": "skill.aim.description",
       "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
-      "speed": 10,
-      "parent": { "name": "Fighter" }
+      "aim": 10,
+      "parent": { "name": "skill.fighter.name" }
     }
   },
   {
     "model": "Skill",
     "data": {
-      "name": "aASD",
-      "description": "Increases the dsadsa of your Ships by 10%",
+      "name": "skill.speed.name",
+      "description": "skill.speed.description",
       "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
       "speed": 10,
-      "parent": { "name": "Speed" }
+      "parent": { "name": "skill.aim.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.cruiser.name",
+      "description": "skill.cruiser.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "cruiser": 10,
+      "parent": { "name": "skill.offensive.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.evasion.name",
+      "description": "skill.evasion.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "evasion": 10,
+      "parent": { "name": "skill.cruiser.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.defense.name",
+      "description": "skill.defense.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "defense": 10,
+      "parent": { "name": "skill.evasion.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.bomber.name",
+      "description": "skill.bomber.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "bomber": 10,
+      "parent": { "name": "skill.offensive.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.cargo.name",
+      "description": "skill.cargo.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "cargo": 10,
+      "parent": { "name": "skill.bomber.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.attack.name",
+      "description": "skill.attack.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "attack": 10,
+      "parent": { "name": "skill.cargo.name" }
     }
   },
   {
@@ -53,8 +113,108 @@
     "data": {
       "tree": "Utility",
       "class": "yellow",
-      "name": "Utility",
-      "description": "Utility tree"
+      "name": "skill.utility.name",
+      "description": "skill.utility.description"
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.experience.name",
+      "description": "skill.experience.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "experience": 10,
+      "parent": { "name": "skill.utility.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.orbiter.name",
+      "description": "skill.orbiter.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "orbiter": 10,
+      "parent": { "name": "skill.experience.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.furnace.name",
+      "description": "skill.furnace.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "furnace": 10,
+      "parent": { "name": "skill.orbiter.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.metal.name",
+      "description": "skill.metal.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "metal": 10,
+      "parent": { "name": "skill.furnace.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.carrier.name",
+      "description": "skill.carrier.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "carrier": 10,
+      "parent": { "name": "skill.utility.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.factory.name",
+      "description": "skill.factory.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "factory": 10,
+      "parent": { "name": "skill.carrier.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.crystal.name",
+      "description": "skill.crystal.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "crystal": 10,
+      "parent": { "name": "skill.factory.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.recycler.name",
+      "description": "skill.recycler.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "recycler": 10,
+      "parent": { "name": "skill.utility.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.refinery.name",
+      "description": "skill.refinery.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "refinery": 10,
+      "parent": { "name": "skill.recycler.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.oil.name",
+      "description": "skill.oil.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "oil": 10,
+      "parent": { "name": "skill.refinery.name" }
     }
   },
   {
@@ -62,8 +222,108 @@
     "data": {
       "tree": "Defense",
       "class": "green",
-      "name": "Defensive",
-      "description": "Defensive tree"
+      "name": "skill.defensive.name",
+      "description": "skill.defensive.description"
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.nano.name",
+      "description": "skill.nano.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "nano": 10,
+      "parent": { "name": "skill.defensive.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.blaster.name",
+      "description": "skill.blaster.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "blaster": 10,
+      "parent": { "name": "skill.nano.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.plant.name",
+      "description": "skill.plant.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "plant": 10,
+      "parent": { "name": "skill.blaster.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.energy.name",
+      "description": "skill.energy.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "energy": 10,
+      "parent": { "name": "skill.plant.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.railgun.name",
+      "description": "skill.railgun.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "railgun": 10,
+      "parent": { "name": "skill.nano.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.barrier.name",
+      "description": "skill.barrier.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "barrier": 10,
+      "parent": { "name": "skill.railgun.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.counter.name",
+      "description": "skill.counter.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "counter": 10,
+      "parent": { "name": "skill.barrier.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.cannon.name",
+      "description": "skill.cannon.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "cannon": 10,
+      "parent": { "name": "skill.defensive.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.warehouse.name",
+      "description": "skill.warehouse.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "warehouse": 10,
+      "parent": { "name": "skill.cannon.name" }
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "skill.size.name",
+      "description": "skill.size.description",
+      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "size": 10,
+      "parent": { "name": "skill.warehouse.name" }
     }
   }
 ]
