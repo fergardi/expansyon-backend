@@ -173,6 +173,8 @@ router.get('/:playerId', security.secured, (req, res) => {
       queries.push(player.getTowers({ order: 'id ASC' }))
       // relicarium
       queries.push(player.getRelics({ order: 'id ASC' }))
+      // tree
+      queries.push(models.Tree.findAll({ order: 'id ASC' }))
       // research
       queries.push(player.getSkills({ order: 'id ASC' }))
       // achievements
@@ -229,27 +231,31 @@ router.get('/:playerId', security.secured, (req, res) => {
         // relicarium
         info.relicarium = results[5].reduce((total, relic) => total + relic.PlayerRelic.quantity, 0)
         // research
-        info.Skills = results[6]
+        info.Tree = results[6].map((tree) => {
+          var branch = tree.toJSON()
+          branch.Skills = results[7].filter((skill) => skill.TreeId === branch.id)
+          return branch
+        })
         // achievements
-        info.Achievements = results[7]
+        info.Achievements = results[8]
         // temple
-        info.temple = results[8]
+        info.temple = results[9]
         // store
-        info.store = results[9]
+        info.store = results[10]
         // market
-        info.market = results[10]
+        info.market = results[11]
         // senate
-        info.senate = results[11]
+        info.senate = results[12]
         // cantina
-        info.cantina = results[12]
+        info.cantina = results[13]
         // exploration
-        info.Exploration = results[13]
+        info.Exploration = results[14]
         // census
-        info.census = results[14]
+        info.census = results[15]
         // guilds
-        info.guilds = results[15]
+        info.guilds = results[16]
         // referendum
-        info.Referendum = results[16]
+        info.Referendum = results[17]
         // return all info
         res.status(200).json(info)
       })
