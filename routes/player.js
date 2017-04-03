@@ -271,7 +271,7 @@ router.get('/:playerId', security.secured, (req, res) => {
 })
 
 // GET /api/player/playerId/store/relicId
-router.post('/:playerId/store/:relicId', (req, res) => {
+router.post('/:playerId/store/:relicId', security.secured, (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -310,7 +310,7 @@ router.post('/:playerId/store/:relicId', (req, res) => {
 })
 
 // GET /api/player/playerId/market/saleId
-router.post('/:playerId/market/:saleId', (req, res) => {
+router.post('/:playerId/market/:saleId', security.secured, (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -408,7 +408,7 @@ router.post('/:playerId/market/:saleId', (req, res) => {
 })
 
 // GET /api/player/playerId/regret/saleId
-router.put('/:playerId/regret/:saleId', (req, res) => {
+router.put('/:playerId/regret/:saleId', security.secured, (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -612,7 +612,7 @@ router.post('/:playerId/relic/:relicId', security.secured, (req, res) => {
 })
 
 // GET /api/player/playerId/faction/factionId
-router.put('/:playerId/faction/:factionId', (req, res) => {
+router.put('/:playerId/faction/:factionId', security.secured, (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -641,7 +641,7 @@ router.put('/:playerId/faction/:factionId', (req, res) => {
 })
 
 // GET /api/player/playerId/referendum/referendumId
-router.put('/:playerId/referendum/:referendumId', (req, res) => {
+router.put('/:playerId/referendum/:referendumId', security.secured, (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -678,7 +678,7 @@ router.put('/:playerId/referendum/:referendumId', (req, res) => {
 })
 
 // GET /api/player/playerId/ship/shipId/quantity/quantity
-router.put('/:playerId/ship/:shipId/quantity/:quantity', (req, res) => {
+router.put('/:playerId/ship/:shipId/quantity/:quantity', security.secured, (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -714,7 +714,7 @@ router.put('/:playerId/ship/:shipId/quantity/:quantity', (req, res) => {
 })
 
 // GET /api/player/playerId/building/buildingId/quantity/quantity
-router.put('/:playerId/building/:buildingId/quantity/:quantity', (req, res) => {
+router.put('/:playerId/building/:buildingId/quantity/:quantity', security.secured, (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -750,7 +750,7 @@ router.put('/:playerId/building/:buildingId/quantity/:quantity', (req, res) => {
 })
 
 // GET /api/player/playerId/tower/towerId/quantity/quantity
-router.put('/:playerId/tower/:towerId/quantity/:quantity', (req, res) => {
+router.put('/:playerId/tower/:towerId/quantity/:quantity', security.secured, (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -786,7 +786,7 @@ router.put('/:playerId/tower/:towerId/quantity/:quantity', (req, res) => {
 })
 
 // POST /api/player/playerId/message
-router.post('/:playerId/message', (req, res) => {
+router.post('/:playerId/message', security.secured, (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((sender) => {
     if (sender) {
@@ -812,7 +812,7 @@ router.post('/:playerId/message', (req, res) => {
 })
 
 // DELETE /api/player/playerId/message
-router.delete('/:playerId/message/:messageId', (req, res) => {
+router.delete('/:playerId/message/:messageId', security.secured, (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -833,7 +833,7 @@ router.delete('/:playerId/message/:messageId', (req, res) => {
 })
 
 // POST /api/player/playerId/sale/ship
-router.post('/:playerId/sale/ship', (req, res) => {
+router.post('/:playerId/sale/ship', security.secured, (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -873,7 +873,7 @@ router.post('/:playerId/sale/ship', (req, res) => {
 })
 
 // POST /api/player/playerId/sale/relic
-router.post('/:playerId/sale/relic', (req, res) => {
+router.post('/:playerId/sale/relic', security.secured, (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -916,7 +916,7 @@ router.post('/:playerId/sale/relic', (req, res) => {
 })
 
 // POST /api/player/playerId/sale/planet
-router.post('/:playerId/sale/planet', (req, res) => {
+router.post('/:playerId/sale/planet', security.secured, (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
@@ -953,7 +953,7 @@ router.post('/:playerId/sale/planet', (req, res) => {
 })
 
 // PUT /api/player/playerId/tree
-router.put('/:playerId/tree', (req, res) => {
+router.put('/:playerId/tree', security.secured, (req, res) => {
   models.Player.findById(req.params.playerId)
   .then((player) => {
     if (player) {
