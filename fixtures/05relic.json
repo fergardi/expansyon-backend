@@ -6,7 +6,7 @@
       "description": "relic.supernova.description",
       "image": "https://image.flaticon.com/icons/svg/167/167347.svg",
       "class": "orange",
-      "turns": 0,
+      "experience": 0,
       "level": 0,
       "metal": 0,
       "crystal": 0,
@@ -17,8 +17,9 @@
       "tower": false,
       "moon": false,
       "station": false,
+      "aether": 0,
       "store": true,
-      "aether": 5
+      "cost": 5
     }
   },
   {
@@ -28,7 +29,7 @@
       "description": "relic.destroyer.description",
       "image": "https://image.flaticon.com/icons/svg/179/179527.svg",
       "class": "orange",
-      "turns": 0,
+      "experience": 0,
       "level": 0,
       "metal": 0,
       "crystal": 0,
@@ -39,8 +40,9 @@
       "tower": false,
       "moon": false,
       "station": true,
+      "aether": 0,
       "store": true,
-      "aether": 5
+      "cost": 5
     }
   },
   {
@@ -50,7 +52,7 @@
       "description": "relic.gravitron.description",
       "image": "https://image.flaticon.com/icons/svg/139/139705.svg",
       "class": "orange",
-      "turns": 0,
+      "experience": 0,
       "level": 0,
       "metal": 0,
       "crystal": 0,
@@ -61,8 +63,9 @@
       "tower": false,
       "moon": true,
       "station": false,
+      "aether": 0,
       "store": true,
-      "aether": 5
+      "cost": 5
     }
   },
   {
@@ -72,8 +75,8 @@
       "description": "relic.timeturner.description",
       "image": "https://image.flaticon.com/icons/svg/143/143200.svg",
       "class": "orange",
-      "turns": 50,
-      "level": 0,
+      "experience": 0,
+      "level": 1,
       "metal": 0,
       "crystal": 0,
       "oil": 0,
@@ -83,8 +86,9 @@
       "tower": false,
       "moon": false,
       "station": false,
+      "aether": 0,
       "store": false,
-      "aether": 5
+      "cost": 5
     }
   },
   {
@@ -94,7 +98,7 @@
       "description": "relic.shipwreck.description",
       "image": "https://image.flaticon.com/icons/svg/199/199073.svg",
       "class": "orange",
-      "turns": 0,
+      "experience": 0,
       "level": 0,
       "metal": 500000,
       "crystal": 500000,
@@ -105,8 +109,9 @@
       "tower": false,
       "moon": false,
       "station": false,
+      "aether": 0,
       "store": false,
-      "aether": 5
+      "cost": 5
     }
   },
   {
@@ -116,7 +121,7 @@
       "description": "relic.portal.description",
       "image": "https://image.flaticon.com/icons/svg/139/139720.svg",
       "class": "orange",
-      "turns": 0,
+      "experience": 0,
       "level": 0,
       "metal": 0,
       "crystal": 0,
@@ -127,8 +132,9 @@
       "tower": false,
       "moon": false,
       "station": false,
+      "aether": 0,
       "store": false,
-      "aether": 5
+      "cost": 5
     }
   }
 ]

@@ -6,7 +6,6 @@ module.exports = (sequelize, DataTypes) => {
     email: { type: DataTypes.STRING, allowNull: false, validate: { isEmail: true }, unique: { args: true }, defaultValue: '' },
     password: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
     image: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
-    turns: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     metal: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     crystal: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     oil: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },

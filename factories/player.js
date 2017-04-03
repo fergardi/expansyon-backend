@@ -41,7 +41,6 @@ const factory = {
       password: factory.password(),
       name: factory.name(),
       image: factory.image(),
-      turns: factory.number(300),
       metal: factory.number(10000),
       crystal: factory.number(5000),
       oil: factory.number(1000),

@@ -6,7 +6,6 @@
       "password": "test",
       "name": "Fergardi",
       "image": "https://image.flaticon.com/icons/svg/124/124558.svg",
-      "turns": 300,
       "metal": 10000,
       "crystal": 10000,
       "oil": 10000,

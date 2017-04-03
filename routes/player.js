@@ -13,7 +13,7 @@ cron.schedule('30 * * * * *', () => {
   models.Player.findAll()
   .then((players) => {
     players.forEach((player) => {
-      player.turns++
+      // TODO increase resources
       player.save()
     })
     socketio.emit('player', null)
