@@ -145,7 +145,8 @@ router.get('/:playerId', security.secured, (req, res) => {
       { model: models.Ship },
       { model: models.Building },
       { model: models.Tower },
-      // { model: models.Achievement },
+      { model: models.Skill },
+      { model: models.Achievement },
       { model: models.Message, separate: true, as: 'Sent', include: { model: models.Player, as: 'To', attributes: ['name'], include: { model: models.Faction } } },
       { model: models.Message, separate: true, as: 'Received', include: { model: models.Player, as: 'From', attributes: ['name'], include: { model: models.Faction } } }
     ],
