@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     tower: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
     moon: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
     station: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
+    reset: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
     aether: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     store: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
     cost: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
