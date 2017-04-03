@@ -8,12 +8,12 @@ var security = require('../services/security')
 router.get('/', security.secured, (req, res) => {
   models.Sale.findAll({
     include: [
-      { model: models.Player, attributes: ['id', 'name'], include: { model: models.Faction, attributes: ['class'] } },
+      { model: models.Player, attributes: [ 'id', 'name' ], include: { model: models.Faction, attributes: [ 'class' ] } },
       { model: models.Planet },
       { model: models.Relic },
       { model: models.Ship }
     ],
-    order: [ [ 'datetime', 'DESC' ] ]
+    order: [[ 'datetime', 'DESC' ]]
   })
   .then((sale) => {
     res.status(200).json(sale)

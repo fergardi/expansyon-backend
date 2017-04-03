@@ -4,13 +4,14 @@ var router = express.Router()
 
 var security = require('../services/security')
 
-// GET /api/skill
+// GET /api/tree
 router.get('/', security.secured, (req, res) => {
-  models.Skill.findAll({
+  models.Tree.findAll({
+    include: { model: models.Skill, separate: true },
     order: [[ 'id', 'ASC' ]]
   })
-  .then((skills) => {
-    res.status(200).json(skills)
+  .then((trees) => {
+    res.status(200).json(trees)
   })
 })
 

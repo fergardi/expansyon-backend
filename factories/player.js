@@ -32,6 +32,9 @@ const factory = {
   array2 (length, max) {
     return [...new Set([...new Array(length)].map(() => 1 + Math.floor(Math.random() * max)))]
   },
+  array3 (max) {
+    return Array.from(Array(max).keys())
+  },
   build (sequelize) {
     var player = {
       email: factory.email(),
@@ -50,6 +53,7 @@ const factory = {
       Buildings: [1, 2, 3, 4, 5, 6],
       Towers: [1, 2, 3],
       Ships: [1, 2, 3, 4, 5, 6],
+      Skills: factory.array3(33),
       Achievements: factory.array(6),
       GuildId: factory.id(fixtures.guilds),
       FactionId: factory.id(6)

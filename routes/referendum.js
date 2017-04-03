@@ -16,7 +16,7 @@ cron.schedule('0 30 * * * *', () => {
   .then((referendum) => {
     models.Referendum.update({ visible: false, active: false }, { where: {} })
     .then((referendums) => {
-      models.Referendum.findOne({ order: [['votes', 'DESC']] })
+      models.Referendum.findOne({ order: 'votes DESC' })
       .then((referendum) => {
         referendum.active = true
         referendum.save()

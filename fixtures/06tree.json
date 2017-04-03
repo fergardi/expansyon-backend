@@ -1,0 +1,26 @@
+[
+  {
+    "model": "Tree",
+    "data": {
+      "name": "tree.offensive.name",
+      "description": "tree.offensive.description",
+      "class": "red"
+    }
+  },
+  {
+    "model": "Tree",
+    "data": {
+      "name": "tree.utility.name",
+      "description": "tree.utility.description",
+      "class": "yellow"
+    }
+  },
+  {
+    "model": "Tree",
+    "data": {
+      "name": "tree.defensive.name",
+      "description": "tree.defensive.description",
+      "class": "green"
+    }
+  }
+]

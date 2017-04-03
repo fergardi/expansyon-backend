@@ -6,8 +6,6 @@ module.exports = (sequelize, DataTypes) => {
     name: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
     description: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
     image: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
-    class: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
-    tree: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
     min: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     max: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 10 },
     // bonuses
@@ -45,6 +43,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
+        // m2o association
+        models.Skill.belongsTo(models.Tree)
         // m2o self referencing association
         models.Skill.hasMany(models.Skill, { as: 'children', foreignKey: 'parentId' })
         // o2m self referencing association

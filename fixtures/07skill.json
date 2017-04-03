@@ -2,25 +2,17 @@
   {
     "model": "Skill",
     "data": {
-      "tree": "Attack",
-      "class": "red",
-      "name": "skill.offensive.name",
-      "description": "skill.offensive.description"
-    }
-  },
-  {
-    "model": "Skill",
-    "data": {
+      "Tree": { "name": "tree.offensive.name" },
       "name": "skill.exploration.name",
       "description": "skill.exploration.description",
       "image": "https://image.flaticon.com/icons/svg/124/124558.svg",
-      "exploration": 1,
-      "parent": { "name": "skill.offensive.name" }
+      "exploration": 1
     }
   },
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.offensive.name" },
       "name": "skill.fighter.name",
       "description": "skill.fighter.description",
       "image": "https://image.flaticon.com/icons/svg/292/292364.svg",
@@ -31,6 +23,7 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.offensive.name" },
       "name": "skill.aim.name",
       "description": "skill.aim.description",
       "image": "https://image.flaticon.com/icons/svg/248/248973.svg",
@@ -41,6 +34,7 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.offensive.name" },
       "name": "skill.speed.name",
       "description": "skill.speed.description",
       "image": "https://image.flaticon.com/icons/svg/263/263381.svg",
@@ -51,16 +45,18 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.offensive.name" },
       "name": "skill.cruiser.name",
       "description": "skill.cruiser.description",
       "image": "https://image.flaticon.com/icons/svg/293/293581.svg",
       "cruiser": 10,
-      "parent": { "name": "skill.offensive.name" }
+      "parent": { "name": "skill.exploration.name" }
     }
   },
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.offensive.name" },
       "name": "skill.evasion.name",
       "description": "skill.evasion.description",
       "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
@@ -71,6 +67,7 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.offensive.name" },
       "name": "skill.defense.name",
       "description": "skill.defense.description",
       "image": "https://image.flaticon.com/icons/svg/268/268929.svg",
@@ -81,16 +78,18 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.offensive.name" },
       "name": "skill.bomber.name",
       "description": "skill.bomber.description",
       "image": "https://image.flaticon.com/icons/svg/124/124571.svg",
       "bomber": 10,
-      "parent": { "name": "skill.offensive.name" }
+      "parent": { "name": "skill.exploration.name" }
     }
   },
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.offensive.name" },
       "name": "skill.cargo.name",
       "description": "skill.cargo.description",
       "image": "https://image.flaticon.com/icons/svg/189/189207.svg",
@@ -101,6 +100,7 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.offensive.name" },
       "name": "skill.attack.name",
       "description": "skill.attack.description",
       "image": "https://image.flaticon.com/icons/svg/238/238602.svg",
@@ -111,25 +111,17 @@
   {
     "model": "Skill",
     "data": {
-      "tree": "Utility",
-      "class": "yellow",
-      "name": "skill.utility.name",
-      "description": "skill.utility.description"
-    }
-  },
-  {
-    "model": "Skill",
-    "data": {
+      "Tree": { "name": "tree.utility.name" },
       "name": "skill.experience.name",
       "description": "skill.experience.description",
       "image": "https://image.flaticon.com/icons/svg/167/167747.svg",
-      "experience": 10,
-      "parent": { "name": "skill.utility.name" }
+      "experience": 10
     }
   },
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.utility.name" },
       "name": "skill.orbiter.name",
       "description": "skill.orbiter.description",
       "image": "https://image.flaticon.com/icons/svg/124/124541.svg",
@@ -140,6 +132,7 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.utility.name" },
       "name": "skill.furnace.name",
       "description": "skill.furnace.description",
       "image": "https://image.flaticon.com/icons/svg/129/129522.svg",
@@ -150,6 +143,7 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.utility.name" },
       "name": "skill.metal.name",
       "description": "skill.metal.description",
       "image": "https://image.flaticon.com/icons/svg/364/364524.svg",
@@ -160,16 +154,18 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.utility.name" },
       "name": "skill.carrier.name",
       "description": "skill.carrier.description",
       "image": "https://image.flaticon.com/icons/svg/231/231136.svg",
       "carrier": 10,
-      "parent": { "name": "skill.utility.name" }
+      "parent": { "name": "skill.experience.name" }
     }
   },
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.utility.name" },
       "name": "skill.factory.name",
       "description": "skill.factory.description",
       "image": "https://image.flaticon.com/icons/svg/224/224482.svg",
@@ -180,6 +176,7 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.utility.name" },
       "name": "skill.crystal.name",
       "description": "skill.crystal.description",
       "image": "https://image.flaticon.com/icons/svg/361/361883.svg",
@@ -190,16 +187,18 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.utility.name" },
       "name": "skill.recycler.name",
       "description": "skill.recycler.description",
       "image": "https://image.flaticon.com/icons/svg/124/124580.svg",
       "recycler": 10,
-      "parent": { "name": "skill.utility.name" }
+      "parent": { "name": "skill.experience.name" }
     }
   },
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.utility.name" },
       "name": "skill.refinery.name",
       "description": "skill.refinery.description",
       "image": "https://image.flaticon.com/icons/svg/351/351722.svg",
@@ -210,6 +209,7 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.utility.name" },
       "name": "skill.oil.name",
       "description": "skill.oil.description",
       "image": "https://image.flaticon.com/icons/svg/282/282948.svg",
@@ -220,25 +220,17 @@
   {
     "model": "Skill",
     "data": {
-      "tree": "Defense",
-      "class": "green",
-      "name": "skill.defensive.name",
-      "description": "skill.defensive.description"
-    }
-  },
-  {
-    "model": "Skill",
-    "data": {
+      "Tree": { "name": "tree.defensive.name" },
       "name": "skill.nano.name",
       "description": "skill.nano.description",
       "image": "https://image.flaticon.com/icons/svg/202/202483.svg",
-      "nano": 10,
-      "parent": { "name": "skill.defensive.name" }
+      "nano": 10
     }
   },
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.defensive.name" },
       "name": "skill.blaster.name",
       "description": "skill.blaster.description",
       "image": "https://image.flaticon.com/icons/svg/124/124550.svg",
@@ -249,6 +241,7 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.defensive.name" },
       "name": "skill.plant.name",
       "description": "skill.plant.description",
       "image": "https://image.flaticon.com/icons/svg/224/224474.svg",
@@ -259,6 +252,7 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.defensive.name" },
       "name": "skill.energy.name",
       "description": "skill.energy.description",
       "image": "https://image.flaticon.com/icons/svg/195/195741.svg",
@@ -269,6 +263,7 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.defensive.name" },
       "name": "skill.railgun.name",
       "description": "skill.railgun.description",
       "image": "https://image.flaticon.com/icons/svg/124/124549.svg",
@@ -279,6 +274,7 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.defensive.name" },
       "name": "skill.barrier.name",
       "description": "skill.barrier.description",
       "image": "https://image.flaticon.com/icons/svg/222/222563.svg",
@@ -289,6 +285,7 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.defensive.name" },
       "name": "skill.counter.name",
       "description": "skill.counter.description",
       "image": "https://image.flaticon.com/icons/svg/360/360085.svg",
@@ -299,16 +296,18 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.defensive.name" },
       "name": "skill.cannon.name",
       "description": "skill.cannon.description",
       "image": "https://image.flaticon.com/icons/svg/124/124552.svg",
       "cannon": 10,
-      "parent": { "name": "skill.defensive.name" }
+      "parent": { "name": "skill.nano.name" }
     }
   },
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.defensive.name" },
       "name": "skill.warehouse.name",
       "description": "skill.warehouse.description",
       "image": "https://image.flaticon.com/icons/svg/351/351720.svg",
@@ -319,6 +318,7 @@
   {
     "model": "Skill",
     "data": {
+      "Tree": { "name": "tree.defensive.name" },
       "name": "skill.size.name",
       "description": "skill.size.description",
       "image": "https://image.flaticon.com/icons/svg/184/184647.svg",

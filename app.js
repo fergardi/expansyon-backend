@@ -51,6 +51,7 @@ app.use('/api/planet', require('./routes/planet'))
 app.use('/api/sale', require('./routes/sale'))
 app.use('/api/guild', require('./routes/guild'))
 app.use('/api/battle', require('./routes/battle'))
+app.use('/api/tree', require('./routes/tree'))
 app.use('/api/skill', require('./routes/skill'))
 app.use('/api/player', require('./routes/player'))
 // catch 404 and forward to error handler
