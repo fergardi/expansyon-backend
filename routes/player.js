@@ -236,6 +236,7 @@ router.get('/:playerId', security.secured, (req, res) => {
           branch.Skills = results[7].filter((skill) => skill.TreeId === branch.id)
           return branch
         })
+        info.research = player.level - results[7].reduce((total, skill) => total + skill.PlayerSkill.level, 0)
         // achievements
         info.Achievements = results[8]
         // temple
