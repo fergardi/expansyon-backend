@@ -145,8 +145,8 @@ router.get('/:playerId', security.secured, (req, res) => {
       { model: models.Ship },
       { model: models.Building },
       { model: models.Tower },
-      { model: models.Skill },
-      { model: models.Achievement },
+      // { model: models.Skill },
+      // { model: models.Achievement },
       { model: models.Message, separate: true, as: 'Sent', include: { model: models.Player, as: 'To', attributes: ['name'], include: { model: models.Faction } } },
       { model: models.Message, separate: true, as: 'Received', include: { model: models.Player, as: 'From', attributes: ['name'], include: { model: models.Faction } } }
     ],
@@ -173,6 +173,10 @@ router.get('/:playerId', security.secured, (req, res) => {
       queries.push(player.getTowers({ order: 'id ASC' }))
       // relicarium
       queries.push(player.getRelics({ order: 'id ASC' }))
+      // research
+      queries.push(player.getSkills({ order: 'id ASC' }))
+      // achievements
+      queries.push(player.getAchievements({ order: 'id ASC' }))
       // temple
       queries.push(models.Faction.count())
       // store
@@ -224,24 +228,28 @@ router.get('/:playerId', security.secured, (req, res) => {
         info.cannon = results[4][2].PlayerTower.quantity
         // relicarium
         info.relicarium = results[5].reduce((total, relic) => total + relic.PlayerRelic.quantity, 0)
+        // research
+        info.Skills = results[6]
+        // achievements
+        info.Achievements = results[7]
         // temple
-        info.temple = results[6]
+        info.temple = results[8]
         // store
-        info.store = results[7]
+        info.store = results[9]
         // market
-        info.market = results[8]
+        info.market = results[10]
         // senate
-        info.senate = results[9]
+        info.senate = results[11]
         // cantina
-        info.cantina = results[10]
+        info.cantina = results[12]
         // exploration
-        info.Exploration = results[11]
+        info.Exploration = results[13]
         // census
-        info.census = results[12]
+        info.census = results[14]
         // guilds
-        info.guilds = results[13]
+        info.guilds = results[15]
         // referendum
-        info.Referendum = results[14]
+        info.Referendum = results[16]
         // return all info
         res.status(200).json(info)
       })
