@@ -46,9 +46,9 @@ module.exports = (sequelize, DataTypes) => {
         // m2o association
         models.Skill.belongsTo(models.Tree)
         // m2o self referencing association
-        models.Skill.hasMany(models.Skill, { as: 'children', foreignKey: 'parentId' })
+        models.Skill.hasMany(models.Skill, { as: 'Children', foreignKey: 'ParentId' })
         // o2m self referencing association
-        models.Skill.belongsTo(models.Skill, { as: 'parent', foreignKey: 'parentId' })
+        models.Skill.belongsTo(models.Skill, { as: 'Parent', foreignKey: 'ParentId' })
       }
     },
     timestamps: false,
