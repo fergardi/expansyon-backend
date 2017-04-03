@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon ./bin/server.js --debug --ignore './test/*.js'",
+    "dev": "nodemon --debug --ignore ./test ./bin/server.js",
     "test": "mocha --timeout 10000 || exit 0",
     "prod": "cross-env NODE_ENV=production node ./bin/server.js",
     "pm2": "cross-env NODE_ENV=production pm2 start -f ./bin/server.js"
