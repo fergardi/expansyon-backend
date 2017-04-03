@@ -951,4 +951,32 @@ router.post('/:playerId/sale/planet', (req, res) => {
   })
 })
 
+// PUT /api/player/playerId/tree
+router.put('/:playerId/tree', (req, res) => {
+  models.Player.findById(req.params.playerId)
+  .then((player) => {
+    if (player) {
+      player.getSkills()
+      .then((skills) => {
+        if (skills.length > 0 && req.body.tree.length > 0) {
+          var tree = req.body.tree
+          var list = []
+          list = list.concat(tree[0].Skills, tree[1].Skills, tree[2].Skills)
+          skills.forEach((skill) => {
+            skill.PlayerSkill.level = list.find((item) => item.id === skill.id).PlayerSkill.level
+            skill.PlayerSkill.save()
+          })
+          player.save()
+          .then((player) => {
+            socketio.emit('player', player.id)
+            res.status(200).end()
+          })
+        }
+      })
+    } else {
+      res.status(400).end()
+    }
+  })
+})
+
 module.exports = router
