@@ -12,23 +12,14 @@ var server = require('http').Server(app)
 var io = require('./services/socketio').init(server)
 
 // logger
-app.use(morgan('common', {
-  stream: {
-    write: (message) => {
-      logger.info(message)
-    }
-  }
-}))
+app.use(morgan('common', { stream: { write: (message) => logger.info(message) } }))
 // attach socketio to every response
 app.use((req, res, next) => {
   res.io = io
   next()
 })
 // cors
-app.use(cors({
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}))
+app.use(cors({ methods: ['GET', 'POST', 'PUT', 'DELETE'], allowedHeaders: ['Content-Type', 'Authorization'] }))
 // api
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -53,22 +44,6 @@ app.use('/api/tree', require('./routes/tree'))
 app.use('/api/skill', require('./routes/skill'))
 app.use('/api/player', require('./routes/player'))
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
-  var err = new Error('Not Found')
-  err.status = 500
-  next(err)
-})
-// development error handler
-// will print stacktrace
-if (process.env.NODE_ENV === 'development') {
-  app.use((err, req, res, next) => { // eslint-disable-line
-    res.status(500).end()
-  })
-}
-// production error handler
-// no stacktraces leaked to user
-app.use((err, req, res, next) => { // eslint-disable-line
-  res.status(500).end()
-})
+app.use((req, res) => res.status(404).end())
 
 module.exports = { app: app, server: server, socketio: io }
