@@ -12,7 +12,8 @@ router.get('/', security.secured, (req, res) => {
       { model: models.Planet },
       { model: models.Mission },
       { model: models.Ship }
-    ]
+    ],
+    order: [[ 'datetime', 'DESC' ]]
   })
   .then((battle) => {
     res.status(200).json(battle)

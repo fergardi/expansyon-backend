@@ -47,7 +47,8 @@ router.get('/', security.secured, (req, res) => {
         { visible: true },
         { active: false }
       ]
-    }
+    },
+    order: [[ 'id', 'ASC' ]]
   })
   .then((referendums) => {
     res.status(200).json(referendums)

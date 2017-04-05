@@ -136,7 +136,7 @@ router.get('/', security.secured, (req, res) => {
 // GET /api/player/playerId
 router.get('/:playerId', security.secured, (req, res) => {
   models.Player.findOne({
-    where: { id: req.params.playerId },
+    where: { id: parseInt(req.params.playerId) },
     include: [
       { model: models.Guild },
       { model: models.Faction },
@@ -272,10 +272,10 @@ router.get('/:playerId', security.secured, (req, res) => {
 
 // GET /api/player/playerId/store/relicId
 router.post('/:playerId/store/:relicId', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((player) => {
     if (player) {
-      models.Relic.findById(req.params.relicId)
+      models.Relic.findById(parseInt(req.params.relicId))
       .then((relic) => {
         if (relic) {
           if (relic.aether <= player.aether) {
@@ -311,11 +311,11 @@ router.post('/:playerId/store/:relicId', security.secured, (req, res) => {
 
 // GET /api/player/playerId/market/saleId
 router.post('/:playerId/market/:saleId', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((player) => {
     if (player) {
       models.Sale.findOne({
-        where: { id: req.params.saleId },
+        where: { id: parseInt(req.params.saleId) },
         include: [
           { model: models.Player },
           { model: models.Ship },
@@ -409,11 +409,11 @@ router.post('/:playerId/market/:saleId', security.secured, (req, res) => {
 
 // GET /api/player/playerId/regret/saleId
 router.put('/:playerId/regret/:saleId', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((player) => {
     if (player) {
       player.getSales({
-        where: { id: req.params.saleId },
+        where: { id: parseInt(req.params.saleId) },
         include: [
           { model: models.Player },
           { model: models.Ship },
@@ -482,11 +482,11 @@ router.put('/:playerId/regret/:saleId', security.secured, (req, res) => {
 
 // GET /api/player/playerId/relic/relicId
 router.post('/:playerId/relic/:relicId', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((player) => {
     if (player) {
       player.getRelics({
-        where: { id: req.params.relicId }
+        where: { id: parseInt(req.params.relicId) }
       })
       .then((relics) => {
         if (relics.length > 0) {
@@ -561,8 +561,7 @@ router.post('/:playerId/relic/:relicId', security.secured, (req, res) => {
             })
           }
           // generate resources
-          if (relic.turns > 0 || relic.metal > 0 || relic.crystal > 0 || relic.oil > 0 || relic.level > 0) {
-            player.turns += Math.floor(Math.random() * relic.turns)
+          if (relic.metal > 0 || relic.crystal > 0 || relic.oil > 0 || relic.level > 0) {
             player.metal += Math.floor(Math.random() * relic.metal)
             player.crystal += Math.floor(Math.random() * relic.crystal)
             player.oil += Math.floor(Math.random() * relic.oil)
@@ -613,10 +612,10 @@ router.post('/:playerId/relic/:relicId', security.secured, (req, res) => {
 
 // GET /api/player/playerId/faction/factionId
 router.put('/:playerId/faction/:factionId', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((player) => {
     if (player) {
-      models.Faction.findById(req.params.factionId)
+      models.Faction.findById(parseInt(req.params.factionId))
       .then((faction) => {
         if (faction) {
           if (faction.aether <= player.aether) {
@@ -642,10 +641,10 @@ router.put('/:playerId/faction/:factionId', security.secured, (req, res) => {
 
 // GET /api/player/playerId/referendum/referendumId
 router.put('/:playerId/referendum/:referendumId', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((player) => {
     if (player) {
-      models.Referendum.findById(req.params.referendumId)
+      models.Referendum.findById(parseInt(req.params.referendumId))
       .then((referendum) => {
         if (referendum) {
           if (referendum.aether <= player.aether) {
@@ -679,16 +678,16 @@ router.put('/:playerId/referendum/:referendumId', security.secured, (req, res) =
 
 // GET /api/player/playerId/ship/shipId/quantity/quantity
 router.put('/:playerId/ship/:shipId/quantity/:quantity', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((player) => {
     if (player) {
       player.getShips({
-        where: { id: req.params.shipId }
+        where: { id: parseInt(req.params.shipId) }
       })
       .then((ships) => {
-        var quantity = req.params.quantity
         if (ships.length > 0) {
           var ship = ships[0]
+          var quantity = parseInt(req.params.quantity)
           if (ship.metal * quantity <= player.metal && ship.crystal * quantity <= player.crystal && ship.oil * quantity <= player.oil) {
             player.metal -= ship.metal * quantity
             player.crystal -= ship.crystal * quantity
@@ -715,16 +714,16 @@ router.put('/:playerId/ship/:shipId/quantity/:quantity', security.secured, (req,
 
 // GET /api/player/playerId/building/buildingId/quantity/quantity
 router.put('/:playerId/building/:buildingId/quantity/:quantity', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((player) => {
     if (player) {
       player.getBuildings({
-        where: { id: req.params.buildingId }
+        where: { id: parseInt(req.params.buildingId) }
       })
       .then((buildings) => {
-        var quantity = req.params.quantity
         if (buildings.length > 0) {
           var building = buildings[0]
+          var quantity = parseInt(req.params.quantity)
           if (building.metal * quantity <= player.metal && building.crystal * quantity <= player.crystal && building.oil * quantity <= player.oil) {
             player.metal -= building.metal * quantity
             player.crystal -= building.crystal * quantity
@@ -751,16 +750,16 @@ router.put('/:playerId/building/:buildingId/quantity/:quantity', security.secure
 
 // GET /api/player/playerId/tower/towerId/quantity/quantity
 router.put('/:playerId/tower/:towerId/quantity/:quantity', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((player) => {
     if (player) {
       player.getTowers({
-        where: { id: req.params.towerId }
+        where: { id: parseInt(req.params.towerId) }
       })
       .then((towers) => {
-        var quantity = req.params.quantity
         if (towers.length > 0) {
           var tower = towers[0]
+          var quantity = parseInt(req.params.quantity)
           if (tower.metal * quantity <= player.metal && tower.crystal * quantity <= player.crystal && tower.oil * quantity <= player.oil) {
             player.metal -= tower.metal * quantity
             player.crystal -= tower.crystal * quantity
@@ -787,10 +786,10 @@ router.put('/:playerId/tower/:towerId/quantity/:quantity', security.secured, (re
 
 // POST /api/player/playerId/message
 router.post('/:playerId/message', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((sender) => {
     if (sender) {
-      models.Player.findById(req.body.to)
+      models.Player.findById(parseInt(req.body.to))
       .then((receiver) => {
         var message = {
           FromId: sender.id,
@@ -813,11 +812,11 @@ router.post('/:playerId/message', security.secured, (req, res) => {
 
 // DELETE /api/player/playerId/message
 router.delete('/:playerId/message/:messageId', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((player) => {
     if (player) {
       models.Player.getMessages({
-        where: { id: req.params.messageId }
+        where: { id: parseInt(req.params.messageId) }
       })
       .then((message) => {
         player.removeMessage(message)
@@ -834,25 +833,30 @@ router.delete('/:playerId/message/:messageId', security.secured, (req, res) => {
 
 // POST /api/player/playerId/sale/ship
 router.post('/:playerId/sale/ship', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((player) => {
     if (player) {
       player.getShips({
-        where: { id: req.body.shipId }
+        where: { id: parseInt(req.body.shipId) }
       })
       .then((ships) => {
         if (ships.length > 0) {
           var ship = ships[0]
-          if ((req.body.quantity <= ship.PlayerShip.quantity) && (req.body.metal > 0 || req.body.crystal > 0 || req.body.oil > 0 || req.body.aether > 0)) {
-            ship.PlayerShip.quantity -= req.body.quantity
+          var quantity = parseInt(req.body.quantity)
+          var metal = parseInt(req.body.metal)
+          var crystal = parseInt(req.body.crystal)
+          var oil = parseInt(req.body.oil)
+          var aether = parseInt(req.body.aether)
+          if ((quantity <= ship.PlayerShip.quantity) && (metal > 0 || crystal > 0 || oil > 0 || aether > 0)) {
+            ship.PlayerShip.quantity -= quantity
             ship.PlayerShip.save()
             player.save()
             models.Sale.create({
-              quantity: req.body.quantity,
-              metal: req.body.metal,
-              crystal: req.body.crystal,
-              oil: req.body.oil,
-              aether: req.body.aether,
+              quantity: quantity,
+              metal: metal,
+              crystal: crystal,
+              oil: oil,
+              aether: aether,
               ShipId: ship.id,
               PlayerId: player.id
             })
@@ -874,28 +878,33 @@ router.post('/:playerId/sale/ship', security.secured, (req, res) => {
 
 // POST /api/player/playerId/sale/relic
 router.post('/:playerId/sale/relic', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((player) => {
     if (player) {
       player.getRelics({
-        where: { id: req.body.relicId }
+        where: { id: parseInt(req.body.relicId) }
       })
       .then((relics) => {
         if (relics.length > 0) {
           var relic = relics[0]
-          if ((req.body.quantity <= relic.PlayerRelic.quantity) && (req.body.metal > 0 || req.body.crystal > 0 || req.body.oil > 0 || req.body.aether > 0)) {
-            relic.PlayerRelic.quantity -= req.body.quantity
+          var quantity = parseInt(req.body.quantity)
+          var metal = parseInt(req.body.metal)
+          var crystal = parseInt(req.body.crystal)
+          var oil = parseInt(req.body.oil)
+          var aether = parseInt(req.body.aether)
+          if ((quantity <= relic.PlayerRelic.quantity) && (metal > 0 || crystal > 0 || oil > 0 || aether > 0)) {
+            relic.PlayerRelic.quantity -= quantity
             relic.PlayerRelic.save()
             if (relic.PlayerRelic.quantity <= 0) {
               player.removeRelic(relic)
               player.save()
             }
             models.Sale.create({
-              quantity: req.body.quantity,
-              metal: req.body.metal,
-              crystal: req.body.crystal,
-              oil: req.body.oil,
-              aether: req.body.aether,
+              quantity: quantity,
+              metal: metal,
+              crystal: crystal,
+              oil: oil,
+              aether: aether,
               RelicId: relic.id,
               PlayerId: player.id
             })
@@ -917,22 +926,26 @@ router.post('/:playerId/sale/relic', security.secured, (req, res) => {
 
 // POST /api/player/playerId/sale/planet
 router.post('/:playerId/sale/planet', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((player) => {
     if (player) {
       player.getPlanets({
-        where: { id: req.body.planetId }
+        where: { id: parseInt(req.body.planetId) }
       })
       .then((planets) => {
         if (planets.length > 0) {
           var planet = planets[0]
-          if (req.body.metal > 0 || req.body.crystal > 0 || req.body.oil > 0 || req.body.aether > 0) {
+          var metal = parseInt(req.body.metal)
+          var crystal = parseInt(req.body.crystal)
+          var oil = parseInt(req.body.oil)
+          var aether = parseInt(req.body.aether)
+          if (metal > 0 || crystal > 0 || oil > 0 || aether > 0) {
             models.Sale.create({
               quantity: 0,
-              metal: req.body.metal,
-              crystal: req.body.crystal,
-              oil: req.body.oil,
-              aether: req.body.aether,
+              metal: metal,
+              crystal: crystal,
+              oil: oil,
+              aether: aether,
               PlanetId: planet.id,
               PlayerId: player.id
             })
@@ -954,7 +967,7 @@ router.post('/:playerId/sale/planet', security.secured, (req, res) => {
 
 // PUT /api/player/playerId/tree
 router.put('/:playerId/tree', security.secured, (req, res) => {
-  models.Player.findById(req.params.playerId)
+  models.Player.findById(parseInt(req.params.playerId))
   .then((player) => {
     if (player) {
       player.getSkills()

@@ -6,7 +6,9 @@ var security = require('../services/security')
 
 // GET /api/ship
 router.get('/', security.secured, (req, res) => {
-  models.Ship.findAll()
+  models.Ship.findAll({
+    order: [[ 'id', 'ASC' ]]
+  })
   .then((ships) => {
     res.status(200).json(ships)
   })

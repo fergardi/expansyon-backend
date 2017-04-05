@@ -7,7 +7,8 @@ var security = require('../services/security')
 // GET /api/guild
 router.get('/', security.secured, (req, res) => {
   models.Guild.findAll({
-    include: { model: models.Player, include: { model: models.Planet }, separate: true }
+    include: { model: models.Player, include: { model: models.Planet }, separate: true },
+    order: [[ 'id', 'ASC' ]]
   })
   .then((guilds) => {
     var info = []

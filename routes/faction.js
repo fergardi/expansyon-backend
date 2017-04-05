@@ -6,7 +6,9 @@ var security = require('../services/security')
 
 // GET /api/faction
 router.get('/', security.secured, (req, res) => {
-  models.Faction.findAll()
+  models.Faction.findAll({
+    order: [[ 'id', 'ASC' ]]
+  })
   .then((factions) => {
     res.status(200).json(factions)
   })

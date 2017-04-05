@@ -28,7 +28,10 @@ cron.schedule('0 30 * * * *', () => {
 
 // GET /api/mission
 router.get('/', security.secured, (req, res) => {
-  models.Mission.findAll({ where: { visible: true } })
+  models.Mission.findAll({
+    where: { visible: true },
+    order: [[ 'id', 'ASC' ]]
+  })
   .then((missions) => {
     res.status(200).json(missions)
   })

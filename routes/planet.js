@@ -29,7 +29,9 @@ cron.schedule('0 * * * * *', () => {
 
 // GET /api/planet
 router.get('/', security.secured, (req, res) => {
-  models.Planet.findAll()
+  models.Planet.findAll({
+    order: [[ 'id', 'ASC' ]]
+  })
   .then((planets) => {
     res.status(200).json(planets)
   })
@@ -38,7 +40,7 @@ router.get('/', security.secured, (req, res) => {
 // GET /api/planet/id
 router.get('/:id', security.secured, (req, res) => {
   models.Player.findOne({
-    where: { id: req.params.id },
+    where: { id: parseInt(req.params.id) },
     include: { model: models.Planet }
   })
   .then((player) => {

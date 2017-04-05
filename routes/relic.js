@@ -6,7 +6,9 @@ var security = require('../services/security')
 
 // GET /api/relic
 router.get('/', security.secured, (req, res) => {
-  models.Relic.findAll()
+  models.Relic.findAll({
+    order: [[ 'id', 'ASC' ]]
+  })
   .then((relics) => {
     res.status(200).json(relics)
   })
@@ -15,7 +17,8 @@ router.get('/', security.secured, (req, res) => {
 // GET /api/relic/store
 router.get('/store', security.secured, (req, res) => {
   models.Relic.findAll({
-    where: { store: true }
+    where: { store: true },
+    order: [[ 'id', 'ASC' ]]
   })
   .then((relics) => {
     res.status(200).json(relics)
