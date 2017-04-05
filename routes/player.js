@@ -2,6 +2,7 @@ var models = require('../models')
 var express = require('express')
 var router = express.Router()
 
+const constants = require('../config/constants')
 var socketio = require('../services/socketio').io()
 var security = require('../services/security')
 var jwt = require('../services/jwt')
@@ -20,6 +21,12 @@ cron.schedule('*/5 * * * * *', () => {
   .then((players) => {
     var queries = []
     players.forEach((player) => {
+      if (player.experience >= constants.up) {
+        player.experience = 0
+        if (player.level < constants.cap) {
+          player.level++
+        }
+      }
       var metal = 0
       var crystal = 0
       var oil = 0
@@ -312,6 +319,10 @@ router.get('/:playerId', security.secured, (req, res) => {
         info.guilds = results[16]
         // referendum
         info.Referendum = results[17]
+        // extra
+        info.secure = info.warehouse * 100
+        info.up = constants.up
+        info.cap = constants.cap
         // return all info
         res.status(200).json(info)
       })
