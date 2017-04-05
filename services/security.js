@@ -7,10 +7,14 @@ exports.secured = (req, res, next) => {
     return res.status(403).end()
   }
   var token = req.headers.authorization.split(' ')[1]
-  var payload = jwt.decode(token, config.token, true)
-  if (payload.exp <= moment().unix()) {
+  try {
+    var payload = jwt.decode(token, config.token, false)
+    if (payload.exp <= moment().unix()) {
+      return res.status(401).end()
+    }
+    req.user = payload.sub
+  } catch (err) {
     return res.status(401).end()
   }
-  req.user = payload.sub
   next()
 }
