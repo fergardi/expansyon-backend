@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     timestamps: true,
-    createdAt: 'start',
+    createdAt: 'begin',
     updatedAt: 'end',
     freezeTableName: true
   })

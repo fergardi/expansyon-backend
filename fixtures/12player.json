@@ -13,10 +13,28 @@
       "level": 1,
       "aether": 5000,
       "Planets": [1, 2],
-      "Ships": [1, 2, 3, 4, 5, 6],
+      "Buildings": [
+        { "id": 1, "_through": { "quantity": 100 } },
+        { "id": 2, "_through": { "quantity": 100 } },
+        { "id": 3, "_through": { "quantity": 100 } },
+        { "id": 4, "_through": { "quantity": 100 } },
+        { "id": 5, "_through": { "quantity": 100 } },
+        { "id": 6, "_through": { "quantity": 100 } }
+      ],
+      "Towers": [
+        { "id": 1, "_through": { "quantity": 100 } },
+        { "id": 2, "_through": { "quantity": 100 } },
+        { "id": 3, "_through": { "quantity": 100 } }
+      ],
+      "Ships": [
+        { "id": 1, "_through": { "quantity": 100 } },
+        { "id": 2, "_through": { "quantity": 100 } },
+        { "id": 3, "_through": { "quantity": 100 } },
+        { "id": 4, "_through": { "quantity": 100 } },
+        { "id": 5, "_through": { "quantity": 100 } },
+        { "id": 6, "_through": { "quantity": 100 } }
+      ],
       "Relics": [1, 2, 3, 4, 5, 6],
-      "Buildings": [1, 2, 3, 4, 5, 6],
-      "Towers": [1, 2, 3],
       "Achievements": [1, 2, 3, 4, 5, 6, 7, 8, 9],
       "GuildId": 1,
       "FactionId": 1,

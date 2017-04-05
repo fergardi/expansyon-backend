@@ -49,9 +49,27 @@ const factory = {
       level: 1,
       Relics: [],
       Planets: factory.array2(2, fixtures.planets),
-      Buildings: [1, 2, 3, 4, 5, 6],
-      Towers: [1, 2, 3],
-      Ships: [1, 2, 3, 4, 5, 6],
+      Buildings: [
+        { id: 1, _through: { quantity: factory.number(10) } },
+        { id: 2, _through: { quantity: factory.number(10) } },
+        { id: 3, _through: { quantity: factory.number(10) } },
+        { id: 4, _through: { quantity: factory.number(10) } },
+        { id: 5, _through: { quantity: factory.number(10) } },
+        { id: 6, _through: { quantity: factory.number(10) } }
+      ],
+      Towers: [
+        { id: 1, _through: { quantity: factory.number(10) } },
+        { id: 2, _through: { quantity: factory.number(10) } },
+        { id: 3, _through: { quantity: factory.number(10) } }
+      ],
+      Ships: [
+        { id: 1, _through: { quantity: factory.number(10) } },
+        { id: 2, _through: { quantity: factory.number(10) } },
+        { id: 3, _through: { quantity: factory.number(10) } },
+        { id: 4, _through: { quantity: factory.number(10) } },
+        { id: 5, _through: { quantity: factory.number(10) } },
+        { id: 6, _through: { quantity: factory.number(10) } }
+      ],
       Skills: factory.array3(33),
       Achievements: factory.array(6),
       GuildId: factory.id(fixtures.guilds),

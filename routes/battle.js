@@ -13,7 +13,7 @@ router.get('/', security.secured, (req, res) => {
       { model: models.Mission },
       { model: models.Ship }
     ],
-    order: [[ 'datetime', 'DESC' ]]
+    order: [[ 'end', 'DESC' ]]
   })
   .then((battle) => {
     res.status(200).json(battle)
