@@ -73,8 +73,8 @@ const factory = {
       planet.description = 'planet.size.description'
     }
   },
-  number (max) {
-    return Math.floor(Math.random() * max)
+  number (min, max) {
+    return min + Math.floor(Math.random() * (max - min))
   },
   boolean () {
     return Math.floor(Math.random() * 10) >= 5
@@ -85,19 +85,21 @@ const factory = {
   max (planet, number) {
     return number === Math.max(planet.size, planet.metal, planet.crystal, planet.oil, planet.energy, planet.influence)
   },
-  build (sequelize) {
+  build (main, sequelize) {
+    var min = main ? 40 : 20
     var planet = {
       name: factory.word(),
       image: factory.image(),
-      size: factory.number(80),
-      metal: factory.number(80),
-      crystal: factory.number(80),
-      oil: factory.number(80),
-      energy: factory.number(80),
-      influence: factory.number(80),
+      metal: factory.number(min, 80),
+      crystal: factory.number(min, 80),
+      oil: factory.number(min, 80),
+      size: factory.number(min, 80),
+      energy: factory.number(min, 80),
+      influence: factory.number(min, 80),
       moon: factory.boolean(),
       station: factory.boolean(),
-      visible: false
+      visible: false,
+      main: main
     }
     factory.type(planet)
     if (sequelize) {
@@ -105,10 +107,10 @@ const factory = {
     }
     return planet
   },
-  bulk (quantity, sequelize) {
+  bulk (quantity, main, sequelize) {
     var planets = []
     for (var i = 0; i < quantity; i++) {
-      planets.push(factory.build(sequelize))
+      planets.push(factory.build(main, sequelize))
     }
     return planets
   }

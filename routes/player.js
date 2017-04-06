@@ -11,73 +11,83 @@ const factory = require('../factories/planet')
 
 // add resources
 cron.schedule('*/5 * * * * *', () => {
-  models.Player.findAll({
-    include: [
-      { model: models.Planet },
-      { model: models.Building },
-      { model: models.Skill }
-    ]
+  models.Referendum.findOne({
+    where: { active: true }
   })
-  .then((players) => {
-    var queries = []
-    players.forEach((player) => {
-      if (player.experience >= constants.up) {
-        player.experience = 0
-        if (player.level < constants.cap) {
-          player.level++
+  .then((referendum) => {
+    var metalBonus = 1.0
+    var crystalBonus = 1.0
+    var oilBonus = 1.0
+    if (referendum) {
+      metalBonus += referendum.metal / 100
+      crystalBonus += referendum.crystal / 100
+      oilBonus += referendum.oil / 100
+    }
+    models.Player.findAll({
+      include: [
+        { model: models.Planet },
+        { model: models.Building },
+        { model: models.Skill }
+      ]
+    })
+    .then((players) => {
+      var queries = []
+      players.forEach((player) => {
+        var metal = 0
+        var crystal = 0
+        var oil = 0
+        if (player.experience >= constants.up) {
+          player.experience = 0
+          if (player.level < constants.cap) {
+            player.level++
+          }
         }
-      }
-      var metal = 0
-      var crystal = 0
-      var oil = 0
-      var metalBonus = 1.0
-      var crystalBonus = 1.0
-      var oilBonus = 1.0
-      player.getPlanets()
-      .then((planets) => {
-        planets.forEach((planet) => {
-          metal += planet.metal
-          crystal += planet.crystal
-          oil += planet.oil
-        })
-        player.getSkills()
-        .then((skills) => {
-          skills.forEach((skill) => {
-            metalBonus += skill.metal * skill.PlayerSkill.level / 100
-            crystalBonus += skill.crystal * skill.PlayerSkill.level / 100
-            oilBonus += skill.oil * skill.PlayerSkill.level / 100
+        player.getPlanets()
+        .then((planets) => {
+          planets.forEach((planet) => {
+            metal += planet.metal
+            crystal += planet.crystal
+            oil += planet.oil
           })
-        })
-        .then(() => {
-          player.getBuildings()
-          .then((buildings) => {
-            buildings.forEach((building) => {
-              switch (building.name) {
-                case 'building.furnace.name':
-                  metalBonus += building.PlayerBuilding.quantity / 100
-                  break
-                case 'building.factory.name':
-                  crystalBonus += building.PlayerBuilding.quantity / 100
-                  break
-                case 'building.refinery.name':
-                  oilBonus += building.PlayerBuilding.quantity / 100
-                  break
-              }
+          player.getSkills()
+          .then((skills) => {
+            skills.forEach((skill) => {
+              metalBonus += skill.metal * skill.PlayerSkill.level / 100
+              crystalBonus += skill.crystal * skill.PlayerSkill.level / 100
+              oilBonus += skill.oil * skill.PlayerSkill.level / 100
             })
-            player.metal += Math.floor(metal * metalBonus)
-            player.crystal += Math.floor(crystal * crystalBonus)
-            player.oil += Math.floor(oil * oilBonus)
-            queries.push(player.save())
+          })
+          .then(() => {
+            player.getBuildings()
+            .then((buildings) => {
+              buildings.forEach((building) => {
+                switch (building.name) {
+                  case 'building.furnace.name':
+                    metalBonus += building.PlayerBuilding.quantity / 100
+                    break
+                  case 'building.factory.name':
+                    crystalBonus += building.PlayerBuilding.quantity / 100
+                    break
+                  case 'building.refinery.name':
+                    oilBonus += building.PlayerBuilding.quantity / 100
+                    break
+                }
+              })
+              player.metal += Math.floor(metal * metalBonus)
+              player.crystal += Math.floor(crystal * crystalBonus)
+              player.oil += Math.floor(oil * oilBonus)
+              queries.push(player.save())
+            })
           })
         })
       })
-    })
-    Promise.all(queries)
-    .then((result) => {
-      socketio.emit('player', null)
-    })
-    .catch((err) => {
-      console.error(err)
+      Promise.all(queries)
+      .then((result) => {
+        socketio.emit('player', null)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
     })
   })
 })

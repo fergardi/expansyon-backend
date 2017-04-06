@@ -12,27 +12,27 @@
       "experience": 1000,
       "level": 1,
       "aether": 5000,
-      "Planets": [1, 2],
+      "Planets": [1],
       "Buildings": [
-        { "id": 1, "_through": { "quantity": 100 } },
-        { "id": 2, "_through": { "quantity": 100 } },
-        { "id": 3, "_through": { "quantity": 100 } },
-        { "id": 4, "_through": { "quantity": 100 } },
-        { "id": 5, "_through": { "quantity": 100 } },
-        { "id": 6, "_through": { "quantity": 100 } }
+        { "id": 1, "_through": { "quantity": 10 } },
+        { "id": 2, "_through": { "quantity": 10 } },
+        { "id": 3, "_through": { "quantity": 10 } },
+        { "id": 4, "_through": { "quantity": 10 } },
+        { "id": 5, "_through": { "quantity": 10 } },
+        { "id": 6, "_through": { "quantity": 10 } }
       ],
       "Towers": [
-        { "id": 1, "_through": { "quantity": 100 } },
-        { "id": 2, "_through": { "quantity": 100 } },
-        { "id": 3, "_through": { "quantity": 100 } }
+        { "id": 1, "_through": { "quantity": 10 } },
+        { "id": 2, "_through": { "quantity": 10 } },
+        { "id": 3, "_through": { "quantity": 10 } }
       ],
       "Ships": [
-        { "id": 1, "_through": { "quantity": 100 } },
-        { "id": 2, "_through": { "quantity": 100 } },
-        { "id": 3, "_through": { "quantity": 100 } },
-        { "id": 4, "_through": { "quantity": 100 } },
-        { "id": 5, "_through": { "quantity": 100 } },
-        { "id": 6, "_through": { "quantity": 100 } }
+        { "id": 1, "_through": { "quantity": 10 } },
+        { "id": 2, "_through": { "quantity": 10 } },
+        { "id": 3, "_through": { "quantity": 10 } },
+        { "id": 4, "_through": { "quantity": 10 } },
+        { "id": 5, "_through": { "quantity": 10 } },
+        { "id": 6, "_through": { "quantity": 10 } }
       ],
       "Relics": [1, 2, 3, 4, 5, 6],
       "Achievements": [1, 2, 3, 4, 5, 6, 7, 8, 9],

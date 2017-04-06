@@ -2,27 +2,30 @@ var models = require('../models')
 var express = require('express')
 var router = express.Router()
 
+const constants = require('../config/constants')
 var socketio = require('../services/socketio').io()
 var security = require('../services/security')
 var cron = require('../services/cron')
 var _ = require('lodash')
 var factory = require('../factories/planet')
 
-const EXPLORATION = 12
-
 // add planet
-cron.schedule('0 * * * * *', () => {
+cron.schedule('*/15 * * * * *', () => {
   models.Planet.create(factory.build())
   .then((planet) => {
-    models.Planet.findAll()
+    models.Planet.findAll({
+      where: { main: false }
+    })
     .then((planets) => {
-      planets = _.shuffle(planets)
-      planets.forEach((planet, index) => {
-        planet.visible = index < EXPLORATION
-        planet.save()
-      })
-      socketio.emit('player', null)
-      socketio.emit('exploration')
+      if (planets.length > 0) {
+        planets = _.shuffle(planets)
+        planets.forEach((planet, index) => {
+          planet.visible = index < constants.exploration
+          planet.save()
+        })
+        socketio.emit('player', null)
+        socketio.emit('exploration')
+      }
     })
   })
 })

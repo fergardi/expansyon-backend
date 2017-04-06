@@ -48,7 +48,7 @@ const factory = {
       aether: factory.number(5),
       level: 1,
       Relics: [],
-      Planets: factory.array2(2, fixtures.planets),
+      Planets: [],
       Buildings: [
         { id: 1, _through: { quantity: factory.number(10) } },
         { id: 2, _through: { quantity: factory.number(10) } },
@@ -70,7 +70,7 @@ const factory = {
         { id: 5, _through: { quantity: factory.number(10) } },
         { id: 6, _through: { quantity: factory.number(10) } }
       ],
-      Skills: factory.array3(33),
+      Skills: factory.array3(30),
       Achievements: factory.array(6),
       GuildId: factory.id(fixtures.guilds),
       FactionId: factory.id(6)
@@ -83,7 +83,9 @@ const factory = {
   bulk (quantity, sequelize) {
     var players = []
     for (var i = 0; i < quantity; i++) {
-      players.push(factory.build(sequelize))
+      var player = factory.build(sequelize)
+      if (sequelize) player.data.Planets = [i + 2]
+      players.push(player)
     }
     return players
   }
