@@ -1,8 +1,13 @@
 {
   "name": "expansyon",
   "version": "1.0.0",
+  "engines": {
+    "node": "6.9.x",
+    "npm": "3.10.x"
+  },
   "private": true,
   "scripts": {
+    "start": "cross-env NODE_ENV=production node ./bin/server.js",
     "dev": "nodemon --debug --ignore ./test ./bin/server.js",
     "test": "mocha --sort --timeout 10000 || exit 0",
     "prod": "cross-env NODE_ENV=production node ./bin/server.js",
