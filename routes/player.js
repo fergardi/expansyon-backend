@@ -141,7 +141,7 @@ router.post('/register', (req, res) => {
           player.addTower(tower, { quantity: 0 })
         })
       })
-      models.Planet.create(factory.build())
+      models.Planet.create(factory.build(true))
       .then((planet) => {
         player.addPlanet(planet)
       })
