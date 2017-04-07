@@ -36,11 +36,9 @@ cron.schedule('*/5 * * * * *', () => {
         var metal = 0
         var crystal = 0
         var oil = 0
-        if (player.experience >= constants.up) {
-          player.experience = 0
-          if (player.level < constants.cap) {
-            player.level++
-          }
+        if (player.experience / (constants.up * player.level) >= 1) {
+          player.level += player.experience / (constants.up * player.level)
+          player.experience = player.experience % (constants.up * player.level)
         }
         player.getPlanets()
         .then((planets) => {
