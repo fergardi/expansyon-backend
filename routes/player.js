@@ -634,6 +634,26 @@ router.post('/:playerId/relic/:relicId', security.secured, (req, res) => {
               }
             })
           }
+          // main planet
+          if (relic.main) {
+            player.getPlanets({
+              where: { main: false }
+            })
+            .then((planets) => {
+              if (planets.length > 0) {
+                var planet = planets[Math.floor(Math.random() * planets.length)]
+                planet.main = true
+                planet.save()
+                .then((planet) => {
+                  socketio.emit('player', player.id)
+                  res.status(200).end()
+                })
+              } else {
+                socketio.emit('player', player.id)
+                res.status(400).end()
+              }
+            })
+          }
           // generate resources
           if (relic.metal > 0 || relic.crystal > 0 || relic.oil > 0 || relic.level > 0) {
             player.metal += Math.floor(Math.random() * relic.metal)
@@ -644,6 +664,48 @@ router.post('/:playerId/relic/:relicId', security.secured, (req, res) => {
             .then((player) => {
               socketio.emit('player', player.id)
               res.status(200).end()
+            })
+          }
+          // generate experience
+          if (relic.experience > 0) {
+            player.experience += Math.floor(Math.random() * relic.experience)
+            if (player.experience / (constants.up * player.level) >= 1) {
+              player.level += player.experience / (constants.up * player.level)
+              player.experience = player.experience % (constants.up * player.level)
+            }
+            player.save()
+            .then((player) => {
+              socketio.emit('player', player.id)
+              res.status(200).end()
+            })
+          }
+          // generate level
+          if (relic.level > 0) {
+            player.level += relic.level
+            player.save()
+            .then((player) => {
+              socketio.emit('player', player.id)
+              res.status(200).end()
+            })
+          }
+          // reset skills
+          if (relic.reset) {
+            player.getSkills()
+            .then((skills) => {
+              if (skills.length > 0) {
+                skills.forEach((skill) => {
+                  skill.PlayerSkill.level = 0
+                  skill.PlayerSkill.save()
+                })
+                player.save()
+                .then((player) => {
+                  socketio.emit('player', player.id)
+                  res.status(200).end()
+                })
+              } else {
+                socketio.emit('player', player.id)
+                res.status(400).end()
+              }
             })
           }
           // create new ships
