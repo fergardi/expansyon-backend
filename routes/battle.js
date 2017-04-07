@@ -52,6 +52,7 @@ router.post('/', security.secured, (req, res) => {
             })
           })
           .catch((error) => {
+            console.error(error)
             res.status(400).end()
           })
         } else {
