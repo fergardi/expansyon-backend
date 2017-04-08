@@ -20,8 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     reset: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
     main: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
     aether: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
-    store: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
-    cost: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
+    store: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false }
   }, {
     timestamps: false,
     freezeTableName: true

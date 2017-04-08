@@ -1,6 +1,6 @@
 const fixtures = {
   players: 10,
-  planets: 11,
+  planets: 20,
   messages: 10,
   sales: 10,
   battles: 0,

@@ -10,7 +10,7 @@ var cron = require('../services/cron')
 const factory = require('../factories/planet')
 
 // add resources
-cron.schedule('*/5 * * * * *', () => {
+cron.schedule('*/10 * * * * *', () => {
   models.Referendum.findOne({
     where: { active: true }
   })
@@ -659,7 +659,7 @@ router.post('/:playerId/relic/:relicId', security.secured, (req, res) => {
             player.metal += Math.floor(Math.random() * relic.metal)
             player.crystal += Math.floor(Math.random() * relic.crystal)
             player.oil += Math.floor(Math.random() * relic.oil)
-            player.level += Math.floor(Math.random() * relic.level)
+            player.level += relic.level
             player.save()
             .then((player) => {
               socketio.emit('player', player.id)
@@ -710,32 +710,55 @@ router.post('/:playerId/relic/:relicId', security.secured, (req, res) => {
           }
           // create new ships
           if (relic.ship) {
-            // TODO
-            player.save()
-            .then((player) => {
-              socketio.emit('player', player.id)
-              res.status(200).end()
+            player.getShips()
+            .then((ships) => {
+              if (ships && ships.length > 0) {
+                ships.forEach((ship) => {
+                  ship.PlayerShip.quantity += Math.floor(Math.random() * 100)
+                  ship.PlayerShip.save()
+                })
+              }
+              player.save()
+              .then((player) => {
+                socketio.emit('player', player.id)
+                res.status(200).end()
+              })
             })
           }
           // create new buildings
           if (relic.building) {
-            // TODO
-            player.save()
-            .then((player) => {
-              socketio.emit('player', player.id)
-              res.status(200).end()
+            player.getBuildings()
+            .then((buildings) => {
+              if (buildings && buildings.length > 0) {
+                buildings.forEach((building) => {
+                  building.PlayerBuilding.quantity += Math.floor(Math.random() * 100)
+                  building.PlayerBuilding.save()
+                })
+              }
+              player.save()
+              .then((player) => {
+                socketio.emit('player', player.id)
+                res.status(200).end()
+              })
             })
           }
           // create new towers
           if (relic.tower) {
-            // TODO
-            player.save()
-            .then((player) => {
-              socketio.emit('player', player.id)
-              res.status(200).end()
+            player.getTowers()
+            .then((towers) => {
+              if (towers && towers.length > 0) {
+                towers.forEach((tower) => {
+                  tower.PlayerTower.quantity += Math.floor(Math.random() * 100)
+                  tower.PlayerTower.save()
+                })
+              }
+              player.save()
+              .then((player) => {
+                socketio.emit('player', player.id)
+                res.status(200).end()
+              })
             })
           }
-          // fallback
         } else {
           res.status(400).end()
         }

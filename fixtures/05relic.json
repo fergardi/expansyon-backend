@@ -2,8 +2,8 @@
   {
     "model": "Relic",
     "data": {
-      "name": "relic.supernova.name",
-      "description": "relic.supernova.description",
+      "name": "relic.planet.name",
+      "description": "relic.planet.description",
       "image": "https://image.flaticon.com/icons/svg/167/167347.svg",
       "class": "orange",
       "experience": 0,
@@ -20,15 +20,14 @@
       "reset": false,
       "aether": 0,
       "main": false,
-      "store": true,
-      "cost": 5
+      "store": true
     }
   },
   {
     "model": "Relic",
     "data": {
-      "name": "relic.star.name",
-      "description": "relic.star.description",
+      "name": "relic.station.name",
+      "description": "relic.station.description",
       "image": "https://image.flaticon.com/icons/svg/179/179527.svg",
       "class": "orange",
       "experience": 0,
@@ -45,15 +44,14 @@
       "reset": false,
       "aether": 0,
       "main": false,
-      "store": true,
-      "cost": 5
+      "store": true
     }
   },
   {
     "model": "Relic",
     "data": {
-      "name": "relic.gravitron.name",
-      "description": "relic.gravitron.description",
+      "name": "relic.moon.name",
+      "description": "relic.moon.description",
       "image": "https://image.flaticon.com/icons/svg/139/139705.svg",
       "class": "orange",
       "experience": 0,
@@ -70,20 +68,19 @@
       "reset": false,
       "aether": 0,
       "main": false,
-      "store": true,
-      "cost": 5
+      "store": true
     }
   },
   {
     "model": "Relic",
     "data": {
-      "name": "relic.timeturner.name",
-      "description": "relic.timeturner.description",
-      "image": "https://image.flaticon.com/icons/svg/143/143200.svg",
+      "name": "relic.metal.name",
+      "description": "relic.metal.description",
+      "image": "https://image.flaticon.com/icons/svg/364/364524.svg",
       "class": "orange",
       "experience": 0,
-      "level": 1,
-      "metal": 0,
+      "level": 0,
+      "metal": 100000,
       "crystal": 0,
       "oil": 0,
       "planet": false,
@@ -95,16 +92,63 @@
       "reset": false,
       "aether": 0,
       "main": false,
-      "store": false,
-      "cost": 5
+      "store": true
     }
   },
   {
     "model": "Relic",
     "data": {
-      "name": "relic.shipwreck.name",
-      "description": "relic.shipwreck.description",
-      "image": "https://image.flaticon.com/icons/svg/199/199073.svg",
+      "name": "relic.crystal.name",
+      "description": "relic.crystal.description",
+      "image": "https://image.flaticon.com/icons/svg/361/361883.svg",
+      "class": "orange",
+      "experience": 0,
+      "level": 0,
+      "metal": 0,
+      "crystal": 100000,
+      "oil": 0,
+      "planet": false,
+      "ship": false,
+      "building": false,
+      "tower": false,
+      "moon": false,
+      "station": false,
+      "reset": false,
+      "aether": 0,
+      "main": false,
+      "store": true
+    }
+  },
+  {
+    "model": "Relic",
+    "data": {
+      "name": "relic.oil.name",
+      "description": "relic.oil.description",
+      "image": "https://image.flaticon.com/icons/svg/282/282948.svg",
+      "class": "orange",
+      "experience": 0,
+      "level": 0,
+      "metal": 0,
+      "crystal": 0,
+      "oil": 100000,
+      "planet": false,
+      "ship": false,
+      "building": false,
+      "tower": false,
+      "moon": false,
+      "station": false,
+      "reset": false,
+      "aether": 0,
+      "main": false,
+      "store": true
+    }
+  },
+  {
+    "model": "Relic",
+    "data": {
+      "name": "relic.resources.name",
+      "description": "relic.resources.description",
+      "image": "https://image.flaticon.com/icons/svg/189/189207.svg",
       "class": "orange",
       "experience": 0,
       "level": 0,
@@ -120,16 +164,15 @@
       "reset": false,
       "aether": 0,
       "main": false,
-      "store": false,
-      "cost": 5
+      "store": true
     }
   },
   {
     "model": "Relic",
     "data": {
-      "name": "relic.portal.name",
-      "description": "relic.portal.description",
-      "image": "https://image.flaticon.com/icons/svg/139/139720.svg",
+      "name": "relic.ship.name",
+      "description": "relic.ship.description",
+      "image": "https://image.flaticon.com/icons/svg/222/222599.svg",
       "class": "orange",
       "experience": 0,
       "level": 0,
@@ -145,16 +188,15 @@
       "reset": false,
       "aether": 0,
       "main": false,
-      "store": false,
-      "cost": 5
+      "store": true
     }
   },
   {
     "model": "Relic",
     "data": {
-      "name": "relic.cube.name",
-      "description": "relic.cube.description",
-      "image": "https://image.flaticon.com/icons/svg/139/139720.svg",
+      "name": "relic.building.name",
+      "description": "relic.building.description",
+      "image": "https://image.flaticon.com/icons/svg/167/167507.svg",
       "class": "orange",
       "experience": 0,
       "level": 0,
@@ -170,16 +212,15 @@
       "reset": false,
       "aether": 0,
       "main": false,
-      "store": false,
-      "cost": 5
+      "store": true
     }
   },
   {
     "model": "Relic",
     "data": {
-      "name": "relic.portal.name",
-      "description": "relic.portal.description",
-      "image": "https://image.flaticon.com/icons/svg/139/139720.svg",
+      "name": "relic.tower.name",
+      "description": "relic.tower.description",
+      "image": "https://image.flaticon.com/icons/svg/265/265651.svg",
       "class": "orange",
       "experience": 0,
       "level": 0,
@@ -195,16 +236,63 @@
       "reset": false,
       "aether": 0,
       "main": false,
-      "store": false,
-      "cost": 5
+      "store": true
     }
   },
   {
     "model": "Relic",
     "data": {
-      "name": "relic.portal.name",
-      "description": "relic.portal.description",
-      "image": "https://image.flaticon.com/icons/svg/139/139720.svg",
+      "name": "relic.level.name",
+      "description": "relic.level.description",
+      "image": "https://image.flaticon.com/icons/svg/302/302284.svg",
+      "class": "orange",
+      "experience": 0,
+      "level": 1,
+      "metal": 0,
+      "crystal": 0,
+      "oil": 0,
+      "planet": false,
+      "ship": false,
+      "building": false,
+      "tower": false,
+      "moon": false,
+      "station": false,
+      "reset": false,
+      "aether": 0,
+      "main": false,
+      "store": true
+    }
+  },
+  {
+    "model": "Relic",
+    "data": {
+      "name": "relic.experience.name",
+      "description": "relic.experience.description",
+      "image": "https://image.flaticon.com/icons/svg/302/302285.svg",
+      "class": "orange",
+      "experience": 5000,
+      "level": 0,
+      "metal": 0,
+      "crystal": 0,
+      "oil": 0,
+      "planet": false,
+      "ship": false,
+      "building": false,
+      "tower": false,
+      "moon": false,
+      "station": false,
+      "reset": false,
+      "aether": 0,
+      "main": false,
+      "store": true
+    }
+  },
+  {
+    "model": "Relic",
+    "data": {
+      "name": "relic.reset.name",
+      "description": "relic.reset.description",
+      "image": "https://image.flaticon.com/icons/svg/346/346195.svg",
       "class": "orange",
       "experience": 0,
       "level": 0,
@@ -214,14 +302,37 @@
       "planet": false,
       "ship": false,
       "building": false,
-      "tower": true,
+      "tower": false,
+      "moon": false,
+      "station": false,
+      "reset": true,
+      "aether": 0,
+      "main": false,
+      "store": true
+    }
+  },
+  {
+    "model": "Relic",
+    "data": {
+      "name": "relic.main.name",
+      "description": "relic.main.description",
+      "image": "https://image.flaticon.com/icons/svg/148/148924.svg",
+      "class": "orange",
+      "experience": 0,
+      "level": 0,
+      "metal": 0,
+      "crystal": 0,
+      "oil": 0,
+      "planet": false,
+      "ship": false,
+      "building": false,
+      "tower": false,
       "moon": false,
       "station": false,
       "reset": false,
       "aether": 0,
-      "main": false,
-      "store": false,
-      "cost": 5
+      "main": true,
+      "store": true
     }
   }
 ]
