@@ -32,7 +32,7 @@ describe('RELIC', () => {
       .set('Authorization', 'Bearer ' + global.token)
       .expect(200)
       .end((err, res) => {
-        expect(res.body).to.have.length.be(6)
+        expect(res.body).to.have.length.be(14)
         done(err)
       })
     })
