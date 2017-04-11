@@ -1,3 +1,4 @@
+require('dotenv').config()
 var jwt = require('jwt-simple')
 var moment = require('moment')
 

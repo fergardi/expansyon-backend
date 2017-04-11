@@ -1,11 +1,10 @@
 #!/usr/bin/env node
+require('dotenv').config()
 var models = require('../models')
 
-require('dotenv').config()
-
-models.sequelize.sync({force: process.env.SEQUELIZE_SYNC || true})
+models.sequelize.sync({force: process.env.DB_FORCE})
 .then(() => {
-  if (process.env.SEQUELIZE_FIXTURES || true) {
+  if (process.env.DB_FIXTURES) {
     const fixtures = require('sequelize-fixtures')
     console.log('Loading fixtures...')
     fixtures.loadFile('./fixtures/*.*', models)
@@ -14,6 +13,6 @@ models.sequelize.sync({force: process.env.SEQUELIZE_SYNC || true})
 
 var server = require('../app').server
 
-server.listen(process.env.PORT || 34567, () => {
+server.listen(process.env.PORT, () => {
   console.log('Listening on port ' + server.address().port)
 })

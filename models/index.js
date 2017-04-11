@@ -1,5 +1,6 @@
 'use strict'
 
+require('dotenv').config()
 var fs = require('fs')
 var path = require('path')
 const logger = require('../services/logger')
