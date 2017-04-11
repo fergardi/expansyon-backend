@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 var models = require('../models')
 
-var config = require('../config/config')
+require('dotenv').config()
 
-models.sequelize.sync({force: config.sync})
+models.sequelize.sync({force: process.env.SEQUELIZE_SYNC || true})
 .then(() => {
-  if (config.fixtures) {
+  if (process.env.SEQUELIZE_FIXTURES || true) {
     const fixtures = require('sequelize-fixtures')
     console.log('Loading fixtures...')
     fixtures.loadFile('./fixtures/*.*', models)

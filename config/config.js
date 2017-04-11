@@ -7,6 +7,7 @@ const config = {
       username: 'root',
       password: 'root',
       dbname: 'expansyon',
+      port: 3306,
       host: 'localhost',
       dialect: 'mariadb',
       logging: (sql) => {
@@ -31,6 +32,7 @@ const config = {
       password: '',
       dbname: '',
       host: '',
+      port: 0,
       dialect: '',
       logging: (sql) => {
         logger.info(`[${new Date()}] ${sql}`)

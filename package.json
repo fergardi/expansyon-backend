@@ -9,7 +9,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./bin/server.js",
     "dev": "nodemon --debug --ignore ./test ./bin/server.js",
-    "test": "mocha --sort --timeout 10000 || exit 0",
+    "test": "mocha --sort --timeout 10000",
     "prod": "cross-env NODE_ENV=production node ./bin/server.js",
     "pm2": "cross-env NODE_ENV=production pm2 start -f ./bin/server.js"
   },
@@ -19,6 +19,7 @@
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.1",
     "debug": "~2.6.3",
+    "dotenv": "^4.0.0",
     "eslint": "^3.13.0",
     "eslint-config-standard": "^7.1.0",
     "eslint-loader": "^1.6.1",
