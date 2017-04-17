@@ -33,6 +33,7 @@ cron.schedule('0 * * * * *', () => {
 // GET /api/planet
 router.get('/', security.secured, (req, res) => {
   models.Planet.findAll({
+    include: { model: models.Player, attributes: ['name'], include: { model: models.Faction, attributes: ['class'] } },
     order: [[ 'id', 'ASC' ]]
   })
   .then((planets) => {

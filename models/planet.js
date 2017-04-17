@@ -6,6 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     description: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
     class: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
     image: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    lat: { type: DataTypes.FLOAT, allowNull: false, defaultValue: 0.0 },
+    lng: { type: DataTypes.FLOAT, allowNull: false, defaultValue: 0.0 },
     metal: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     crystal: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     oil: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },

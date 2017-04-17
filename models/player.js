@@ -19,8 +19,9 @@ module.exports = (sequelize, DataTypes) => {
         models.Player.belongsTo(models.Guild)
         // m2o association
         models.Player.belongsTo(models.Faction)
-        // o2m association
+        // o2m bidirectional association
         models.Player.hasMany(models.Planet)
+        models.Planet.belongsTo(models.Player)
         // o2m bidirectional association
         models.Player.hasMany(models.Message, { as: 'Sent', foreignKey: 'FromId' })
         models.Message.belongsTo(models.Player, { as: 'From', foreignKey: 'FromId' })

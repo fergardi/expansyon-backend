@@ -73,6 +73,9 @@ const factory = {
       planet.description = 'planet.size.description'
     }
   },
+  float (min, max) {
+    return min + Math.random() * (max - min)
+  },
   number (min, max) {
     return min + Math.floor(Math.random() * (max - min))
   },
@@ -90,6 +93,8 @@ const factory = {
     var planet = {
       name: factory.word(),
       image: factory.image(),
+      lat: factory.float(-90, 90),
+      lng: factory.float(-180, 180),
       metal: factory.number(min, 80),
       crystal: factory.number(min, 80),
       oil: factory.number(min, 80),
