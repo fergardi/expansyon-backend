@@ -3,10 +3,10 @@
     "model": "Skill",
     "data": {
       "Tree": { "name": "tree.offensive.name" },
-      "name": "skill.exploration.name",
-      "description": "skill.exploration.description",
+      "name": "skill.galaxy.name",
+      "description": "skill.galaxy.description",
       "image": "https://image.flaticon.com/icons/svg/124/124558.svg",
-      "exploration": 1
+      "galaxy": 1
     }
   },
   {
@@ -17,7 +17,7 @@
       "description": "skill.fighter.description",
       "image": "https://image.flaticon.com/icons/svg/292/292364.svg",
       "fighter": 10,
-      "Parent": { "name": "skill.exploration.name" }
+      "Parent": { "name": "skill.galaxy.name" }
     }
   },
   {
@@ -28,7 +28,7 @@
       "description": "skill.cruiser.description",
       "image": "https://image.flaticon.com/icons/svg/293/293581.svg",
       "cruiser": 10,
-      "Parent": { "name": "skill.exploration.name" }
+      "Parent": { "name": "skill.galaxy.name" }
     }
   },
   {
@@ -39,7 +39,7 @@
       "description": "skill.bomber.description",
       "image": "https://image.flaticon.com/icons/svg/124/124571.svg",
       "bomber": 10,
-      "Parent": { "name": "skill.exploration.name" }
+      "Parent": { "name": "skill.galaxy.name" }
     }
   },
   {

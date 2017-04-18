@@ -259,7 +259,7 @@ router.get('/:playerId', security.secured, (req, res) => {
       queries.push(models.Referendum.count({ where: { visible: true } }))
       // cantina
       queries.push(models.Mission.count({ where: { visible: true } }))
-      // exploration
+      // galaxy
       queries.push(models.Planet.findAll({ where: { $and: [ { id: { $notIn: planetIds } }, { visible: true } ] } }))
       // census
       queries.push(models.Player.count())
@@ -319,8 +319,8 @@ router.get('/:playerId', security.secured, (req, res) => {
         info.senate = results[12]
         // cantina
         info.cantina = results[13]
-        // exploration
-        info.Exploration = results[14]
+        // galaxy
+        info.Galaxy = results[14]
         // census
         info.census = results[15]
         // guilds

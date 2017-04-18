@@ -20,11 +20,11 @@ cron.schedule('0 * * * * *', () => {
       if (planets.length > 0) {
         planets = _.shuffle(planets)
         planets.forEach((planet, index) => {
-          planet.visible = index < constants.exploration
+          planet.visible = index < constants.galaxy
           planet.save()
         })
         socketio.emit('player', null)
-        socketio.emit('exploration')
+        socketio.emit('galaxy')
       }
     })
   })

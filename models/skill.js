@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     evasion: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     experience: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     counter: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
-    exploration: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    galaxy: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     cargo: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     storage: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     fighter: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
