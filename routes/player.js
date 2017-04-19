@@ -321,6 +321,7 @@ router.get('/:playerId', security.secured, (req, res) => {
         info.cantina = results[13]
         // galaxy
         info.Galaxy = results[14]
+        info.zoom = Math.floor(results[7].reduce((total, skill) => total + skill.zoom * skill.PlayerSkill.level, 0))
         // census
         info.census = results[15]
         // guilds

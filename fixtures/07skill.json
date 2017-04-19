@@ -112,10 +112,10 @@
     "model": "Skill",
     "data": {
       "Tree": { "name": "tree.utility.name" },
-      "name": "skill.experience.name",
-      "description": "skill.experience.description",
-      "image": "https://image.flaticon.com/icons/svg/167/167747.svg",
-      "experience": 10
+      "name": "skill.zoom.name",
+      "description": "skill.zoom.description",
+      "image": "https://image.flaticon.com/icons/svg/202/202483.svg",
+      "zoom": 0.5
     }
   },
   {
@@ -126,7 +126,7 @@
       "description": "skill.orbiter.description",
       "image": "https://image.flaticon.com/icons/svg/124/124541.svg",
       "orbiter": 10,
-      "Parent": { "name": "skill.experience.name" }
+      "Parent": { "name": "skill.zoom.name" }
     }
   },
   {
@@ -137,7 +137,7 @@
       "description": "skill.carrier.description",
       "image": "https://image.flaticon.com/icons/svg/231/231136.svg",
       "carrier": 10,
-      "Parent": { "name": "skill.experience.name" }
+      "Parent": { "name": "skill.zoom.name" }
     }
   },
   {
@@ -148,7 +148,7 @@
       "description": "skill.recycler.description",
       "image": "https://image.flaticon.com/icons/svg/124/124580.svg",
       "recycler": 10,
-      "Parent": { "name": "skill.experience.name" }
+      "Parent": { "name": "skill.zoom.name" }
     }
   },
   {
@@ -221,10 +221,10 @@
     "model": "Skill",
     "data": {
       "Tree": { "name": "tree.defensive.name" },
-      "name": "skill.nano.name",
-      "description": "skill.nano.description",
-      "image": "https://image.flaticon.com/icons/svg/202/202483.svg",
-      "nano": 10
+      "name": "skill.experience.name",
+      "description": "skill.experience.description",
+      "image": "https://image.flaticon.com/icons/svg/167/167747.svg",
+      "experience": 10
     }
   },
   {
@@ -235,7 +235,7 @@
       "description": "skill.blaster.description",
       "image": "https://image.flaticon.com/icons/svg/124/124550.svg",
       "blaster": 10,
-      "Parent": { "name": "skill.nano.name" }
+      "Parent": { "name": "skill.experience.name" }
     }
   },
   {
@@ -246,7 +246,7 @@
       "description": "skill.railgun.description",
       "image": "https://image.flaticon.com/icons/svg/124/124549.svg",
       "railgun": 10,
-      "Parent": { "name": "skill.nano.name" }
+      "Parent": { "name": "skill.experience.name" }
     }
   },
   {
@@ -257,7 +257,7 @@
       "description": "skill.cannon.description",
       "image": "https://image.flaticon.com/icons/svg/124/124552.svg",
       "cannon": 10,
-      "Parent": { "name": "skill.nano.name" }
+      "Parent": { "name": "skill.experience.name" }
     }
   },
   {

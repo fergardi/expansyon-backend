@@ -19,6 +19,8 @@ app.use((req, res, next) => {
   res.io = io
   next()
 })
+// public
+app.use(express.static('public'))
 // cors
 app.use(cors({ methods: ['GET', 'POST', 'PUT', 'DELETE'], allowedHeaders: ['Content-Type', 'Authorization'] }))
 // api
