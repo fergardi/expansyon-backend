@@ -59,7 +59,7 @@
       "Tree": { "name": "tree.offensive.name" },
       "name": "skill.evasion.name",
       "description": "skill.evasion.description",
-      "image": "https://image.flaticon.com/icons/svg/270/270109.svg",
+      "image": "https://image.flaticon.com/icons/svg/143/143604.svg",
       "evasion": 10,
       "Parent": { "name": "skill.cruiser.name" }
     }
@@ -190,7 +190,7 @@
       "Tree": { "name": "tree.utility.name" },
       "name": "skill.metal.name",
       "description": "skill.metal.description",
-      "image": "https://image.flaticon.com/icons/svg/364/364524.svg",
+      "image": "https://image.flaticon.com/icons/svg/313/313037.svg",
       "metal": 10,
       "Parent": { "name": "skill.furnace.name" }
     }

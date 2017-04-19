@@ -10,7 +10,7 @@ var cron = require('../services/cron')
 const factory = require('../factories/planet')
 
 // add resources
-cron.schedule('*/10 * * * * *', () => {
+cron.schedule('0 * * * * *', () => {
   models.Referendum.findOne({
     where: { active: true }
   })
