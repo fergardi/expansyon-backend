@@ -3,6 +3,7 @@ var express = require('express')
 var router = express.Router()
 
 var security = require('../services/security')
+var socketio = require('../services/socketio').io()
 
 // GET /api/battle
 router.get('/', security.secured, (req, res) => {
@@ -48,6 +49,7 @@ router.post('/', security.secured, (req, res) => {
             battle.addShip(ships[2], { quantity: bomber })
             battle.save()
             .then((battle) => {
+              socketio.emit('player', player.id)
               res.status(200).json(battle)
             })
           })

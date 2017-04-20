@@ -124,19 +124,19 @@ router.post('/register', (req, res) => {
       models.Ship.findAll()
       .then((ships) => {
         ships.forEach((ship) => {
-          player.addShip(ship, { quantity: 0 })
+          player.addShip(ship, { quantity: 10 })
         })
       })
       models.Building.findAll()
       .then((buildings) => {
         buildings.forEach((building) => {
-          player.addBuilding(building, { quantity: 0 })
+          player.addBuilding(building, { quantity: 10 })
         })
       })
       models.Tower.findAll()
       .then((towers) => {
         towers.forEach((tower) => {
-          player.addTower(tower, { quantity: 0 })
+          player.addTower(tower, { quantity: 10 })
         })
       })
       models.Planet.create(factory.build(true))
@@ -145,6 +145,7 @@ router.post('/register', (req, res) => {
       })
       var token = jwt.token(player)
       res.status(201).json({ id: player.id, token: token })
+      socketio.emit('census')
     } else {
       res.status(409).end()
     }
@@ -674,15 +675,6 @@ router.post('/:playerId/relic/:relicId', security.secured, (req, res) => {
               player.level += player.experience / (constants.up * player.level)
               player.experience = player.experience % (constants.up * player.level)
             }
-            player.save()
-            .then((player) => {
-              socketio.emit('player', player.id)
-              res.status(200).end()
-            })
-          }
-          // generate level
-          if (relic.level > 0) {
-            player.level += relic.level
             player.save()
             .then((player) => {
               socketio.emit('player', player.id)
