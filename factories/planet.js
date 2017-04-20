@@ -2,7 +2,6 @@ var images = [
   'https://image.flaticon.com/icons/svg/124/124558.svg',
   'https://image.flaticon.com/icons/svg/124/124582.svg',
   'https://image.flaticon.com/icons/svg/139/139706.svg',
-  'https://image.flaticon.com/icons/svg/139/139706.svg',
   'https://image.flaticon.com/icons/svg/124/124581.svg',
   'https://image.flaticon.com/icons/svg/139/139727.svg',
   'https://image.flaticon.com/icons/svg/207/207532.svg',
@@ -20,7 +19,14 @@ var images = [
   'https://image.flaticon.com/icons/svg/139/139693.svg',
   'https://image.flaticon.com/icons/svg/139/139707.svg',
   'https://image.flaticon.com/icons/svg/270/270146.svg',
-  'https://image.flaticon.com/icons/svg/124/124559.svg'
+  'https://image.flaticon.com/icons/svg/124/124559.svg',
+  'https://image.flaticon.com/icons/svg/275/275100.svg',
+  'https://image.flaticon.com/icons/svg/275/275071.svg',
+  'https://image.flaticon.com/icons/svg/361/361733.svg',
+  'https://image.flaticon.com/icons/svg/361/361711.svg',
+  'https://image.flaticon.com/icons/svg/361/361701.svg',
+  'https://image.flaticon.com/icons/svg/361/361695.svg',
+  'https://image.flaticon.com/icons/svg/361/361756.svg'
 ]
 
 const factory = {

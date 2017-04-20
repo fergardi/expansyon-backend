@@ -321,6 +321,7 @@ router.get('/:playerId', security.secured, (req, res) => {
         info.cantina = results[13]
         // galaxy
         info.Galaxy = results[14]
+        info.galaxy = results[7].reduce((total, skill) => total + skill.galaxy * skill.PlayerSkill.level, 0)
         info.zoom = Math.floor(results[7].reduce((total, skill) => total + skill.zoom * skill.PlayerSkill.level, 0))
         // census
         info.census = results[15]
@@ -331,7 +332,6 @@ router.get('/:playerId', security.secured, (req, res) => {
         // extra
         info.secure = info.warehouse * 100
         info.up = constants.up
-        info.cap = constants.cap
         // return all info
         res.status(200).json(info)
       })

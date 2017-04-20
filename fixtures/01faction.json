@@ -4,7 +4,7 @@
     "data": {
       "name": "faction.scavenger.name",
       "description": "faction.scavenger.description",
-      "image": "https://image.flaticon.com/icons/svg/290/290855.svg",
+      "image": "https://image.flaticon.com/icons/svg/290/290873.svg",
       "class": "purple",
       "metal": 20,
       "crystal": 20,
@@ -67,7 +67,7 @@
     "data": {
       "name": "faction.merchant.name",
       "description": "faction.merchant.description",
-      "image": "https://image.flaticon.com/icons/svg/290/290845.svg",
+      "image": "https://image.flaticon.com/icons/svg/290/290895.svg",
       "class": "yellow",
       "metal": 25,
       "crystal": 25,
