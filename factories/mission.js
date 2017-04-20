@@ -1,19 +1,15 @@
 const images = [
-  'https://image.flaticon.com/icons/svg/139/139692.svg'
+  'https://image.flaticon.com/icons/svg/389/389025.svg',
+  'https://image.flaticon.com/icons/svg/389/389029.svg',
+  'https://image.flaticon.com/icons/svg/389/389027.svg',
+  'https://image.flaticon.com/icons/svg/389/389033.svg',
+  'https://image.flaticon.com/icons/svg/389/389023.svg',
+  'https://image.flaticon.com/icons/svg/389/389030.svg',
+  'https://image.flaticon.com/icons/svg/389/389024.svg'
 ]
 
 const names = [
-  'mission.example.name'
-]
-
-const descriptions = [
-  'mission.example.description'
-]
-
-const classes = [
-  'red',
-  'green',
-  'yellow'
+  'mission.example'
 ]
 
 const factory = {
@@ -25,9 +21,6 @@ const factory = {
   },
   name () {
     return names[Math.floor(Math.random() * names.length)]
-  },
-  description () {
-    return descriptions[Math.floor(Math.random() * descriptions.length)]
   },
   number (max) {
     return Math.floor(Math.random() * max)
@@ -52,7 +45,6 @@ const factory = {
     var mission = {
       image: factory.image(),
       name: factory.name(),
-      description: factory.description(),
       lat: factory.float(-90, 90),
       lng: factory.float(-180, 180)
     }

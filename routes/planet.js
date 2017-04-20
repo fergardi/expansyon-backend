@@ -10,7 +10,10 @@ var _ = require('lodash')
 var factory = require('../factories/planet')
 
 // add planet
-cron.schedule('0 * * * * *', () => {
+cron.schedule('30 * * * * *', () => {
+  // battles
+  // TODO
+  // new planets
   models.Planet.create(factory.build())
   .then((planet) => {
     models.Planet.findAll({

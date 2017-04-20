@@ -5,6 +5,7 @@ const fixtures = {
   sales: 10,
   battles: 0,
   guilds: 5,
+  missions: 10,
   referendums: 3
 }
 
