@@ -20,6 +20,9 @@ const factory = {
   image () {
     return images[Math.floor(Math.random() * images.length)]
   },
+  float (min, max) {
+    return min + Math.random() * (max - min)
+  },
   name () {
     return names[Math.floor(Math.random() * names.length)]
   },
@@ -29,20 +32,31 @@ const factory = {
   number (max) {
     return Math.floor(Math.random() * max)
   },
-  class () {
-    return classes[Math.floor(Math.random() * classes.length)]
+  type (mission) {
+    var fighter = Math.random() * 100000
+    var cruiser = Math.random() * 10000
+    var bomber = Math.random() * 1000
+    mission.Ships = [
+      { id: 1, _through: { quantity: fighter } },
+      { id: 2, _through: { quantity: cruiser } },
+      { id: 3, _through: { quantity: bomber } }
+    ]
+    var total = fighter + cruiser + bomber
+    mission.class = total >= 100000
+      ? 'red'
+      : total >= 50000
+        ? 'yellow'
+        : 'green'
   },
   build (sequelize) {
     var mission = {
       image: factory.image(),
       name: factory.name(),
       description: factory.description(),
-      class: factory.class(),
-      attack: factory.number(10000),
-      defense: factory.number(10000),
-      speed: factory.number(10000),
-      visible: true
+      lat: factory.float(-90, 90),
+      lng: factory.float(-180, 180)
     }
+    factory.type(mission)
     if (sequelize) {
       mission = { model: 'Mission', data: mission }
     }

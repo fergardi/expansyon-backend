@@ -257,8 +257,8 @@ router.get('/:playerId', security.secured, (req, res) => {
       queries.push(models.Sale.count())
       // senate
       queries.push(models.Referendum.count({ where: { visible: true } }))
-      // cantina
-      queries.push(models.Mission.count({ where: { visible: true } }))
+      // missions
+      queries.push(models.Mission.findAll())
       // galaxy
       queries.push(models.Planet.findAll({ where: { $and: [ { id: { $notIn: planetIds } }, { visible: true } ] } }))
       // census
@@ -317,8 +317,8 @@ router.get('/:playerId', security.secured, (req, res) => {
         info.market = results[11]
         // senate
         info.senate = results[12]
-        // cantina
-        info.cantina = results[13]
+        // missions
+        info.Missions = results[13]
         // galaxy
         info.Galaxy = results[14]
         info.galaxy = results[7].reduce((total, skill) => total + skill.galaxy * skill.PlayerSkill.level, 0)
