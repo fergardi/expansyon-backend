@@ -77,7 +77,7 @@
       "name": "relic.metal.name",
       "description": "relic.metal.description",
       "image": "https://image.flaticon.com/icons/svg/313/313037.svg",
-      "class": "blue",
+      "class": "indigo",
       "experience": 0,
       "level": 0,
       "metal": 100000,
