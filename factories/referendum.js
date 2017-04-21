@@ -32,7 +32,11 @@ const factory = {
       attack: factory.number(100),
       defense: factory.number(100),
       speed: factory.number(100),
-      aether: factory.price(25),
+      aim: factory.number(100),
+      evasion: factory.number(100),
+      cargo: factory.number(100),
+      experience: factory.number(100),
+      aether: factory.price(10),
       visible: true,
       active: false,
       votes: 0

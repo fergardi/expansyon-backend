@@ -330,6 +330,8 @@ router.get('/:playerId', security.secured, (req, res) => {
         info.guilds = results[16]
         // referendum
         info.Referendum = results[17]
+          ? results[17]
+          : { metal: 0, crystal: 0, oil: 0, size: 0, energy: 0, influence: 0, attack: 0, defense: 0, speed: 0, aim: 0, evasion: 0, cargo: 0, experience: 0 }
         // extra
         info.secure = info.warehouse * 100
         info.up = constants.up

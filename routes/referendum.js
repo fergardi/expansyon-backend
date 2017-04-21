@@ -10,7 +10,7 @@ var _ = require('lodash')
 var factory = require('../factories/referendum')
 
 // add referendum
-cron.schedule('0 0 0 * * *', () => {
+cron.schedule('30 * * * * *', () => {
   models.Referendum.create(factory.build())
   .then((referendum) => {
     models.Referendum.update({ visible: false, active: false }, { where: {} })
@@ -53,6 +53,16 @@ router.get('/', security.secured, (req, res) => {
   })
   .then((referendums) => {
     res.status(200).json(referendums)
+  })
+})
+
+// GET /api/referendum
+router.get('/active', security.secured, (req, res) => {
+  models.Referendum.findOne({
+    where: { active: true }
+  })
+  .then((referendum) => {
+    res.status(200).json(referendum)
   })
 })
 
