@@ -10,23 +10,62 @@ var cron = require('../services/cron')
 var factory = require('../factories/mission')
 
 // add mission
-cron.schedule('30 * * * * *', () => {
+cron.schedule('*/10 * * * * *', () => {
   // battles
-  // TODO
-  // new missions
-  models.Ship.findAll({
-    order: [[ 'id', 'ASC' ]]
+  models.Battle.findAll({
+    where: { MissionId: { $ne: null } },
+    include: [
+      { model: models.Ship },
+      { model: models.Mission, include: { model: models.Ship } },
+      { model: models.Player, include: { model: models.Skill } }
+    ]
   })
-  .then((ships) => {
-    var created = factory.build()
-    models.Mission.create(created)
-    .then((mission) => {
-      mission.addShip(ships[0], { quantity: created.Ships[0]._through.quantity })
-      mission.addShip(ships[1], { quantity: created.Ships[1]._through.quantity })
-      mission.addShip(ships[2], { quantity: created.Ships[2]._through.quantity })
-      mission.save()
+  .then((battles) => {
+    if (battles.length > 0) {
+      battles.forEach((battle) => {
+        // TODO simple, stupid battle
+        var attacker = 0
+        battle.Ships.forEach((ship) => {
+          attacker += ship.BattleShip.quantity
+        })
+        var defender = 0
+        battle.Mission.Ships.forEach((ship) => {
+          defender += ship.MissionShip.quantity
+        })
+        console.log('Attacker: ', attacker, ', Defender: ', defender)
+        if (attacker > defender) { // win
+          battle.Player.metal += battle.Mission.metal
+          battle.Player.crystal += battle.Mission.crystal
+          battle.Player.oil += battle.Mission.oil
+          battle.Player.save()
+        } else { // lose
+
+        }
+        battle.Player.experience += battle.Mission.experience
+        battle.Player.save()
+      })
+    }
+    models.Battle.destroy({
+      where: { MissionId: { $ne: null } }
+    })
+    models.Mission.destroy({
+      where: {}
+    })
+    // new missions
+    models.Ship.findAll({
+      order: [[ 'id', 'ASC' ]]
+    })
+    .then((ships) => {
+      var created = factory.build()
+      models.Mission.create(created)
       .then((mission) => {
-        socketio.emit('galaxy')
+        mission.addShip(ships[0], { quantity: created.Ships[0]._through.quantity })
+        mission.addShip(ships[1], { quantity: created.Ships[1]._through.quantity })
+        mission.addShip(ships[2], { quantity: created.Ships[2]._through.quantity })
+        mission.save()
+        .then((mission) => {
+          socketio.emit('galaxy')
+        })
       })
     })
   })

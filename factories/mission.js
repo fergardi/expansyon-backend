@@ -22,6 +22,9 @@ const factory = {
   name () {
     return names[Math.floor(Math.random() * names.length)]
   },
+  id (max) {
+    return 1 + factory.number(max)
+  },
   number (max) {
     return Math.floor(Math.random() * max)
   },
@@ -35,11 +38,31 @@ const factory = {
       { id: 3, _through: { quantity: bomber } }
     ]
     var total = fighter + cruiser + bomber
-    mission.class = total >= 100000
-      ? 'red'
-      : total >= 50000
-        ? 'yellow'
-        : 'green'
+    if (total >= 100000) {
+      mission.class = 'red'
+      mission.metal = factory.number(100000)
+      mission.crystal = factory.number(100000)
+      mission.oil = factory.number(100000)
+      mission.aether = factory.number(20)
+      mission.experience = factory.number(20000)
+      mission.RelicId = factory.id(14)
+    } else if (total >= 50000) {
+      mission.class = 'yellow'
+      mission.metal = factory.number(10000)
+      mission.crystal = factory.number(10000)
+      mission.oil = factory.number(10000)
+      mission.aether = factory.number(5)
+      mission.experience = factory.number(5000)
+      mission.RelicId = null
+    } else {
+      mission.class = 'green'
+      mission.metal = factory.number(1000)
+      mission.crystal = factory.number(1000)
+      mission.oil = factory.number(1000)
+      mission.aether = factory.number(2)
+      mission.experience = factory.number(1000)
+      mission.RelicId = null
+    }
   },
   build (sequelize) {
     var mission = {

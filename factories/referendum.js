@@ -13,7 +13,7 @@ const factory = {
     return 3 + Math.floor(Math.random() * max)
   },
   total (referendum) {
-    return referendum.metal + referendum.crystal + referendum.oil + referendum.size + referendum.energy + referendum.influence + referendum.attack + referendum.defense + referendum.speed
+    return referendum.metal + referendum.crystal + referendum.oil + referendum.size + referendum.energy + referendum.experience + referendum.attack + referendum.defense + referendum.speed + referendum.aim + referendum.evasion + referendum.cargo
   },
   class (referendum) {
     referendum.class = factory.total(referendum) >= 0 ? 'green' : 'red'
@@ -28,7 +28,6 @@ const factory = {
       oil: factory.number(100),
       size: factory.number(100),
       energy: factory.number(100),
-      influence: factory.number(100),
       attack: factory.number(100),
       defense: factory.number(100),
       speed: factory.number(100),

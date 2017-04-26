@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
     oil: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     size: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     energy: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
-    influence: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     attack: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     defense: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     speed: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },

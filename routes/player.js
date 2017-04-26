@@ -36,10 +36,6 @@ cron.schedule('0 * * * * *', () => {
         var metal = 0
         var crystal = 0
         var oil = 0
-        if (player.experience / (constants.up * player.level) >= 1) {
-          player.level += player.experience / (constants.up * player.level)
-          player.experience = player.experience % (constants.up * player.level)
-        }
         player.getPlanets()
         .then((planets) => {
           planets.forEach((planet) => {
@@ -275,9 +271,6 @@ router.get('/:playerId', security.secured, (req, res) => {
         info.transmission = results[0].length
         // planetarium
         info.planetarium = results[1].length
-        info.size = results[1].reduce((total, planet) => total + planet.size, 0)
-        info.energy = results[1].reduce((total, planet) => total + planet.energy, 0)
-        info.influence = results[1].reduce((total, planet) => total + planet.influence, 0)
         // hangar
         info.hangar = results[2].reduce((total, ship) => total + ship.PlayerShip.quantity, 0)
         info.fighter = results[2][0].PlayerShip.quantity
@@ -286,6 +279,10 @@ router.get('/:playerId', security.secured, (req, res) => {
         info.orbiter = results[2][3].PlayerShip.quantity
         info.carrier = results[2][4].PlayerShip.quantity
         info.recycler = results[2][5].PlayerShip.quantity
+        // resources
+        info.size = results[1].reduce((total, planet) => total + planet.size, 0) + info.recycler
+        info.energy = results[1].reduce((total, planet) => total + planet.energy, 0) + (info.orbiter * 2)
+        info.influence = results[1].reduce((total, planet) => total + planet.influence, 0)
         // infrastructure
         info.infrastructure = results[3].reduce((total, building) => total + building.PlayerBuilding.quantity, 0)
         info.furnace = results[3][0].PlayerBuilding.quantity
@@ -335,6 +332,19 @@ router.get('/:playerId', security.secured, (req, res) => {
         // extra
         info.secure = info.warehouse * 100
         info.up = constants.up
+        // bonuses
+        var sizeBonus = 1.0
+        var energyBonus = 1.0
+        if (info.Referendum) {
+          sizeBonus += info.Referendum.size / 100
+          energyBonus += info.Referendum.energy / 100
+        }
+        if (player.Faction) {
+          sizeBonus += player.Faction.size / 100
+          energyBonus += player.Faction.energy / 100
+        }
+        info.size = Math.floor(info.size * sizeBonus)
+        info.energy = Math.floor(info.energy * energyBonus)
         // return all info
         res.status(200).json(info)
       })
@@ -575,185 +585,222 @@ router.post('/:playerId/relic/:relicId', security.secured, (req, res) => {
             relic.PlayerRelic.quantity--
             relic.PlayerRelic.save()
           }
-          // create new planet
-          if (relic.planet) {
-            models.Planet.create(factory.build())
-            .then((planet) => {
-              player.addPlanet(planet)
-              .then((player) => {
-                socketio.emit('player', player.id)
-                res.status(200).end()
-              })
-            })
-          }
-          // create new moon
-          if (relic.moon) {
-            player.getPlanets({
-              where: { moon: false }
-            })
-            .then((planets) => {
-              if (planets.length > 0) {
-                var planet = planets[Math.floor(Math.random() * planets.length)]
-                planet.moon = true
-                planet.metal = Math.min(planet.metal + 10, 100)
-                planet.crystal = Math.min(planet.crystal + 10, 100)
-                planet.oil = Math.min(planet.metal + 10, 100)
-                planet.size = Math.min(planet.size + 10, 100)
-                planet.energy = Math.min(planet.energy + 10, 100)
-                planet.influence = Math.min(planet.influence + 10, 100)
-                planet.save()
-                .then((planet) => {
-                  socketio.emit('player', player.id)
-                  res.status(200).end()
-                })
-              } else {
-                socketio.emit('player', player.id)
-                res.status(400).end()
-              }
-            })
-          }
-          // create new station
-          if (relic.station) {
-            player.getPlanets({
-              where: { station: false }
-            })
-            .then((planets) => {
-              if (planets.length > 0) {
-                var planet = planets[Math.floor(Math.random() * planets.length)]
-                planet.station = true
-                planet.metal = Math.min(planet.metal + 10, 100)
-                planet.crystal = Math.min(planet.crystal + 10, 100)
-                planet.oil = Math.min(planet.metal + 10, 100)
-                planet.size = Math.min(planet.size + 10, 100)
-                planet.energy = Math.min(planet.energy + 10, 100)
-                planet.influence = Math.min(planet.influence + 10, 100)
-                planet.save()
-                .then((planet) => {
-                  socketio.emit('player', player.id)
-                  res.status(200).end()
-                })
-              } else {
-                socketio.emit('player', player.id)
-                res.status(400).end()
-              }
-            })
-          }
-          // main planet
-          if (relic.main) {
-            player.getPlanets({
-              where: { main: false }
-            })
-            .then((planets) => {
-              if (planets.length > 0) {
-                var planet = planets[Math.floor(Math.random() * planets.length)]
-                planet.main = true
-                planet.save()
-                .then((planet) => {
-                  socketio.emit('player', player.id)
-                  res.status(200).end()
-                })
-              } else {
-                socketio.emit('player', player.id)
-                res.status(400).end()
-              }
-            })
-          }
-          // generate resources
-          if (relic.metal > 0 || relic.crystal > 0 || relic.oil > 0 || relic.level > 0) {
-            player.metal += Math.floor(Math.random() * relic.metal)
-            player.crystal += Math.floor(Math.random() * relic.crystal)
-            player.oil += Math.floor(Math.random() * relic.oil)
-            player.level += relic.level
-            player.save()
-            .then((player) => {
-              socketio.emit('player', player.id)
-              res.status(200).end()
-            })
-          }
-          // generate experience
-          if (relic.experience > 0) {
-            player.experience += Math.floor(Math.random() * relic.experience)
-            if (player.experience / (constants.up * player.level) >= 1) {
-              player.level += player.experience / (constants.up * player.level)
-              player.experience = player.experience % (constants.up * player.level)
-            }
-            player.save()
-            .then((player) => {
-              socketio.emit('player', player.id)
-              res.status(200).end()
-            })
-          }
-          // reset skills
-          if (relic.reset) {
+          // referendum
+          models.Referendum.findOne({
+            where: { active: true }
+          })
+          .then((referendum) => {
             player.getSkills()
             .then((skills) => {
-              if (skills.length > 0) {
-                skills.forEach((skill) => {
-                  skill.PlayerSkill.level = 0
-                  skill.PlayerSkill.save()
+              // create new planet
+              if (relic.planet) {
+                models.Planet.create(factory.build())
+                .then((planet) => {
+                  player.addPlanet(planet)
+                  .then((player) => {
+                    socketio.emit('player', player.id)
+                    res.status(200).end()
+                  })
                 })
+              }
+              // create new moon
+              if (relic.moon) {
+                player.getPlanets({
+                  where: { moon: false }
+                })
+                .then((planets) => {
+                  if (planets.length > 0) {
+                    var planet = planets[Math.floor(Math.random() * planets.length)]
+                    planet.moon = true
+                    planet.metal = Math.min(planet.metal + 10, 100)
+                    planet.crystal = Math.min(planet.crystal + 10, 100)
+                    planet.oil = Math.min(planet.metal + 10, 100)
+                    planet.size = Math.min(planet.size + 10, 100)
+                    planet.energy = Math.min(planet.energy + 10, 100)
+                    planet.influence = Math.min(planet.influence + 10, 100)
+                    planet.save()
+                    .then((planet) => {
+                      socketio.emit('player', player.id)
+                      res.status(200).end()
+                    })
+                  } else {
+                    socketio.emit('player', player.id)
+                    res.status(400).end()
+                  }
+                })
+              }
+              // create new station
+              if (relic.station) {
+                player.getPlanets({
+                  where: { station: false }
+                })
+                .then((planets) => {
+                  if (planets.length > 0) {
+                    var planet = planets[Math.floor(Math.random() * planets.length)]
+                    planet.station = true
+                    planet.metal = Math.min(planet.metal + 10, 100)
+                    planet.crystal = Math.min(planet.crystal + 10, 100)
+                    planet.oil = Math.min(planet.metal + 10, 100)
+                    planet.size = Math.min(planet.size + 10, 100)
+                    planet.energy = Math.min(planet.energy + 10, 100)
+                    planet.influence = Math.min(planet.influence + 10, 100)
+                    planet.save()
+                    .then((planet) => {
+                      socketio.emit('player', player.id)
+                      res.status(200).end()
+                    })
+                  } else {
+                    socketio.emit('player', player.id)
+                    res.status(400).end()
+                  }
+                })
+              }
+              // main planet
+              if (relic.main) {
+                player.getPlanets({
+                  where: { main: false }
+                })
+                .then((planets) => {
+                  if (planets.length > 0) {
+                    var planet = planets[Math.floor(Math.random() * planets.length)]
+                    planet.main = true
+                    planet.save()
+                    .then((planet) => {
+                      socketio.emit('player', player.id)
+                      res.status(200).end()
+                    })
+                  } else {
+                    socketio.emit('player', player.id)
+                    res.status(400).end()
+                  }
+                })
+              }
+              // generate resources
+              if (relic.metal > 0 || relic.crystal > 0 || relic.oil > 0 || relic.level > 0) {
+                var metalBonus = 1.0
+                var crystalBonus = 1.0
+                var oilBonus = 1.0
+                if (referendum) {
+                  metalBonus += referendum.metal / 100
+                  crystalBonus += referendum.crystal / 100
+                  oilBonus += referendum.oil / 100
+                }
+                if (player.Faction) {
+                  metalBonus += player.Faction.metal / 100
+                  crystalBonus += player.Faction.crystal / 100
+                  oilBonus += player.Faction.oil / 100
+                }
+                if (skills.length > 0) {
+                  metalBonus += skills.reduce((total, skill) => total + skill.metal * skill.PlayerSkill.level, 0) / 100
+                  crystalBonus += skills.reduce((total, skill) => total + skill.crystal * skill.PlayerSkill.level, 0) / 100
+                  oilBonus += skills.reduce((total, skill) => total + skill.oil * skill.PlayerSkill.level, 0) / 100
+                }
+                player.metal += Math.floor(Math.random() * relic.metal * metalBonus)
+                player.crystal += Math.floor(Math.random() * relic.crystal * crystalBonus)
+                player.oil += Math.floor(Math.random() * relic.oil * oilBonus)
+                player.level += relic.level
                 player.save()
                 .then((player) => {
                   socketio.emit('player', player.id)
                   res.status(200).end()
                 })
-              } else {
-                socketio.emit('player', player.id)
-                res.status(400).end()
               }
-            })
-          }
-          // create new ships
-          if (relic.ship) {
-            player.getShips()
-            .then((ships) => {
-              if (ships && ships.length > 0) {
-                ships.forEach((ship) => {
-                  ship.PlayerShip.quantity += Math.floor(Math.random() * 100)
-                  ship.PlayerShip.save()
+              // generate experience
+              if (relic.experience > 0) {
+                var experienceBonus = 1.0
+                if (referendum) {
+                  experienceBonus += referendum.experience / 100
+                }
+                if (player.Faction) {
+                  experienceBonus += player.Faction.experience / 100
+                }
+                if (skills) {
+                  experienceBonus += skills.reduce((total, skill) => total + skill.experience * skill.PlayerSkill.level, 0) / 100
+                }
+                player.experience += Math.floor(Math.random() * relic.experience * experienceBonus)
+                if (player.experience / (constants.up * player.level) >= 1) {
+                  player.level += Math.floor(player.experience / (constants.up * player.level))
+                  player.experience = player.experience % (constants.up * player.level)
+                }
+                player.save()
+                .then((player) => {
+                  socketio.emit('player', player.id)
+                  res.status(200).end()
                 })
               }
-              player.save()
-              .then((player) => {
-                socketio.emit('player', player.id)
-                res.status(200).end()
-              })
-            })
-          }
-          // create new buildings
-          if (relic.building) {
-            player.getBuildings()
-            .then((buildings) => {
-              if (buildings && buildings.length > 0) {
-                buildings.forEach((building) => {
-                  building.PlayerBuilding.quantity += Math.floor(Math.random() * 100)
-                  building.PlayerBuilding.save()
+              // reset skills
+              if (relic.reset) {
+                player.getSkills()
+                .then((skills) => {
+                  if (skills.length > 0) {
+                    skills.forEach((skill) => {
+                      skill.PlayerSkill.level = 0
+                      skill.PlayerSkill.save()
+                    })
+                    player.save()
+                    .then((player) => {
+                      socketio.emit('player', player.id)
+                      res.status(200).end()
+                    })
+                  } else {
+                    socketio.emit('player', player.id)
+                    res.status(400).end()
+                  }
                 })
               }
-              player.save()
-              .then((player) => {
-                socketio.emit('player', player.id)
-                res.status(200).end()
-              })
-            })
-          }
-          // create new towers
-          if (relic.tower) {
-            player.getTowers()
-            .then((towers) => {
-              if (towers && towers.length > 0) {
-                towers.forEach((tower) => {
-                  tower.PlayerTower.quantity += Math.floor(Math.random() * 100)
-                  tower.PlayerTower.save()
+              // create new ships
+              if (relic.ship) {
+                player.getShips()
+                .then((ships) => {
+                  if (ships && ships.length > 0) {
+                    ships.forEach((ship) => {
+                      ship.PlayerShip.quantity += Math.floor(Math.random() * 100)
+                      ship.PlayerShip.save()
+                    })
+                  }
+                  player.save()
+                  .then((player) => {
+                    socketio.emit('player', player.id)
+                    res.status(200).end()
+                  })
                 })
               }
-              player.save()
-              .then((player) => {
-                socketio.emit('player', player.id)
-                res.status(200).end()
-              })
+              // create new buildings
+              if (relic.building) {
+                player.getBuildings()
+                .then((buildings) => {
+                  if (buildings && buildings.length > 0) {
+                    buildings.forEach((building) => {
+                      building.PlayerBuilding.quantity += Math.floor(Math.random() * 100)
+                      building.PlayerBuilding.save()
+                    })
+                  }
+                  player.save()
+                  .then((player) => {
+                    socketio.emit('player', player.id)
+                    res.status(200).end()
+                  })
+                })
+              }
+              // create new towers
+              if (relic.tower) {
+                player.getTowers()
+                .then((towers) => {
+                  if (towers && towers.length > 0) {
+                    towers.forEach((tower) => {
+                      tower.PlayerTower.quantity += Math.floor(Math.random() * 100)
+                      tower.PlayerTower.save()
+                    })
+                  }
+                  player.save()
+                  .then((player) => {
+                    socketio.emit('player', player.id)
+                    res.status(200).end()
+                  })
+                })
+              }
             })
-          }
+          })
         } else {
           res.status(400).end()
         }
