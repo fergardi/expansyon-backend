@@ -10,7 +10,7 @@ var cron = require('../services/cron')
 var factory = require('../factories/mission')
 
 // add mission
-cron.schedule('*/10 * * * * *', () => {
+cron.schedule('*/20 * * * * *', () => {
   // battles
   models.Battle.findAll({
     where: { MissionId: { $ne: null } },
@@ -33,16 +33,15 @@ cron.schedule('*/10 * * * * *', () => {
           defender += ship.MissionShip.quantity
         })
         console.log('Attacker: ', attacker, ', Defender: ', defender)
-        if (attacker > defender) { // win
+        // win
+        if (attacker > defender) {
           battle.Player.metal += battle.Mission.metal
           battle.Player.crystal += battle.Mission.crystal
           battle.Player.oil += battle.Mission.oil
+          battle.Player.aether += battle.Mission.aether
+          battle.Player.experience += battle.Mission.experience
           battle.Player.save()
-        } else { // lose
-
         }
-        battle.Player.experience += battle.Mission.experience
-        battle.Player.save()
       })
     }
     models.Battle.destroy({
@@ -56,16 +55,19 @@ cron.schedule('*/10 * * * * *', () => {
       order: [[ 'id', 'ASC' ]]
     })
     .then((ships) => {
-      var created = factory.build()
-      models.Mission.create(created)
-      .then((mission) => {
-        mission.addShip(ships[0], { quantity: created.Ships[0]._through.quantity })
-        mission.addShip(ships[1], { quantity: created.Ships[1]._through.quantity })
-        mission.addShip(ships[2], { quantity: created.Ships[2]._through.quantity })
-        mission.save()
-        .then((mission) => {
-          socketio.emit('galaxy')
+      models.Player.findAll()
+      .then((players) => {
+        players.forEach((player) => {
+          var created = factory.build()
+          models.Mission.create(created)
+          .then((mission) => {
+            mission.addShip(ships[0], { quantity: created.Ships[0]._through.quantity })
+            mission.addShip(ships[1], { quantity: created.Ships[1]._through.quantity })
+            mission.addShip(ships[2], { quantity: created.Ships[2]._through.quantity })
+            mission.save()
+          })
         })
+        socketio.emit('galaxy')
       })
     })
   })

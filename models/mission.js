@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
           freezeTableName: true
         })
         models.Ship.belongsToMany(models.Mission, { through: MissionShip })
-        models.Mission.belongsToMany(models.Ship, { through: MissionShip, onDelete: 'CASCADE' })
+        models.Mission.belongsToMany(models.Ship, { through: MissionShip })
       }
     },
     timestamps: false,
