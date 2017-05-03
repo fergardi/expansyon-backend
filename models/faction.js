@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     aim: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     evasion: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     cargo: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
-    experience: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
+    experience: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+    aether: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
   }, {
     timestamps: false,
     freezeTableName: true
