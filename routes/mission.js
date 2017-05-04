@@ -10,7 +10,7 @@ var cron = require('../services/cron')
 var factory = require('../factories/mission')
 
 // add mission
-cron.schedule('*/20 * * * * *', () => {
+cron.schedule('*/5 * * * * *', () => {
   // battles
   models.Battle.findAll({
     where: { MissionId: { $ne: null } },
@@ -47,8 +47,10 @@ cron.schedule('*/20 * * * * *', () => {
     models.Battle.destroy({
       where: { MissionId: { $ne: null } }
     })
-    models.Mission.destroy({
-      where: {}
+    .then(() => {
+      models.Mission.destroy({
+        where: {}
+      })
     })
     // new missions
     models.Ship.findAll({

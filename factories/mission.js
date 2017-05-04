@@ -63,6 +63,7 @@ const factory = {
       mission.experience = factory.number(1000)
       mission.RelicId = null
     }
+    mission.name = mission.lat.toFixed(3) + 'X, ' + mission.lng.toFixed(3) + 'Y'
   },
   build (sequelize) {
     var mission = {
