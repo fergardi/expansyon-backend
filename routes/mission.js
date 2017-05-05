@@ -10,7 +10,7 @@ var cron = require('../services/cron')
 var factory = require('../factories/mission')
 
 // add mission
-cron.schedule('*/5 * * * * *', () => {
+cron.schedule('45 * * * * *', () => {
   // battles
   models.Battle.findAll({
     where: { MissionId: { $ne: null } },
@@ -51,25 +51,27 @@ cron.schedule('*/5 * * * * *', () => {
       models.Mission.destroy({
         where: {}
       })
-    })
-    // new missions
-    models.Ship.findAll({
-      order: [[ 'id', 'ASC' ]]
-    })
-    .then((ships) => {
-      models.Player.findAll()
-      .then((players) => {
-        players.forEach((player) => {
-          var created = factory.build()
-          models.Mission.create(created)
-          .then((mission) => {
-            mission.addShip(ships[0], { quantity: created.Ships[0]._through.quantity })
-            mission.addShip(ships[1], { quantity: created.Ships[1]._through.quantity })
-            mission.addShip(ships[2], { quantity: created.Ships[2]._through.quantity })
-            mission.save()
+      .then(() => {
+        // new missions
+        models.Ship.findAll({
+          order: [[ 'id', 'ASC' ]]
+        })
+        .then((ships) => {
+          models.Player.findAll()
+          .then((players) => {
+            players.forEach((player) => {
+              var created = factory.build()
+              models.Mission.create(created)
+              .then((mission) => {
+                mission.addShip(ships[0], { quantity: created.Ships[0]._through.quantity })
+                mission.addShip(ships[1], { quantity: created.Ships[1]._through.quantity })
+                mission.addShip(ships[2], { quantity: created.Ships[2]._through.quantity })
+                mission.save()
+              })
+            })
+            socketio.emit('galaxy')
           })
         })
-        socketio.emit('galaxy')
       })
     })
   })

@@ -28,7 +28,7 @@
     "data": {
       "name": "relic.station.name",
       "description": "relic.station.description",
-      "image": "https://image.flaticon.com/icons/svg/179/179527.svg",
+      "image": "https://image.flaticon.com/icons/svg/139/139726.svg",
       "class": "orange",
       "experience": 0,
       "level": 0,
@@ -52,7 +52,7 @@
     "data": {
       "name": "relic.moon.name",
       "description": "relic.moon.description",
-      "image": "https://image.flaticon.com/icons/svg/139/139705.svg",
+      "image": "https://image.flaticon.com/icons/svg/361/361706.svg",
       "class": "orange",
       "experience": 0,
       "level": 0,
