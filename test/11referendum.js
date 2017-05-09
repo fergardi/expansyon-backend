@@ -25,16 +25,4 @@ describe('REFERENDUM', () => {
       })
     })
   })
-  describe('GET /api/referendum', () => {
-    it('should LIST all the referendums with good JWT', (done) => {
-      request(server)
-      .get('/api/referendum')
-      .set('Authorization', 'Bearer ' + global.token)
-      .expect(200)
-      .end((err, res) => {
-        expect(res.body).to.have.length.above(0)
-        done(err)
-      })
-    })
-  })
 })
