@@ -10,8 +10,7 @@
     "start": "cross-env NODE_ENV=production node ./bin/server.js",
     "dev": "nodemon --debug --ignore ./test ./bin/server.js",
     "test": "cross-env NODE_ENV=test mocha --sort --timeout 10000",
-    "prod": "cross-env NODE_ENV=production node ./bin/server.js",
-    "pm2": "cross-env NODE_ENV=production pm2 start -f ./bin/server.js"
+    "production": "pm2 start npm --name expansyon-backend -- start",
   },
   "dependencies": {
     "body-parser": "~1.17.1",
